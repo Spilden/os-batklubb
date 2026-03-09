@@ -8,9 +8,9 @@ type BaseButtonProps = {
 
 export default function BaseButton({ children, onClick, variant = 'primary' }: BaseButtonProps) {
   const variants = {
-    primary: 'bg-primary text-surface hover:bg-text',
-    secondary: 'border border-primary text-primary hover:bg-background',
-    text: 'underline underline-offset-4 text-primary cursor-pointer hover:text-text',
+    primary: 'bg-primary text-surface border border-transparent shadow-lg hover:bg-ocean hover:border hover:border-ocean',
+    secondary: 'border border-primary text-primary shadow-lg hover:bg-ocean hover:text-surface hover:border-ocean',
+    text: 'underline underline-offset-4 text-primary cursor-pointer text-shadow-lg hover:text-text',
   }
   return (
     <button
