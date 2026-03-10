@@ -1,5 +1,6 @@
 import React from 'react'
 import './global.css'
+import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 
 export const metadata = {
@@ -12,9 +13,10 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   return (
     <html lang="en">
-      <body className="bg-background">
+      <body className="bg-background flex flex-col min-h-screen">
         <Header />
-        <main>{children}</main>
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   )
