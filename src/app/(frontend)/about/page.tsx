@@ -15,17 +15,18 @@ export default async function AboutPage() {
   const about = docs[0]
 
   return (
-    <article>
-      <div>
+    <article className="flex flex-col md:flex-row gap-12 max-w-5xl mx-auto px-6 py-12">
+      <div className="w-full md:w-1/2">
         <Image
           src={(about.image as { url: string }).url}
           alt={about.title}
           width={600}
           height={400}
+          className="rounded-lg w-full object-cover"
         />
       </div>
-      <div>
-        <h1 className="text-2xl">{about.title}</h1>
+      <div className="w-full md:w-1/2">
+        <h1 className="text-2xl font-bold mb-4">{about.title}</h1>
         <RichText data={about.content} />
       </div>
     </article>
