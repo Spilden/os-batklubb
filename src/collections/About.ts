@@ -1,6 +1,6 @@
 import { CollectionConfig } from 'payload'
 
-const About: CollectionConfig = {
+export const About: CollectionConfig = {
   slug: 'about-club',
   fields: [
     {
@@ -22,5 +22,3 @@ const About: CollectionConfig = {
     },
   ],
 }
-
-export default About
