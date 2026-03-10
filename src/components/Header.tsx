@@ -1,8 +1,12 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import BaseButton from '@/components/BaseButton'
+import {useState} from "react";
 
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false)
   return (
     <header className="bg-white p-8 shadow-lg">
       <nav className="flex items-center justify-between">
@@ -11,7 +15,7 @@ export default function Header() {
         </Link>
 
         {/*Desktop navigasjon*/}
-        <ul className="flex gap-2">
+        <ul className="hidden md:flex gap-2">
           <li>
             <Link href="/">
               <BaseButton>Hjem</BaseButton>
@@ -43,6 +47,47 @@ export default function Header() {
             </Link>
           </li>
         </ul>
+
+        {/*Hamburger meny knapp*/}
+        <BaseButton className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? 'x' : '☰'}
+        </BaseButton>
+
+        {/*Mobil meny*/}
+        {menuOpen && (
+          <ul>
+            <li>
+              <Link href="/" onClick={() => setMenuOpen(false)}>
+                <BaseButton>Hjem</BaseButton>
+              </Link>
+            </li>
+            <li>
+              <Link href="/news" onClick={() => setMenuOpen(false)}>
+                <BaseButton>Nyheter</BaseButton>
+              </Link>
+            </li>
+            <li>
+              <Link href="/about" onClick={() => setMenuOpen(false)}>
+                <BaseButton>Om Båtklubben</BaseButton>
+              </Link>
+            </li>
+            <li>
+              <Link href="/guest-marina" onClick={() => setMenuOpen(false)}>
+                <BaseButton>Gjestehavn</BaseButton>
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" onClick={() => setMenuOpen(false)}>
+                <BaseButton>Kontakt Oss</BaseButton>
+              </Link>
+            </li>
+            <li>
+              <Link href="/log-in" onClick={() => setMenuOpen(false)}>
+                <BaseButton variant="secondary">Logg Inn</BaseButton>
+              </Link>
+            </li>
+          </ul>
+        )}
       </nav>
     </header>
   )
