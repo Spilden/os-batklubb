@@ -1,7 +1,7 @@
 import { CollectionConfig } from 'payload'
 
 export const About: CollectionConfig = {
-  slug: 'about-club',
+  slug: 'about',
   fields: [
     {
       name: 'title',
