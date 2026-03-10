@@ -20,5 +20,11 @@ export const About: CollectionConfig = {
           'Dette feltet er hovedinnholdet i "Om Klubben" seksjonen. Formateringen her blir brukt i artikkelen',
       },
     },
+    {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+    },
   ],
 }
