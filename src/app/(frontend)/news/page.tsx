@@ -5,17 +5,17 @@ import config from '@/payload.config'
 
 
 export default async function HomePage() {
-  // const payload = await getPayload({ config })
+  const payload = await getPayload({ config })
 
-  // TODO: implementer find i collection istedenfor hardcodet data
-
-  const newsArticles = {
-    docs: [
-      { id: '1', title: 'Vårens åpningsregatta', description: 'En fin dag på sjøen' },
-      { id: '2', title: 'Ny brygge ferdigstilt', description: 'Endelig klar for sesongen' },
-      { id: '3', title: 'Navigasjon for nybegynnere', description: 'Kurs starter snart' },
-    ]
-  }
+  const newsArticles = await payload.find({
+    collection: 'news',
+    depth: 2,
+    where: {
+      publishedAt: {
+        less_than_equal: new Date().toISOString()
+      }
+    }
+  })
 
   return (
     <div className="fixed inset-0 flex items-center justify-center">
