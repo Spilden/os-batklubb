@@ -1,25 +1,27 @@
-﻿import { Media, News } from '@/payload-types'
+﻿import { News } from '@/payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
+import { imageGuard } from '@/utils/ImageGuard'
 
 type NewsCardProps = {
   article: News
 }
 
 export default function NewsCard({ article }: NewsCardProps) {
-  const image = article.image as Media | undefined
+  const image = imageGuard(article.image)
   return (
     <Link
       key={article.id}
       href={`/news/${article.slug}`}
       className="flex bg-surface rounded-lg p-4 shadow-lg w-full gap-4 cursor-pointer hover:shadow-ocean"
     >
-      {image?.url && (
+      {image && (
         <div className="relative w-3/5 aspect-video shrink-0">
           <Image
             src={image.url}
             alt={image.alt ?? article.title}
             fill
+            sizes="(max-width: 768px) 100vw 60vw"
             className="rounded-lg object-cover"
           />
         </div>
