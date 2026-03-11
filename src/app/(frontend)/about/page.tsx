@@ -7,12 +7,10 @@ export default async function AboutPage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
 
-  const { docs } = await payload.find({
-    collection: 'about',
+  const about = await payload.findGlobal({
+    slug: 'about',
     depth: 1,
   })
-
-  const about = docs[0]
 
   return (
     <article className="flex flex-col md:flex-row gap-12 max-w-5xl mx-auto px-6 py-12">

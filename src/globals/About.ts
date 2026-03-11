@@ -1,6 +1,6 @@
-import { CollectionConfig } from 'payload'
+import { GlobalConfig } from 'payload'
 
-export const About: CollectionConfig = {
+export const About: GlobalConfig = {
   slug: 'about',
   fields: [
     {
