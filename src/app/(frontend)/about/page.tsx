@@ -2,7 +2,7 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import Image from 'next/image'
-import { Media } from '@/payload-types'
+import { imageGuard } from '@/utils/ImageGuard'
 
 export default async function AboutPage() {
   const payloadConfig = await config
@@ -17,17 +17,17 @@ export default async function AboutPage() {
     return <p className="p-2 flex justify-center">Ingen innhold ennå</p>
   }
 
-  const image = about.image as Media| undefined
+  const image = imageGuard(about.image)
 
   return (
     <article className="flex flex-col md:flex-row gap-12 max-w-5xl mx-auto px-6 py-12">
-      {image?.url && (
+      {image && (
         <div className="w-full md:w-1/2">
           <Image
             src={image.url}
             alt={image.alt ?? about.title}
-            width={600}
-            height={400}
+            width={image.width}
+            height={image.height}
             className="rounded-lg w-full object-cover"
           />
         </div>
