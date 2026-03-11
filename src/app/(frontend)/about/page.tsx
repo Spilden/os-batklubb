@@ -2,7 +2,7 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import Image from 'next/image'
-import { MediaImage } from '@/types/media'
+import { Media } from '@/payload-types'
 
 export default async function AboutPage() {
   const payloadConfig = await config
@@ -17,7 +17,7 @@ export default async function AboutPage() {
     return <p className="p-2 flex justify-center">Ingen innhold ennå</p>
   }
 
-  const image = about.image as MediaImage | undefined
+  const image = about.image as Media| undefined
 
   return (
     <article className="flex flex-col md:flex-row gap-12 max-w-5xl mx-auto px-6 py-12">
