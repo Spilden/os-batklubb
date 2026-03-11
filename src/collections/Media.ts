@@ -14,6 +14,7 @@ export const Media: CollectionConfig = {
   ],
   upload: {
     adminThumbnail: 'thumbnail',
+    mimeTypes: ['image/*'],
     formatOptions: {
       format: 'webp',
     },
@@ -23,24 +24,9 @@ export const Media: CollectionConfig = {
         width: 400,
         height: 300,
         position: 'centre',
-      },
-      {
-        name: 'mobile',
-        width: 768,
-        height: undefined,
-        position: 'centre',
-      },
-      {
-        name: 'tablet',
-        width: 1024,
-        height: undefined,
-        position: 'centre',
-      },
-      {
-        name: 'desktop',
-        width: 1920,
-        height: undefined,
-        position: 'centre',
+        formatOptions: {
+          format: 'webp',
+        },
       },
     ],
   },
