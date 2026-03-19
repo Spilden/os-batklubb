@@ -2,8 +2,7 @@ import { getPayload } from 'payload'
 import React from 'react'
 import config from '@/payload.config'
 import BaseButton from '@/components/BaseButton'
-import Image from 'next/image'
-import { imageGuard } from '@/utils/ImageGuard'
+import PartnerCard from '@/components/PartnerCard'
 
 export default async function HomePage() {
   const payloadConfig = await config
@@ -28,26 +27,14 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
-      <section>
-        {partners.map((partner) => {
-          const partnerLogo = imageGuard(partner.logo)
 
-          return (
-            <div key={partner.id}>
-              <h2>{partner.name}</h2>
-              {partnerLogo?.url && (
-                <Image
-                  src={partnerLogo.url}
-                  alt={partnerLogo.alt ?? partner.name}
-                  width={partnerLogo.width}
-                  height={partnerLogo.height}
-                  className="object-contain"
-                />
-              )}
-            </div>
-          )
-        })}
-      </section>
+      {partners.length > 0 && (
+        <section>
+          {partners.map((partner) => (
+            <PartnerCard partner={partner} key={partner.id} />
+          ))}
+        </section>
+      )}
     </>
   )
 }
