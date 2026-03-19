@@ -20,9 +20,9 @@ export default async function AboutPage() {
   const image = imageGuard(about.image)
 
   return (
-    <article className="flex flex-col md:flex-row gap-12 max-w-5xl mx-auto px-6 py-12">
+    <article className="flex flex-col lg:flex-row gap-12 max-w-5xl mx-auto px-6 py-12">
       {image && (
-        <div className="w-full md:w-1/2">
+        <div className="w-full lg:w-1/2">
           <Image
             src={image.url}
             alt={image.alt ?? about.title}
@@ -32,9 +32,11 @@ export default async function AboutPage() {
           />
         </div>
       )}
-      <div className="w-full md:w-1/2">
-        <h1 className="text-2xl font-bold mb-4">{about.title}</h1>
-        <RichText data={about.content} />
+      <div className="w-full lg:w-1/2 self-center">
+        <h1 className="text-2xl font-display text-text font-bold mb-4 text-center">
+          {about.title}
+        </h1>
+        <RichText className="text-text-muted" data={about.content} />
       </div>
     </article>
   )
