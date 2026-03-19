@@ -3,7 +3,7 @@ import React from 'react'
 import config from '@/payload.config'
 import BaseButton from '@/components/BaseButton'
 import Image from 'next/image'
-import { Media } from '@/payload-types'
+import { imageGuard } from '@/utils/ImageGuard'
 
 export default async function HomePage() {
   const payloadConfig = await config
@@ -30,7 +30,7 @@ export default async function HomePage() {
       </section>
       <section>
         {partners.map((partner) => {
-          const partnerLogo = partner.logo as Media
+          const partnerLogo = imageGuard(partner.logo)
 
           return (
             <div key={partner.id}>
@@ -38,9 +38,9 @@ export default async function HomePage() {
               {partnerLogo?.url && (
                 <Image
                   src={partnerLogo.url}
-                  alt={partner.name}
-                  width={160}
-                  height={80}
+                  alt={partnerLogo.alt ?? partner.name}
+                  width={partnerLogo.width}
+                  height={partnerLogo.height}
                   className="object-contain"
                 />
               )}
