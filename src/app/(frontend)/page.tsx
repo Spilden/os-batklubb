@@ -30,15 +30,15 @@ export default async function HomePage() {
       </section>
       <section>
         {partners.map((partner) => {
-          const partnerLogo = partner.image as Media
+          const partnerLogo = partner.logo as Media
 
           return (
             <div key={partner.id}>
-              <h2>{partner.title}</h2>
+              <h2>{partner.name}</h2>
               {partnerLogo?.url && (
                 <Image
                   src={partnerLogo.url}
-                  alt={partner.title}
+                  alt={partner.name}
                   width={160}
                   height={80}
                   className="object-contain"
