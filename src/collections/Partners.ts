@@ -7,7 +7,7 @@ export const Partners: CollectionConfig = {
   },
   fields: [
     {
-      name: 'title',
+      name: 'name',
       type: 'text',
       required: true,
       admin: {
@@ -15,17 +15,10 @@ export const Partners: CollectionConfig = {
       },
     },
     {
-      name: 'image',
+      name: 'logo',
       type: 'upload',
       relationTo: 'media',
     },
-    {
-      name: 'deal',
-      type: 'richText',
-      admin: {
-        description: 'Eventuell fordelsavtale kan legges inn her.'
-      },
-    }
   ]
 }
 
