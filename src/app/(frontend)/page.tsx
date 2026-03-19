@@ -29,10 +29,12 @@ export default async function HomePage() {
       </section>
 
       {partners.length > 0 && (
-        <section>
-          {partners.map((partner) => (
-            <PartnerCard partner={partner} key={partner.id} />
-          ))}
+        <section className="bg-sage rounded-xl shadow-lg w-full mt-4">
+          <div className="flex flex-wrap justify-center gap-4 p-4">
+            {partners.map((partner) => (
+              <PartnerCard partner={partner} key={partner.id} />
+            ))}
+          </div>
         </section>
       )}
     </>
