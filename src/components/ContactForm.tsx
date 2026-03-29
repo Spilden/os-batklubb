@@ -13,30 +13,60 @@ export default function ContactForm() {
   const [state, action, isPending] = useActionState(submitContactForm, initilalState)
 
   if (state.success) {
-    return <p>Takk for din hendvendelse! Vi tar kontakt så snart som mulig.</p>
+    return (
+      <p className="text-center text-primary font-medium py-8">
+        Takk for din hendvendelse! Vi tar kontakt så snart som mulig.
+      </p>
+    )
   }
   return (
-    <form action={action}>
+    <form action={action} className="flex flex-col gap-4">
       {state.error && <p>{state.error}</p>}
 
-      <div>
-        <label htmlFor="name">Navn</label>
-        <input id="name" name="name" type="text" required className="border" />
+      <div className="flex flex-col gap-1">
+        <label htmlFor="name" className="text-text font-medium text-sm uppercase">
+          Navn
+        </label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          required
+          className="border border-ocean rounded-lg p-2 bg-surface text-text focus:outline-none focus:ring-2 focus:ring-ocean"
+        />
       </div>
 
-      <div>
-        <label htmlFor="email">E-post</label>
-        <input id="email" name="email" type="email" required className="border" />
+      <div className="flex flex-col gap-1">
+        <label htmlFor="email" className="text-text font-medium text-sm uppercase">
+          E-post
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          className="border border-ocean rounded-lg p-2 bg-surface text-text focus:outline-none focus:ring-2 focus:ring-ocean"
+        />
       </div>
 
-      <div>
-        <label htmlFor="message">Melding</label>
-        <textarea id="message" name="message" required rows={5} className="border" />
+      <div className="flex flex-col gap-1">
+        <label htmlFor="message" className="text-text font-medium text-sm uppercase">
+          Melding
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows={5}
+          className="border border-ocean rounded-lg p-2 bg-surface text-text focus:outline-none focus:ring-2 focus:ring-ocean resize-none"
+        />
       </div>
 
-      <BaseButton variant="secondary" type="submit" disabled={isPending}>
-        {isPending ? 'Sender...' : 'Send melding'}
-      </BaseButton>
+      <div className="flex justify-end">
+        <BaseButton type="submit" disabled={isPending}>
+          {isPending ? 'Sender...' : 'Send melding'}
+        </BaseButton>
+      </div>
     </form>
   )
 }
