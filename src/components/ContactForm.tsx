@@ -14,7 +14,7 @@ export default function ContactForm() {
 
   if (state.success) {
     return (
-      <p className="text-center text-primary font-medium py-8">
+      <p className="text-center text-text font-medium py-8">
         Takk for din hendvendelse! Vi tar kontakt så snart som mulig.
       </p>
     )
@@ -22,6 +22,17 @@ export default function ContactForm() {
   return (
     <form action={action} className="flex flex-col gap-4">
       {state.error && <p>{state.error}</p>}
+
+      <div
+        style={{
+          position: 'absolute',
+          left: '-9999px',
+        }}
+        aria-hidden="true"
+      >
+        <label htmlFor="url">Din nettside</label>
+        <input id="url" type="text" name="url" tabIndex={-1} autoComplete="nope" />
+      </div>
 
       <div className="flex flex-col gap-1">
         <label htmlFor="name" className="text-text font-medium text-sm uppercase">

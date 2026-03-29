@@ -10,6 +10,11 @@ export async function submitContactForm(_prevState: unknown, formData: FormData)
   const name = formData.get('name') as string
   const email = formData.get('email') as string
   const message = formData.get('message') as string
+  const honeypot = formData.get('url') as string
+
+  if (honeypot) {
+    return { success: true }
+  }
 
   if (!name || !email || !message) {
     return { success: false, error: 'Alle felt ,må fylles ut.' }
