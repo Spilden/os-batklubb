@@ -3,27 +3,45 @@ import 'dotenv/config'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import type { News } from '@/payload-types'
+import fs from 'fs'
 
 async function seed() {
   try {
-    const payload = await getPayload({ config })
-
     // -------------------------------------------------------
     // CLEANUP
     // -------------------------------------------------------
 
-    const collections = ['news', 'partners', 'media'] as const
+    const dbPath = process.env.DATABASE_URL?.replace('file:', '') || './os-baatklubb.db'
 
-    for (const collection of collections) {
-      const { docs } = await payload.find({ collection, limit: 1000 })
-      for (const doc of docs) {
-        await payload.delete({ collection, id: doc.id })
-      }
+    if (fs.existsSync(dbPath)) {
+      fs.unlinkSync(dbPath)
+      console.log('Database slettet')
     }
 
-    console.log('Gammel data slettet')
+    const payload = await getPayload({ config })
 
+    console.log('Gammel data slettet')
     console.log('Starter seeding...')
+    // -------------------------------------------------------
+    // SEED ADMIN BRUKER
+    // -------------------------------------------------------
+
+    const adminEmail = process.env.SEED_ADMIN_EMAIL
+    const adminPassword = process.env.SEED_ADMIN_PASSWORD
+
+    if(adminEmail && adminPassword) {
+      await payload.create({
+        collection: 'users',
+        data: {
+          email: adminEmail,
+          password: adminPassword,
+        }
+      })
+      console.log('Admin bruker opprettet')
+    } else {
+      console.log('Ingen admin bruker seedet, mangler epost og passord i env filen')
+    }
+
 
     // -------------------------------------------------------
     // MEDIA – placeholder-bilde
@@ -246,65 +264,218 @@ async function seed() {
     // ABOUT
     // -------------------------------------------------------
 
-    const aboutArticle = {
-      title: 'Klubbens Historie',
-      content: {
-        root: {
-          type: 'root',
-          children: [
-            {
-              type: 'paragraph',
-              children: [
-                {
-                  type: 'text',
-                  text:
-                    'Alle som hadde båt i Os ble invitert til å være med i den nystartede foreningen. 16 personer deltok på etableringsmøtet og Jon Lundetræ ble klubbens første formann.\n' +
-                    'Sammen med lensmann Bjarne Dahl var Ingvald Njøten og Jon Lundetræ den bærende kraft i klubben de første årene.\n' +
-                    'På møtet i ”Os Motorbåtlag” 17.03.1955 ble navnet endret til Os Båtklubb mot to stemmer:\n' +
-                    '\n' +
-                    'I 1962 fikk klubben bygslet tomt i Vargavågen av Engel Lunde. Og naust ble innkjøpt med private midler fra lensmann Bjarne Dahl. Det kostet hele 400 kroner. Naustet ble satt opp, skinnegang kom på plass og det ble utarbeidet område for vinteropplag og kaiområde. Naust, opplagsplass og kai sto ferdig i mai 1969.\n' +
-                    'En imponerende innsats ble lagt ned i klubbens første 10–15 år. Et solid grunnlag å bygge videre på.\n' +
-                    '\n' +
-                    'I 1974 fikk de utvidet tomtearealet i Varga samtidig som de kjøpte tomten. Vi ble grunneiere i Vargavågen, noe som viste seg å bli helt avgjørende for klubbens videre utvikling i Varga.\n' +
-                    'Året etter – i 1975 ble det forhandlet frem en bygselavtale med 4 grunneiere for å anlegge vei ned til klubbens tomteland. Allerede senhøstes samme året var veitraséen stukket, og før jul var ryddingen i gang. Veien er ca. 600 meter lang og ble en tung investering. Klubben hadde 30.000 i egne midler, medlemmene ga et lån på 50.000 og Os kommune tilsvarende 50.000 pluss dugnad.\n' +
-                    '\n' +
-                    'I 2013 utvidet vi anlegget fra 78 båtplasser til 102 båtplasser i flytebrygger.\n' +
-                    'De ble lagt ut ny brygge C, og oppgraderte brygge A og B med nytt dekke og nye strøysøyler og strømkontakter for alle brygger.\n' +
-                    'Overvåknings kamera over bom, parkeringsplass og alle brygger ble montert i 2014.\n' +
-                    'Tak over slipp ble montert i mars 2015.\n' +
-                    '\n' +
-                    'Klubben har i dag 141 medlemmer.\n' +
-                    '\n' +
-                    'Naustet vårt inneholder klubblokaler, kjøkken, dusj, toalett og naust.\n' +
-                    '\n' +
-                    'Gjester i båthavnen har tilgang til strøm, vaskemaskin, tørketrommel, dusj og toalett.\n' +
-                    '\n' +
-                    'Se oppslag i havnen.',
-                  version: 1,
-                },
-              ],
-              version: 1,
-            },
-          ],
-          direction: 'ltr' as const,
-          format: '' as const,
-          indent: 0,
-          version: 1,
-        },
-      },
-    }
-
     await payload.updateGlobal({
       slug: 'about',
       data: {
-        title: aboutArticle.title,
-        content: aboutArticle.content,
+        title: 'Klubbens Historie',
         image: placeholderMedia.id,
-      }
+        content: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text:
+                      'Alle som hadde båt i Os ble invitert til å være med i den nystartede foreningen. 16 personer deltok på etableringsmøtet og Jon Lundetræ ble klubbens første formann.\n' +
+                      'Sammen med lensmann Bjarne Dahl var Ingvald Njøten og Jon Lundetræ den bærende kraft i klubben de første årene.\n' +
+                      'På møtet i "Os Motorbåtlag" 17.03.1955 ble navnet endret til Os Båtklubb mot to stemmer:\n' +
+                      '\n' +
+                      'I 1962 fikk klubben bygslet tomt i Vargavågen av Engel Lunde. Og naust ble innkjøpt med private midler fra lensmann Bjarne Dahl. Det kostet hele 400 kroner. Naustet ble satt opp, skinnegang kom på plass og det ble utarbeidet område for vinteropplag og kaiområde. Naust, opplagsplass og kai sto ferdig i mai 1969.\n' +
+                      'En imponerende innsats ble lagt ned i klubbens første 10–15 år. Et solid grunnlag å bygge videre på.\n' +
+                      '\n' +
+                      'I 1974 fikk de utvidet tomtearealet i Varga samtidig som de kjøpte tomten. Vi ble grunneiere i Vargavågen, noe som viste seg å bli helt avgjørende for klubbens videre utvikling i Varga.\n' +
+                      'Året etter – i 1975 ble det forhandlet frem en bygselavtale med 4 grunneiere for å anlegge vei ned til klubbens tomteland. Allerede senhøstes samme året var veitraséen stukket, og før jul var ryddingen i gang. Veien er ca. 600 meter lang og ble en tung investering. Klubben hadde 30.000 i egne midler, medlemmene ga et lån på 50.000 og Os kommune tilsvarende 50.000 pluss dugnad.\n' +
+                      '\n' +
+                      'I 2013 utvidet vi anlegget fra 78 båtplasser til 102 båtplasser i flytebrygger.\n' +
+                      'De ble lagt ut ny brygge C, og oppgraderte brygge A og B med nytt dekke og nye strøysøyler og strømkontakter for alle brygger.\n' +
+                      'Overvåknings kamera over bom, parkeringsplass og alle brygger ble montert i 2014.\n' +
+                      'Tak over slipp ble montert i mars 2015.\n' +
+                      '\n' +
+                      'Klubben har i dag 141 medlemmer.\n' +
+                      '\n' +
+                      'Naustet vårt inneholder klubblokaler, kjøkken, dusj, toalett og naust.\n' +
+                      '\n' +
+                      'Gjester i båthavnen har tilgang til strøm, vaskemaskin, tørketrommel, dusj og toalett.\n' +
+                      '\n' +
+                      'Se oppslag i havnen.',
+                    version: 1,
+                  },
+                ],
+                version: 1,
+              },
+            ],
+            direction: 'ltr' as const,
+            format: '' as const,
+            indent: 0,
+            version: 1,
+          },
+        },
+      },
     })
 
     console.log('About seksjon opprettet')
 
+    // -------------------------------------------------------
+    // GUEST MARINA
+    // -------------------------------------------------------
+
+    await payload.updateGlobal({
+      slug: 'guestMarina',
+      data: {
+        title: 'Vargavågen Gjestehavn',
+        price: 150,
+        paymentInfo: 'Vipps til 128382 – Os Båtklubb',
+        image: placeholderMedia.id,
+        content: {
+          root: {
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: 'Vargavågen er en fredelig og godt beskyttet havn, skjermet mot vær og vind. Her finner du rolige og idylliske omgivelser – perfekt for deg som ønsker å legge til i en naturskjønn og historisk rik del av kysten.',
+                    version: 1,
+                  },
+                ],
+                version: 1,
+              },
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: 'Havnen har 8 faste gjesteplasser, og flere plasser kan benyttes ved behov.',
+                    version: 1,
+                  },
+                ],
+                version: 1,
+              },
+              {
+                type: 'paragraph',
+                children: [{ type: 'text', text: 'Historikk', version: 1, format: 1 }],
+                version: 1,
+              },
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: 'Vargavågen er et område med rik historie. I nærheten finner du flere historiske severdigheter, blant annet Vargahålo som er synlig fra havnen, helleristningsfelt og klebersteinbrudd fra steinalderen.',
+                    version: 1,
+                  },
+                ],
+                version: 1,
+              },
+              {
+                type: 'paragraph',
+                children: [{ type: 'text', text: 'Turterreng', version: 1, format: 1 }],
+                version: 1,
+              },
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: 'Området byr på fine turmuligheter for deg som vil utforske naturen til fots.',
+                    version: 1,
+                  },
+                ],
+                version: 1,
+              },
+              {
+                type: 'paragraph',
+                children: [{ type: 'text', text: 'Praktisk informasjon', version: 1, format: 1 }],
+                version: 1,
+              },
+              {
+                type: 'paragraph',
+                children: [
+                  {
+                    type: 'text',
+                    text: 'Det er ingen butikk i umiddelbar nærhet, men det finnes en kiosk på Halhjem fergekai. Nærmeste dagligvarebutikk er Kiwi Moberg, ca. 4 km unna.',
+                    version: 1,
+                  },
+                ],
+                version: 1,
+              },
+              {
+                type: 'paragraph',
+                children: [{ type: 'text', text: 'Fasiliteter', version: 1, format: 1 }],
+                version: 1,
+              },
+              {
+                type: 'list',
+                listType: 'bullet',
+                start: 1,
+                tag: 'ul',
+                children: [
+                  {
+                    type: 'listitem',
+                    value: 1,
+                    children: [
+                      { type: 'text', text: 'Sanitæranlegg med toalett og dusj', version: 1 },
+                    ],
+                    version: 1,
+                  },
+                  {
+                    type: 'listitem',
+                    value: 2,
+                    children: [{ type: 'text', text: 'Vaskemaskin og tørketrommel', version: 1 }],
+                    version: 1,
+                  },
+                  {
+                    type: 'listitem',
+                    value: 3,
+                    children: [
+                      { type: 'text', text: 'Grillhytte tilgjengelig for gjester', version: 1 },
+                    ],
+                    version: 1,
+                  },
+                  {
+                    type: 'listitem',
+                    value: 4,
+                    children: [{ type: 'text', text: 'Egen badestrand', version: 1 }],
+                    version: 1,
+                  },
+                  {
+                    type: 'listitem',
+                    value: 5,
+                    children: [
+                      {
+                        type: 'text',
+                        text: 'Slipp – bestilling av slipping kan gjøres på forespørsel',
+                        version: 1,
+                      },
+                    ],
+                    version: 1,
+                  },
+                  {
+                    type: 'listitem',
+                    value: 6,
+                    children: [
+                      { type: 'text', text: 'Høytrykkspyler kan leies ved behov', version: 1 },
+                    ],
+                    version: 1,
+                  },
+                ],
+                version: 1,
+              },
+            ],
+            direction: 'ltr' as const,
+            format: '' as const,
+            indent: 0,
+            version: 1,
+          },
+        },
+      },
+    })
+
+    console.log('GuestMarina opprettet')
     console.log('Seeding fullført!')
     process.exit(0)
   } catch (error) {
@@ -318,4 +489,3 @@ seed().catch((err) => {
   console.error('Seeding feilet:', err)
   process.exit(1)
 })
-
