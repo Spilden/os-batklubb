@@ -2,8 +2,9 @@ import React from 'react'
 import './global.css'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import { Metadata } from 'next'
 
-export const metadata = {
+export const metadata: Metadata = {
   description: 'Os Båtklubb sin hjemmeside',
   title: 'Os Båtklubb',
 }
