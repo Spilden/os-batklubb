@@ -21,6 +21,19 @@ export const GuestMarina: GlobalConfig = {
       },
     },
     {
+      name: 'facilities',
+      type: 'array',
+      fields: [
+        {
+          name: 'facility',
+          type: 'text',
+        }
+      ],
+      admin: {
+        description: 'List opp alle fasiliteter som er tilgjengelig på gjestehavnen'
+      },
+    },
+    {
       name: 'image',
       type: 'upload',
       relationTo: 'media',
