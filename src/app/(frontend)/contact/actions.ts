@@ -30,7 +30,7 @@ export async function submitContactForm(_prevState: unknown, formData: FormData)
     await resend.emails.send({
       from: process.env.CONTACT_FROM_EMAIL!,
       to: process.env.CONTACT_TO_EMAIL!,
-      subject: `Ny henvendlese fra ${name}`,
+      subject: `Ny henvendelse fra ${name}`,
       text: `Navn: ${name}\nE-post: ${email}\n\nMelding:\n${message}`,
     })
 
