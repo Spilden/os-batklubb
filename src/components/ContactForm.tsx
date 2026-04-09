@@ -1,6 +1,6 @@
 'use client'
 
-import { useActionState } from 'react'
+import { useActionState, useEffect, useRef, useState } from 'react'
 import { submitContactForm } from '@/app/(frontend)/contact/actions'
 import BaseButton from '@/components/BaseButton'
 
@@ -11,17 +11,46 @@ const initilalState = {
 
 export default function ContactForm() {
   const [state, action, isPending] = useActionState(submitContactForm, initilalState)
+  const formRef = useRef<HTMLFormElement>(null)
+  const [showToast, setShowToast] = useState<{ type: 'success' | 'error'; message: string } | null>(
+    null,
+  )
 
-  if (state.success) {
-    return (
-      <p className="text-center text-text font-medium py-8">
-        Takk for din hendvendelse! Vi tar kontakt så snart som mulig.
-      </p>
-    )
-  }
+  useEffect(() => {
+    if (isPending) {
+      setShowToast(null)
+    }
+    if (state.success) {
+      formRef.current?.reset()
+      setShowToast({
+        type: 'success',
+        message: 'Takk for din hendvendelse! Vi tar kontakt så snart som mulig. ',
+      })
+      setTimeout(() => setShowToast(null), 5000)
+    }
+    if (state.error) {
+      setShowToast({ type: 'error', message: 'Noe gikk galt med sending, prøv igjen senere  ' })
+      setTimeout(() => setShowToast(null), 5000)
+    }
+  }, [isPending, state.success, state.error])
+
   return (
-    <form action={action} className="flex flex-col gap-4">
-      {state.error && <p>{state.error}</p>}
+    <form ref={formRef} action={action} className="flex flex-col gap-4">
+      {showToast && (
+        <div
+          className={`fixed bottom-4 right-4 z-50 rounded-lg p-4 shadow-lg flex items-start gap-4 w-56
+    ${
+      showToast.type === 'success'
+        ? 'bg-green-100 border border-green-500 text-green-700'
+        : 'bg-red-100 border border-red-500 text-red-700'
+    }`}
+        >
+          <span>{showToast.message}</span>
+          <button onClick={() => setShowToast(null)} className="font-bold cursor-pointer">
+            ✕
+          </button>
+        </div>
+      )}
 
       <div
         style={{
