@@ -8,7 +8,7 @@ import fs from 'fs'
 async function seed() {
   try {
     // -------------------------------------------------------
-    // CLEANUP
+    // SLETT DATABASE
     // -------------------------------------------------------
 
     const dbPath = process.env.DATABASE_URL?.replace('file:', '') || './os-baatklubb.db'
@@ -20,8 +20,8 @@ async function seed() {
 
     const payload = await getPayload({ config })
 
-    console.log('Gammel data slettet')
     console.log('Starter seeding...')
+
     // -------------------------------------------------------
     // SEED ADMIN BRUKER
     // -------------------------------------------------------
@@ -29,19 +29,18 @@ async function seed() {
     const adminEmail = process.env.SEED_ADMIN_EMAIL
     const adminPassword = process.env.SEED_ADMIN_PASSWORD
 
-    if(adminEmail && adminPassword) {
+    if (adminEmail && adminPassword) {
       await payload.create({
         collection: 'users',
         data: {
           email: adminEmail,
           password: adminPassword,
-        }
+        },
       })
       console.log('Admin bruker opprettet')
     } else {
       console.log('Ingen admin bruker seedet, mangler epost og passord i env filen')
     }
-
 
     // -------------------------------------------------------
     // MEDIA – placeholder-bilde
@@ -329,146 +328,182 @@ async function seed() {
         price: 150,
         paymentInfo: 'Vipps til 128382 – Os Båtklubb',
         image: placeholderMedia.id,
+        facilities: [
+          { facility: 'Sanitæranlegg med toalett og dusj' },
+          { facility: 'Vaskemaskin og tørketrommel' },
+          { facility: 'Grillhytte tilgjengelig for gjester' },
+          { facility: 'Egen badestrand' },
+          { facility: 'Slipp – bestilling av slipping kan gjøres på forespørsel' },
+          { facility: 'Høytrykkspyler kan leies ved behov' },
+        ],
         content: {
           root: {
-            type: 'root',
             children: [
               {
-                type: 'paragraph',
                 children: [
                   {
-                    type: 'text',
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
                     text: 'Vargavågen er en fredelig og godt beskyttet havn, skjermet mot vær og vind. Her finner du rolige og idylliske omgivelser – perfekt for deg som ønsker å legge til i en naturskjønn og historisk rik del av kysten.',
+                    type: 'text',
                     version: 1,
                   },
                 ],
+                direction: null,
+                format: '',
+                indent: 0,
+                type: 'paragraph',
                 version: 1,
+                textFormat: 0,
+                textStyle: '',
               },
               {
-                type: 'paragraph',
                 children: [
                   {
-                    type: 'text',
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
                     text: 'Havnen har 8 faste gjesteplasser, og flere plasser kan benyttes ved behov.',
+                    type: 'text',
                     version: 1,
                   },
                 ],
+                direction: null,
+                format: '',
+                indent: 0,
+                type: 'paragraph',
                 version: 1,
+                textFormat: 0,
+                textStyle: '',
               },
               {
-                type: 'paragraph',
-                children: [{ type: 'text', text: 'Historikk', version: 1, format: 1 }],
-                version: 1,
-              },
-              {
-                type: 'paragraph',
                 children: [
                   {
+                    detail: 0,
+                    format: 1,
+                    mode: 'normal',
+                    style: '',
+                    text: 'Historikk',
                     type: 'text',
+                    version: 1,
+                  },
+                ],
+                direction: null,
+                format: '',
+                indent: 0,
+                type: 'paragraph',
+                version: 1,
+                textFormat: 0,
+                textStyle: '',
+              },
+              {
+                children: [
+                  {
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
                     text: 'Vargavågen er et område med rik historie. I nærheten finner du flere historiske severdigheter, blant annet Vargahålo som er synlig fra havnen, helleristningsfelt og klebersteinbrudd fra steinalderen.',
+                    type: 'text',
                     version: 1,
                   },
                 ],
+                direction: null,
+                format: '',
+                indent: 0,
+                type: 'paragraph',
                 version: 1,
+                textFormat: 0,
+                textStyle: '',
               },
               {
-                type: 'paragraph',
-                children: [{ type: 'text', text: 'Turterreng', version: 1, format: 1 }],
-                version: 1,
-              },
-              {
-                type: 'paragraph',
                 children: [
                   {
+                    detail: 0,
+                    format: 1,
+                    mode: 'normal',
+                    style: '',
+                    text: 'Turterreng',
                     type: 'text',
+                    version: 1,
+                  },
+                ],
+                direction: null,
+                format: '',
+                indent: 0,
+                type: 'paragraph',
+                version: 1,
+                textFormat: 0,
+                textStyle: '',
+              },
+              {
+                children: [
+                  {
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
                     text: 'Området byr på fine turmuligheter for deg som vil utforske naturen til fots.',
-                    version: 1,
-                  },
-                ],
-                version: 1,
-              },
-              {
-                type: 'paragraph',
-                children: [{ type: 'text', text: 'Praktisk informasjon', version: 1, format: 1 }],
-                version: 1,
-              },
-              {
-                type: 'paragraph',
-                children: [
-                  {
                     type: 'text',
-                    text: 'Det er ingen butikk i umiddelbar nærhet, men det finnes en kiosk på Halhjem fergekai. Nærmeste dagligvarebutikk er Kiwi Moberg, ca. 4 km unna.',
                     version: 1,
                   },
                 ],
-                version: 1,
-              },
-              {
+                direction: null,
+                format: '',
+                indent: 0,
                 type: 'paragraph',
-                children: [{ type: 'text', text: 'Fasiliteter', version: 1, format: 1 }],
                 version: 1,
+                textFormat: 0,
+                textStyle: '',
               },
               {
-                type: 'list',
-                listType: 'bullet',
-                start: 1,
-                tag: 'ul',
                 children: [
                   {
-                    type: 'listitem',
-                    value: 1,
-                    children: [
-                      { type: 'text', text: 'Sanitæranlegg med toalett og dusj', version: 1 },
-                    ],
-                    version: 1,
-                  },
-                  {
-                    type: 'listitem',
-                    value: 2,
-                    children: [{ type: 'text', text: 'Vaskemaskin og tørketrommel', version: 1 }],
-                    version: 1,
-                  },
-                  {
-                    type: 'listitem',
-                    value: 3,
-                    children: [
-                      { type: 'text', text: 'Grillhytte tilgjengelig for gjester', version: 1 },
-                    ],
-                    version: 1,
-                  },
-                  {
-                    type: 'listitem',
-                    value: 4,
-                    children: [{ type: 'text', text: 'Egen badestrand', version: 1 }],
-                    version: 1,
-                  },
-                  {
-                    type: 'listitem',
-                    value: 5,
-                    children: [
-                      {
-                        type: 'text',
-                        text: 'Slipp – bestilling av slipping kan gjøres på forespørsel',
-                        version: 1,
-                      },
-                    ],
-                    version: 1,
-                  },
-                  {
-                    type: 'listitem',
-                    value: 6,
-                    children: [
-                      { type: 'text', text: 'Høytrykkspyler kan leies ved behov', version: 1 },
-                    ],
+                    detail: 0,
+                    format: 1,
+                    mode: 'normal',
+                    style: '',
+                    text: 'Praktisk informasjon',
+                    type: 'text',
                     version: 1,
                   },
                 ],
+                direction: null,
+                format: '',
+                indent: 0,
+                type: 'paragraph',
                 version: 1,
+                textFormat: 0,
+                textStyle: '',
+              },
+              {
+                children: [
+                  {
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
+                    text: 'Det er ingen butikk i umiddelbar nærhet, men det finnes en kiosk på Halhjem fergekai. Nærmeste dagligvarebutikk er Kiwi Moberg, ca. 4 km unna.',
+                    type: 'text',
+                    version: 1,
+                  },
+                ],
+                direction: null,
+                format: '',
+                indent: 0,
+                type: 'paragraph',
+                version: 1,
+                textFormat: 0,
+                textStyle: '',
               },
             ],
-            direction: 'ltr' as const,
-            format: '' as const,
+            direction: null,
+            format: '',
             indent: 0,
+            type: 'root',
             version: 1,
           },
         },
