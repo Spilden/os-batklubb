@@ -1,6 +1,6 @@
 ﻿import React from 'react'
 import { getPayload } from 'payload'
-import config from '@/payload.config'
+import config from '@payload-config'
 import NewsCard from '@/components/NewsCard'
 
 export default async function HomePage() {

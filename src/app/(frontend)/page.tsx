@@ -5,8 +5,7 @@ import BaseButton from '@/components/BaseButton'
 import PartnerCard from '@/components/PartnerCard'
 
 export default async function HomePage() {
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
+  const payload = await getPayload({ config })
   const { docs: partners } = await payload.find({
     collection: 'partners',
     depth: 1,

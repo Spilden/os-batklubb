@@ -1,12 +1,11 @@
 import { getPayload } from 'payload'
-import config from '@/payload.config'
+import config from '@payload-config'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import Image from 'next/image'
 import { imageGuard } from '@/utils/ImageGuard'
 
 export default async function AboutPage() {
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
+  const payload = await getPayload({ config })
 
   const about = await payload.findGlobal({
     slug: 'about',
