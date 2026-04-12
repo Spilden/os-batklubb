@@ -1,11 +1,8 @@
-import { getPayload } from 'payload'
-import config from '@payload-config'
-import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
+import { getUser } from '@/app/lib/auth'
 
 export default async function DashboardPage() {
-  const payload = await getPayload({ config })
-  const { user } = await payload.auth({ headers: await headers() })
+  const user = await getUser()
 
   if (!user) redirect('/')
 
