@@ -23,7 +23,7 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
         }),
       })
       if (response.ok) {
-        router.push('/dashboard')
+        router.push('/members')
         router.refresh()
         onClose()
       } else {

@@ -18,7 +18,7 @@ test.describe('Admin Panel', () => {
     await cleanupTestUser()
   })
 
-  test('can navigate to dashboard', async () => {
+  test('can navigate to members', async () => {
     await page.goto('http://localhost:3000/admin')
     await expect(page).toHaveURL('http://localhost:3000/admin')
     const dashboardArtifact = page.locator('span[title="Dashboard"]').first()
