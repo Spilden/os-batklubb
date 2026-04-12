@@ -3,7 +3,7 @@ import BaseButton from '@/components/BaseButton'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-export default function LoginModal({ onClose }: { onClose: () => void }) {
+export default function LoginModal({ onCloseAction }: { onCloseAction: () => void }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -25,7 +25,7 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
       if (response.ok) {
         router.push('/members')
         router.refresh()
-        onClose()
+        onCloseAction()
       } else {
         setError('Feil e-post eller passord')
       }
@@ -37,7 +37,7 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
   return (
     <div
       className="fixed inset-0 bg-black/50 flex items-center justify-center z-100"
-      onClick={onClose}
+      onClick={onCloseAction}
     >
       <div className="bg-background rounded-xl shadow-lg" onClick={(e) => e.stopPropagation()}>
         <div className="rounded-t-xl bg-background p-4">

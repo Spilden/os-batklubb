@@ -119,7 +119,7 @@ export default function HeaderNav({ user }: props) {
           </div>
         )}
       </nav>
-      {showLoginModal && <LoginModal onClose={() => setShowLoginModal(false)} />}
+      {showLoginModal && <LoginModal onCloseAction={() => setShowLoginModal(false)} />}
     </header>
   )
 }
