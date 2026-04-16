@@ -20,7 +20,7 @@ export const Members: CollectionConfig = {
       label: 'Rolle',
       required: true,
       hasMany: true,
-      defaultValue: 'member',
+      defaultValue: ['member'],
       options: [
         { label: 'Medlem̈́', value: 'member' },
         { label: 'Nyhetsredaktør', value: 'news_admin' },
