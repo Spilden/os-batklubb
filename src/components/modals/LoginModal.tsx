@@ -11,7 +11,7 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
 
   async function handleSubmit() {
     try {
-      const response = await fetch('api/users/login', {
+      const response = await fetch('api/members/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
