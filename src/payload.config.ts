@@ -11,6 +11,7 @@ import { News } from './collections/News'
 import { Partners} from './collections/Partners'
 import { About } from './globals/About'
 import { ContactSubmissions} from './collections/ContactSubmissions'
+import { Members } from './collections/Members'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -22,7 +23,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, News, Partners, ContactSubmissions],
+  collections: [Users, Media, News, Partners, ContactSubmissions, Members],
   globals: [About],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
