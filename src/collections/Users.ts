@@ -6,6 +6,9 @@ export const Users: CollectionConfig = {
     useAsTitle: 'email',
   },
   auth: true,
+  access: {
+    admin: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
+  },
   fields: [
     {
       name: 'name',
