@@ -11,7 +11,7 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
 
   async function handleSubmit() {
     try {
-      const response = await fetch('api/members/login', {
+      const response = await fetch('api/users/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -23,7 +23,7 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
         }),
       })
       if (response.ok) {
-        router.push('/members')
+        router.push('/users')
         router.refresh()
         onCloseAction()
       } else {
