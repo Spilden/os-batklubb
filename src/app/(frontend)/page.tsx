@@ -29,7 +29,7 @@ export default async function HomePage() {
   ]
 
   return (
-    <>
+    <div className="w-full">
       {parallaxSection.map((section, i) => (
         <div
           key={i}
@@ -61,6 +61,6 @@ export default async function HomePage() {
           </div>
         </section>
       )}
-    </>
+    </div>
   )
 }
