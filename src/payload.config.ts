@@ -25,8 +25,6 @@ export default buildConfig({
   },
   collections: [Users, Media, News, Partners],
   globals: [About, GuestMarina],
-  collections: [Users, Media, News, Partners, ContactSubmissions],
-  globals: [About],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
