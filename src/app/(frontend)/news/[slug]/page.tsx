@@ -35,7 +35,7 @@ export default async function NewsStoryPage({ params }: NewsStoryPageProps) {
       )}
       <div className="flex flex-col h-full justify-start">
         <h1 className="text-3xl text-text font-display text-center pb-8">{article.title}</h1>
-        <RichText className="text-text-muted whitespace-pre-wrap" data={article.content}></RichText>
+        <RichText className="text-text-muted whitespace-pre-wrap text-center" data={article.content}></RichText>
       </div>
     </div>
   )
