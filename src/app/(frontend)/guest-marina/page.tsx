@@ -33,30 +33,32 @@ export default async function GuestMarinaPage() {
         <RichText className="prose lg:prose-xl" data={data.content} />
       </div>
 
-      <div className="mx-auto">
-        <h2 className="text-text text-2xl font-display text-center pb-4">Priser</h2>
-        <p>{`Døgnleie for gjestehavnen: ${data.price},-`}</p>
-        <p className="pb-4">Døgnleien inkluderer alle serverdigheter på anlegget</p>
-        <Link
-          className="hover:underline"
-          href={`https://qr.vipps.no/28/2/01/031/128382?v=1&amount=${data.price * 100}&message=Gjestehavn`}
-        >
-          Betal med {data.paymentInfo}
-        </Link>
-      </div>
-
       <div className="flex w-full justify-evenly">
         <div className="flex flex-col p-6">
-          <h2 className="text-text text-2xl font-display text-center pb-4">Her finner du oss</h2>
-          <Link className="hover:underline pb-4" href="https://www.norgeskart.no/?zoom=17&lat=6706738.962449096&lon=-29259.61291015203&p=searchOptionsPanel&backgroundLayer=Nibcache_UTM33_EUREF89_v2&rotation=0&markerLon=-29265.284190059254&markerLat=6706737.734564466&projection=EPSG%3A25833">
+          <h2 className="text-text text-2xl font-display pb-4">Priser</h2>
+          <p>{`Døgnleie for gjestehavnen: ${data.price},-`}</p>
+          <p className="pb-4">Døgnleien inkluderer alle serverdigheter på anlegget</p>
+          <Link
+            className="hover:underline"
+            href={`https://qr.vipps.no/28/2/01/031/128382?v=1&amount=${data.price * 100}&message=Gjestehavn`}
+          >
+            Betal med {data.paymentInfo}
+          </Link>
+        </div>
+        <div className="flex flex-col p-6">
+          <h2 className="text-text text-2xl font-display pb-4">Her finner du oss</h2>
+          <Link
+            className="hover:underline pb-4"
+            href="https://www.norgeskart.no/?zoom=17&lat=6706738.962449096&lon=-29259.61291015203&p=searchOptionsPanel&backgroundLayer=Nibcache_UTM33_EUREF89_v2&rotation=0&markerLon=-29265.284190059254&markerLat=6706737.734564466&projection=EPSG%3A25833"
+          >
             <p>{`60° 9' 6.791" N | 5° 26' 41.825" E`}</p>
           </Link>
           <p>Bjørnavegen 60</p>
           <p>5208 OS</p>
         </div>
         <div className="p-6">
-          <h2 className="text-text text-2xl font-display text-center pb-4">Våre serverdigheter</h2>
-          <ul>
+          <h2 className="text-text text-2xl font-display pb-4">Våre serverdigheter</h2>
+          <ul className="list-disc">
             {data.facilities?.map((item, index) => (
               <li key={index}>{item.facility}</li>
             ))}
