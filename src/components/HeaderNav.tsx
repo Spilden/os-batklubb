@@ -39,7 +39,7 @@ export default function HeaderNav({ user }: props) {
     <header className="bg-white p-8 shadow-lg relative">
       <nav className="flex items-center justify-between">
         <Link href="/">
-          <Image src="/obk_logo.svg" alt="Os Båtklubb" width={120} height={60} />
+          <Image src="/obk_logo.svg" alt="Os Båtklubb" width={240} height={120} />
         </Link>
 
         {/*Desktop navigasjon*/}
