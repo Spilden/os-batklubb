@@ -1,59 +1,66 @@
-import { headers as getHeaders } from 'next/headers.js'
-import Image from 'next/image'
 import { getPayload } from 'payload'
 import React from 'react'
-import { fileURLToPath } from 'url'
-
 import config from '@/payload.config'
-import './styles.css'
+import PartnerCard from '@/components/PartnerCard'
 
 export default async function HomePage() {
-  const headers = await getHeaders()
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-  const { user } = await payload.auth({ headers })
+  const payload = await getPayload({ config })
+  const { docs: partners } = await payload.find({
+    collection: 'partners',
+    depth: 1,
+  })
 
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
+  const parallaxSection = [
+    {
+      image: '/images/harbour1.webp',
+      title: 'Os Båtklubb',
+      text: 'Felleskap på sjøen siden 1955',
+    },
+    {
+      image: '/images/harbour2.webp',
+      title: 'Gjestebrygge',
+      text: 'Vi har gjestebrygge og fasiliteter',
+    },
+    {
+      image: '/images/sailboat.webp',
+      title: 'Sosialt',
+      text: 'En sosial klubb med fellesturer og arrangement',
+    },
+  ]
 
   return (
-    <div className="home">
-      <div className="content">
-        <picture>
-          <source srcSet="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg" />
-          <Image
-            alt="Payload Logo"
-            height={65}
-            src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg"
-            width={65}
+    <div className="w-full">
+      {parallaxSection.map((section, i) => (
+        <div
+          key={i}
+          className={`
+      ${i === 0 ? 'rounded-t-xl' : ''}
+      ${i === parallaxSection.length - 1 ? 'rounded-b-xl' : ''}
+      overflow-hidden
+    `}
+        >
+          <div
+            className="h-screen bg-fixed bg-top bg-cover"
+            style={{ backgroundImage: `url(${section.image})` }}
           />
-        </picture>
-        {!user && <h1>Welcome to your new project.</h1>}
-        {user && <h1>Welcome back, {user.email}</h1>}
-        <div className="links">
-          <a
-            className="admin"
-            href={payloadConfig.routes.admin}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Go to admin panel
-          </a>
-          <a
-            className="docs"
-            href="https://payloadcms.com/docs"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Documentation
-          </a>
+          <div className="flex justify-center bg-sage py-16">
+            <div className="w-xl max-w-[90vw]">
+              <h2 className="text-text text-4xl font-bold mb-4">{section.title}</h2>
+              <p className="text-text-muted  text-lg">{section.text}</p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="footer">
-        <p>Update this page by editing</p>
-        <a className="codeLink" href={fileURL}>
-          <code>app/(frontend)/page.tsx</code>
-        </a>
-      </div>
+      ))}
+
+      {partners.length > 0 && (
+        <section className="bg-sage rounded-xl shadow-lg w-full mt-4">
+          <div className="flex flex-wrap justify-center gap-4 p-4">
+            {partners.map((partner) => (
+              <PartnerCard partner={partner} key={partner.id} />
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   )
 }

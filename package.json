@@ -1,5 +1,5 @@
 {
-  "name": "os-batklubb",
+  "name": "os-baatklubb",
   "version": "1.0.0",
   "description": "A blank template to get started with Payload 3.0",
   "license": "MIT",
@@ -15,24 +15,31 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "test": "pnpm run test:int && pnpm run test:e2e",
     "test:e2e": "cross-env NODE_OPTIONS=\"--no-deprecation --import=tsx/esm\" playwright test --config=playwright.config.ts",
-    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts"
+    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts",
+    "seed": "npx tsx src/scripts/seed.ts"
   },
   "dependencies": {
+    "@payloadcms/db-sqlite": "3.76.1",
     "@payloadcms/next": "3.76.1",
     "@payloadcms/richtext-lexical": "3.76.1",
     "@payloadcms/ui": "3.76.1",
+    "@tailwindcss/postcss": "^4.2.1",
+    "autoprefixer": "^10.4.27",
     "cross-env": "^7.0.3",
     "dotenv": "16.4.7",
     "graphql": "^16.8.1",
     "next": "15.4.11",
     "payload": "3.76.1",
+    "postcss": "^8.5.8",
     "react": "19.2.1",
     "react-dom": "19.2.1",
+    "resend": "^6.9.4",
     "sharp": "0.34.2",
-    "@payloadcms/db-sqlite": "3.76.1"
+    "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
     "@playwright/test": "1.56.1",
+    "@tailwindcss/typography": "^0.5.19",
     "@testing-library/react": "16.3.0",
     "@types/node": "22.19.9",
     "@types/react": "19.2.9",
