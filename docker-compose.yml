@@ -5,7 +5,7 @@ services:
       - '5252:3000'
     volumes:
       - ./media:/app/media
-      - db-data:/app/media
+      - db-data:/app/db
     env_file:
       - .env
     restart: unless-stopped

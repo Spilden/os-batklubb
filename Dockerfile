@@ -1,42 +1,30 @@
-# To use this Dockerfile, you have to set `output: 'standalone'` in your next.config.mjs file.
-# From https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
+FROM node:24-alpine
+WORKDIR /app
 
-FROM node:22.17.0-alpine AS base
-
-# Install dependencies only when needed
-FROM base AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
-WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
-RUN corepack enable pnpm && pnpm install --frozen-lockfile
 
+COPY package.json package-lock.json ./
+RUN npm install
 
-# Rebuild the source code only when needed
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN corepack enable pnpm && pnpm run build
 
-# Production image, copy all the files and run next
-FROM base AS runner
-WORKDIR /app
+ARG PAYLOAD_SECRET
+ARG DATABASE_URL=file:/tmp/build.db
+ENV PAYLOAD_SECRET=$PAYLOAD_SECRET
+ENV DATABASE_URL=$DATABASE_URL
+ENV NEXT_TELEMETRY_DISABLED=1
 
-ENV NODE_ENV=production
-RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
-COPY --from=builder /app/public ./public
+RUN npm run build
 
-RUN mkdir .next && chown nextjs:nodejs .next
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+RUN mkdir -p /app/db /app/media \
+    && addgroup --system --gid 1001 nodejs \
+    && adduser --system --uid 1001 nextjs \
+    && chown -R nextjs:nodejs /app /app/db /app/media
 
 USER nextjs
 
 EXPOSE 3000
 
-ENV PORT=3000
+ENV NODE_ENV=production
 
-# server.js is created by next build from the standalone output
-# https://nextjs.org/docs/pages/api-reference/next-config-js/output
-CMD HOSTNAME="0.0.0.0" node server.js
+CMD sh -c "node_modules/.bin/payload migrate && node_modules/.bin/next start"
