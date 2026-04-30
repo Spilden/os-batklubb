@@ -29,12 +29,14 @@ async function seed() {
     const adminEmail = process.env.SEED_ADMIN_EMAIL
     const adminPassword = process.env.SEED_ADMIN_PASSWORD
 
-    if (adminEmail && adminPassword) {
+    if (adminEmail && adminPassword ){
       await payload.create({
         collection: 'users',
         data: {
           email: adminEmail,
           password: adminPassword,
+          name: 'Båtklubb Admin',
+          roles: ['admin']
         },
       })
       console.log('Admin bruker opprettet')
