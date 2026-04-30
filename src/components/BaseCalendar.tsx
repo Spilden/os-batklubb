@@ -6,7 +6,7 @@ import nbLocale from '@fullcalendar/core/locales/nb'
 
 export function BaseCalendar(props: any) {
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-[#FDFAF6] rounded-2xl shadow-[0_6px_32px_rgba(100,70,40,0.12)] border border-[#E8DDD0]">
+    <div className="max-w-4xl mx-auto p-8 bg-surface rounded-2xl shadow-[0_6px_32px_rgba(100,70,40,0.12)] border border-border">
       <FullCalendar
         plugins={[timeGridPlugin]}
         initialView="timeGridWeek"
