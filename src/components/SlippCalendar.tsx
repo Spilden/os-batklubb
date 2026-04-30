@@ -1,6 +1,7 @@
 ﻿'use client'
 
 import { useState } from 'react'
+import type { EventClickArg, EventContentArg } from '@fullcalendar/core'
 import { BaseCalendar } from './BaseCalendar'
 import { SlippBookingModal } from '@/components/modals/SlippBookingModal'
 import { bookSlot, cancelSlot } from '@/app/(frontend)/members/actions'
@@ -58,14 +59,14 @@ export function SlippCalendar({ currentUser, initialSlots }: Props) {
     <>
       <BaseCalendar
         events={events}
-        eventClick={(arg: any) => {
-          const slot: SlippSlot = arg.event.extendedProps.slot
+        eventClick={(arg: EventClickArg) => {
+          const slot: SlippSlot = arg.event.extendedProps.slot as SlippSlot
           const isMine = bookedById(slot) === currentUser.id
           if (isMine) setAction({ mode: 'cancel', slot })
           else if (!slot.bookedBy) setAction({ mode: 'book', slot })
         }}
-        eventContent={(info: any) => {
-          const slot: SlippSlot = info.event.extendedProps.slot
+        eventContent={(info: EventContentArg) => {
+          const slot: SlippSlot = info.event.extendedProps.slot as SlippSlot
           const isMine = bookedById(slot) === currentUser.id
           const color = isMine ? 'bg-ocean text-surface'
             : slot.bookedBy ? 'bg-border text-text'

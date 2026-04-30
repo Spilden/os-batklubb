@@ -3,8 +3,9 @@
 import FullCalendar from '@fullcalendar/react'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import nbLocale from '@fullcalendar/core/locales/nb'
+import type { CalendarOptions } from '@fullcalendar/core'
 
-export function BaseCalendar(props: any) {
+export function BaseCalendar(props: CalendarOptions) {
   return (
     <div className="max-w-4xl mx-auto p-8 bg-surface rounded-2xl shadow-[0_6px_32px_rgba(100,70,40,0.12)] border border-border">
       <FullCalendar
