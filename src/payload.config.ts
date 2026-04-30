@@ -4,6 +4,7 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
+import { resendAdapter } from '@payloadcms/email-resend'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
@@ -17,6 +18,12 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  serverURL: process.env.NEXT_PUBLIC_URL,
+  email: resendAdapter({
+    defaultFromAddress: process.env.CONTACT_FROM_EMAIL ?? '',
+    defaultFromName: 'Os Båtklubb',
+    apiKey: process.env.RESEND_API_KEY ?? '',
+  }),
   admin: {
     user: Users.slug,
     importMap: {
