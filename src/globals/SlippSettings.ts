@@ -9,19 +9,19 @@ export const SlippSettings: GlobalConfig = {
       label: 'Høysesonger',
       fields: [
         {
-          name: 'highSeasonStart',
+          name: 'start',
           type: 'date',
           required: true,
           admin: { date: { pickerAppearance: 'dayOnly' } },
         },
         {
-          name: 'highSeasonEnd',
+          name: 'end',
           type: 'date',
           required: true,
           admin: { date: { pickerAppearance: 'dayOnly' } },
         },
         {
-          name: 'highSeasonOpenDate',
+          name: 'openDate',
           type: 'date',
           required: true,
           admin: {
