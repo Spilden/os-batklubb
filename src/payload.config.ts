@@ -23,7 +23,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, News, Partners],
+  collections: [Users, Media, News, Partners, ContactSubmissions],
   globals: [About, GuestMarina],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
