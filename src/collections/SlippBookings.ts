@@ -1,11 +1,7 @@
 ﻿import type { CollectionConfig } from 'payload'
 
-export const SlippSlots: CollectionConfig = {
-  slug: 'slipp-slots',
-  admin: {
-    useAsTitle: 'startTime',
-    defaultColumns: ['startTime', 'endTime', 'bookedBy'],
-  },
+export const SlippBookings: CollectionConfig = {
+  slug: 'slipp-bookings',
   fields: [
     {
       name: 'startTime',
@@ -20,13 +16,19 @@ export const SlippSlots: CollectionConfig = {
       admin: { date: { pickerAppearance: 'dayAndTime' } },
     },
     {
-      name: 'bookedBy',
+      name: 'user',
       type: 'relationship',
       relationTo: 'users',
+      required: true,
+      defaultValue: ({ user }) => user?.id,
     },
+    { name: 'comment', type: 'textarea' },
+    { name: 'adminComment', type: 'textarea' },
     {
-      name: 'comment',
-      type: 'textarea',
+      name: 'status',
+      type: 'select',
+      defaultValue: 'pending',
+      options: ['pending', 'approved', 'rejected'],
     },
   ],
 }
