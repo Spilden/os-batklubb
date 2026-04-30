@@ -1,111 +1,129 @@
 ﻿'use client'
 
 import { useState } from 'react'
-import type { EventClickArg, EventContentArg } from '@fullcalendar/core'
+import { useRouter } from 'next/navigation'
+import type { EventContentArg, DateSelectArg } from '@fullcalendar/core'
 import { BaseCalendar } from './BaseCalendar'
 import { SlippBookingModal } from '@/components/modals/SlippBookingModal'
-import { bookSlot, cancelSlot } from '@/app/(frontend)/members/actions'
-import type { SlippSlot, User } from '@/payload-types'
-import { useRouter } from 'next/navigation'
-
-type Action = { mode: 'book' | 'cancel'; slot: SlippSlot } | null
+import { createSlippRequest } from '@/app/(frontend)/members/actions'
+import type { SlippBooking, SlippSetting, User } from '@/payload-types'
 
 type Props = {
   currentUser: User
-  initialSlots: SlippSlot[]
+  initialRequests: SlippBooking[]
+  settings: SlippSetting
 }
 
-export function SlippCalendar({ currentUser, initialSlots }: Props) {
+type Selected = { start: Date; end: Date } | null
+
+export function SlippCalendar({ currentUser, initialRequests, settings }: Props) {
   const router = useRouter()
-  const [action, setAction] = useState<Action>(null)
+  const [selected, setSelected] = useState<Selected>(null)
+  const [error, setError] = useState<string | null>(null)
 
-  const events = initialSlots.map(slot => ({
-    id: String(slot.id),
-    start: slot.startTime,
-    end: slot.endTime,
-    extendedProps: { slot },
-  }))
+  const isLocked = (start: Date, end: Date) => {
+    for (const season of settings.highSeasons ?? []) {
+      const seasonStart = new Date(season.start)
+      const seasonEnd = new Date(season.end)
+      const seasonOpen = new Date(season.openDate)
+      const now = new Date()
 
-  const book = async (comment: string) => {
-    if (action?.mode !== 'book') return
-    await bookSlot(action.slot.id, comment)
-    setAction(null)
+      const overlaps = start <= seasonEnd && end >= seasonStart
+      if (!overlaps) continue
+
+      if (now < seasonOpen) {
+        return `Bookingen Åpner ${seasonOpen.toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' })}`
+      }
+
+      if (now > seasonEnd) return 'Denne sesongen er over'
+    }
+    return null
+  }
+
+  const lockEvents = (settings.highSeasons ?? [])
+    .filter((s) => new Date() < new Date(s.openDate) || new Date() > new Date(s.end))
+    .map((s) => ({
+      start: s.start,
+      end: s.end,
+      display: 'background',
+      color: '#C9A87C',
+    }))
+
+  const events = [
+    ...lockEvents,
+    ...initialRequests.map((req) => {
+      const isMine =
+        typeof req.user === 'object' ? req.user.id === currentUser.id : req.user === currentUser.id
+      return {
+        id: String(req.id),
+        start: req.startTime,
+        end: req.endTime,
+        extendedProps: { req, isMine },
+      }
+    }),
+  ]
+
+  const handleSelect = (arg: DateSelectArg) => {
+    const lock = isLocked(arg.start, arg.end)
+    if (lock) {
+      setError(lock)
+      return
+    }
+    setError(null)
+    setSelected({ start: arg.start, end: arg.end })
+  }
+
+  const handleSubmit = async (comment: string) => {
+    if (!selected) return
+    await createSlippRequest(selected.start.toISOString(), selected.end.toISOString(), comment)
+    setSelected(null)
     router.refresh()
   }
 
-  const cancel = async () => {
-    if (action?.mode !== 'cancel') return
-    await cancelSlot(action.slot.id)
-    setAction(null)
-    router.refresh()
-  }
-
-  const formatTime = (iso: string) =>
-    new Date(iso).toLocaleString('nb-NO', {
-      weekday: 'long', day: 'numeric', month: 'long',
-      hour: '2-digit', minute: '2-digit',
-    })
-
-  const bookedById = (slot: SlippSlot) =>
-    typeof slot.bookedBy === 'object' ? slot.bookedBy?.id : slot.bookedBy
-
-  const bookedByName = (slot: SlippSlot) =>
-    typeof slot.bookedBy === 'object' && slot.bookedBy
-      ? slot.bookedBy.name || slot.bookedBy.email
-      : null
-
+  const formatTime = (date: Date) =>
+    date.toLocaleDateString('nb-NO', { weekday: 'long', day: 'numeric', month: 'long' })
 
   return (
     <>
+      {error && (
+        <div className="max-w-4xl mx-auto mb-4 rounded-lg bg-apricot/40 border border-sand p-3 text-sm text-text">
+          {error}
+        </div>
+      )}
+
       <BaseCalendar
+        selectable
+        select={handleSelect}
         events={events}
-        eventClick={(arg: EventClickArg) => {
-          const slot: SlippSlot = arg.event.extendedProps.slot as SlippSlot
-          const isMine = bookedById(slot) === currentUser.id
-          if (isMine) setAction({ mode: 'cancel', slot })
-          else if (!slot.bookedBy) setAction({ mode: 'book', slot })
-        }}
         eventContent={(info: EventContentArg) => {
-          const slot: SlippSlot = info.event.extendedProps.slot as SlippSlot
-          const isMine = bookedById(slot) === currentUser.id
-          const color = isMine ? 'bg-ocean text-surface'
-            : slot.bookedBy ? 'bg-border text-text'
-              : 'bg-sage text-text'
-          const label = isMine ? 'Din booking'
-            : bookedByName(slot) || (slot.bookedBy ? 'Booket' : 'Ledig')
+          const { req, isMine } = info.event.extendedProps as { req: SlippBooking; isMine: boolean }
+          if (!req) return null
+
+          const color = isMine
+            ? req.status === 'approved' ? 'bg-ocean text-surface'
+              : req.status === 'rejected' ? 'bg-border text-text line-through'
+                : 'bg-sand text-text'
+            : 'bg-border text-text'
+
+          const label = isMine
+            ? { pending: 'Venter', approved: 'Godkjent', rejected: 'Avslått' }[req.status as string]
+            : typeof req.user === 'object' ? req.user.name || req.user.email : ''
 
           return (
-            <div className={`${color} rounded-md px-2 py-1 text-xs h-full overflow-hidden cursor-pointer`}>
-              <div className="font-semibold">{info.timeText}</div>
-              <div className="truncate">{label}</div>
+            <div className={`${color} rounded-md px-2 py-1 text-xs h-full overflow-hidden`}>
+              <div className="font-semibold truncate">{label}</div>
             </div>
           )
         }}
       />
 
-      {action?.mode === 'book' && (
+      {selected && (
         <SlippBookingModal
-          title="Book slipp"
-          info={formatTime(action.slot.startTime)}
-          confirmLabel="Bekreft booking"
-          onConfirm={book}
-          onCancel={() => setAction(null)}
-        />
-      )}
-
-      {action?.mode === 'cancel' && (
-        <SlippBookingModal
-          title="Avbestill booking"
-          info={
-            <>
-              <p>Vil du avbestille denne bookingen?</p>
-              <p className="mt-2 font-medium">{formatTime(action.slot.startTime)}</p>
-            </>
-          }
-          confirmLabel="Avbestill"
-          showComment={false}
-          onConfirm={cancel}
-          onCancel={() => setAction(null)}
+          title="Send slipp-forespørsel"
+          info={`${formatTime(selected.start)} – ${formatTime(selected.end)}`}
+          confirmLabel="Send forespørsel"
+          onConfirm={handleSubmit}
+          onCancel={() => setSelected(null)}
         />
       )}
     </>
