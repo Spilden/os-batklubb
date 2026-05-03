@@ -14,11 +14,30 @@
     --color-border: #E0D0BC;
 
     --color-sand: #D4B483;
-    --color-ocean: #7A9E9F;
+    --color-ocean: #364570;
     --color-sage: #A8BFA8;
     --color-apricot: #E8C49A;
 
     --color-logo: #364570;
     --color-logo-details: #ebeadf;
     --color-logo-conture: #231f20;
+}
+
+.fc .fc-button {
+    @apply bg-primary border-primary text-surface
+    px-4 py-2 rounded-lg text-xs font-medium
+    tracking-widest uppercase shadow-none;
+}
+
+.fc .fc-button:hover {
+    @apply bg-ocean border-ocean;
+}
+
+.fc .fc-toolbar-title {
+    @apply font-display text-2xl text-text capitalize;
+}
+
+.fc {
+    --fc-border-color: var(--color-border);
+    --fc-today-bg-color: var(--color-apricot);
 }
