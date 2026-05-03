@@ -113,7 +113,7 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
                   <h2 className="text-text font-medium text-sm uppercase">E-post</h2>
                   <input
                     type="email"
-                    placeholder="ola@nordman.no"
+                    placeholder="ola@nordmann.no"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="border border-ocean rounded-lg p-2 bg-surface text-text focus:outline-none focus:ring-2 focus:ring-ocean"
