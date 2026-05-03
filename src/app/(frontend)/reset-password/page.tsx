@@ -2,9 +2,35 @@
 
 import BaseButton from '@/components/BaseButton'
 import { useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 export default function ResetPasswordPage() {
   const [password, setPassword] = useState('')
+  const searchParams = useSearchParams()
+  const token = searchParams.get('token')
+  const [error, setError] = useState('')
+  const router = useRouter()
+
+  async function handleSubmit() {
+    if (!token) {
+      setError('Ugyldig lenke.')
+      return
+    }
+    try {
+      const response = await fetch('api/users/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, password }),
+      })
+      if (response.ok) {
+        router.push('/')
+      } else {
+        setError('Noe gikk galt.')
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div className="bg-sage rounded-xl shadow-lg w-full max-w-xl mx-auto">
@@ -15,6 +41,7 @@ export default function ResetPasswordPage() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
             <h2 className="text-text font-medium text-sm uppercase">Nytt passord</h2>
+            {error && <p className="text-red-600 text-sm">{error}</p>}
             <input
               className="border border-ocean rounded-lg p-2 bg-surface text-text focus:outline-none focus:ring-2 focus:ring-ocean"
               type="password"
@@ -24,7 +51,7 @@ export default function ResetPasswordPage() {
             />
           </div>
           <div className="flex justify-end pt-2">
-            <BaseButton>Sett nytt passord</BaseButton>
+            <BaseButton onClick={handleSubmit}>Sett nytt passord</BaseButton>
           </div>
         </div>
       </div>
