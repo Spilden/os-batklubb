@@ -5,7 +5,23 @@ export const Users: CollectionConfig = {
   admin: {
     useAsTitle: 'email',
   },
-  auth: true,
+  auth: {
+    forgotPassword: {
+      generateEmailHTML: (args) => {
+        const resetURL = `${process.env.NEXT_PUBLIC_SERVER_URL}/reset-password?token=${args?.token}`
+        return `
+        <!doctype html>
+        <html>
+          <body>
+            <h2>Tilbakestill passord</h2>
+            <p>Klikk lenken under for å sette et nytt passord:</p>
+            <p><a href="${resetURL}">${resetURL}</a></p>
+          </body>
+        </html>
+        `
+      }
+    }
+  },
   access: {
     admin: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
   },
