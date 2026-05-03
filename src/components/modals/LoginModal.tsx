@@ -104,23 +104,24 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
             </div>
           </div>
         ) : (
-          <div>
-            <div>
+          <div className="flex flex-col p-6 gap-4">
+            <div className="flex flex-col gap-1">
               {message ? (
                 <p>{message}</p>
               ) : (
-                <div>
-                  <h2>E-post</h2>
+                <>
+                  <h2 className="text-text font-medium text-sm uppercase">E-post</h2>
                   <input
                     type="email"
                     placeholder="ola@nordman.no"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    className="border border-ocean rounded-lg p-2 bg-surface text-text focus:outline-none focus:ring-2 focus:ring-ocean"
                   />
-                </div>
+                </>
               )}
             </div>
-            <div>
+            <div className="flex justify-between items-center pt-2">
               <BaseButton
                 variant="text"
                 onClick={() => {
