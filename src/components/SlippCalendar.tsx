@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import type { EventContentArg, DateSelectArg } from '@fullcalendar/core'
 import { BaseCalendar } from './BaseCalendar'
 import { SlippBookingModal } from '@/components/modals/SlippBookingModal'
-import { createSlippRequest } from '@/app/(frontend)/members/actions'
+import { createSlippRequest } from '@/app/(frontend)/members/slipp/actions'
 import type { SlippBooking, SlippSetting, User } from '@/payload-types'
 
 type Props = {
