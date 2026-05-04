@@ -48,7 +48,7 @@ export async function submitContactForm(_prevState: unknown, formData: FormData)
 
     await payload.create({
       collection: 'contact-submissions',
-      data: { name, email, message },
+      data: { recipient: recipientLabel, name, email, message },
     })
 
     await resend.emails.send({
