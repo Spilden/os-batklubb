@@ -63,15 +63,26 @@ export default function ContactForm() {
         <input id="url" type="text" name="url" tabIndex={-1} autoComplete="nope" />
       </div>
 
-      <div>
+      <div className="flex flex-col gap-1 text-text font-medium text-sm uppercase">
         <label>Send til</label>
-        <div>
-          <label>
-            <input type="radio" name="recipiant" value="styret" required />
+        <div className="flex gap-4">
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="radio"
+              name="recipient"
+              value="styret"
+              required
+              className="cursor-pointer"
+            />
             Styret
           </label>
-          <label>
-            <input type="radio" name="recipiant" value="slipp" required />
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="radio"
+              name="recipient"
+              value="slipp"
+              className="cursor-pointer"
+            />
             Slipp
           </label>
         </div>
