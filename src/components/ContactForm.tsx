@@ -70,7 +70,7 @@ export default function ContactForm() {
             <input
               type="radio"
               name="recipient"
-              value="styret"
+              value="board"
               required
               className="cursor-pointer"
             />
@@ -80,10 +80,10 @@ export default function ContactForm() {
             <input
               type="radio"
               name="recipient"
-              value="slipp"
+              value="slipway"
               className="cursor-pointer"
             />
-            Slipp
+            Slippvakt
           </label>
         </div>
       </div>

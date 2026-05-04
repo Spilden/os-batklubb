@@ -6,16 +6,16 @@ import { Resend } from 'resend'
 
 function getRecipientEmail(recipient: string): string {
   const emails: Record<string, string> = {
-    styret: process.env.CONTACT_TO_EMAIL_STYRET!,
-    slipp: process.env.CONTACT_TO_EMAIL_SLIPP!,
+    board: process.env.CONTACT_TO_EMAIL_BOARD!,
+    slipway: process.env.CONTACT_TO_EMAIL_SLIPWAY!,
   }
   return emails[recipient] ?? ''
 }
 
 function getRecipientLabel(recipient: string): string {
   const labels: Record<string, string> = {
-    styret: 'Styret',
-    slipp: 'Slipp',
+    board: 'Styret',
+    slipway: 'Slippvakt',
   }
   return labels[recipient] ?? recipient
 }
