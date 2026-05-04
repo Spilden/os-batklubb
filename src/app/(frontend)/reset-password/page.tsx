@@ -10,11 +10,15 @@ export default function ResetPasswordPage() {
   const token = searchParams.get('token')
   const [error, setError] = useState('')
   const router = useRouter()
+  const [confirmPassword, setConfirmPassword] = useState('')
 
   async function handleSubmit() {
     if (!token) {
       setError('Ugyldig lenke.')
       return
+    }
+    if (password !== confirmPassword) {
+      setError('Passord matcher ikke.')
     }
     try {
       const response = await fetch('api/users/reset-password', {
@@ -50,6 +54,18 @@ export default function ResetPasswordPage() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+
+          <div className="flex flex-col gap-1">
+            <h2 className="text-text font-medium text-sm uppercase">Bekreft passord</h2>
+            <input
+              className="border border-ocean rounded-lg p-2 bg-surface text-text focus:outline-none focus:ring-2 focus:ring-ocean"
+              type="password"
+              placeholder="Bekreft passord"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </div>
+
           <div className="flex justify-end pt-2">
             <BaseButton onClick={handleSubmit}>Sett nytt passord</BaseButton>
           </div>
