@@ -5,6 +5,7 @@ import Image from 'next/image'
 import BaseButton from '@/components/BaseButton'
 import { useState } from 'react'
 import LoginModal from '@/components/modals/LoginModal'
+import { useRouter } from 'next/navigation'
 
 type props = {
   user: { email: string } | null
@@ -13,10 +14,12 @@ type props = {
 export default function HeaderNav({ user }: props) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [showLoginModal, setShowLoginModal] = useState(false)
+  const router = useRouter()
 
   async function handleLogout() {
     await fetch('/api/users/logout', { method: 'POST', credentials: 'include' })
-    window.location.reload()
+    router.push("/")
+    router.refresh()
   }
 
   const loginButton = user ? (
@@ -67,6 +70,11 @@ export default function HeaderNav({ user }: props) {
           <li>
             <Link href="/contact">
               <BaseButton>Kontakt</BaseButton>
+            </Link>
+          </li>
+          <li className={`${user ? 'block' : 'hidden'}`}>
+            <Link href="/members">
+              <BaseButton>Medlemmer</BaseButton>
             </Link>
           </li>
           <li>{loginButton}</li>

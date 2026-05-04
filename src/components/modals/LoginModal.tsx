@@ -27,7 +27,6 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
         }),
       })
       if (response.ok) {
-        router.push('/members')
         router.refresh()
         onCloseAction()
       } else {
