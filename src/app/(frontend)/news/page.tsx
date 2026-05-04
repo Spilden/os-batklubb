@@ -17,7 +17,7 @@ export default async function HomePage() {
   })
 
   return (
-    <div className="bg-sage rounded-xl shadow-lg w-full">
+    <>
       <div className="rounded-t-xl bg-ocean p-4">
         <h1 className="text-text text-2xl font-bold text-center">Hva skjer i havnen</h1>
       </div>
@@ -30,6 +30,6 @@ export default async function HomePage() {
           ))
         )}
       </div>
-    </div>
+    </>
   )
 }
