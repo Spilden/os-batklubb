@@ -18,8 +18,8 @@ export default async function HomePage() {
 
   return (
     <>
-      <div className="rounded-t-xl bg-ocean p-4">
-        <h1 className="text-text text-2xl font-bold text-center">Hva skjer i havnen</h1>
+      <div className="rounded-xl bg-ocean p-4">
+        <h1 className="text-surface text-2xl font-display font-bold text-center">Hva skjer i havnen</h1>
       </div>
       <div className="flex flex-col gap-y-6 p-6">
         {newsArticles.docs.length === 0 ? (
