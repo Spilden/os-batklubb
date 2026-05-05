@@ -6,7 +6,7 @@ export default function MembersLayout(props: { children: React.ReactNode }) {
 
   return (
     <div className="flex min-h-screen w-full gap-4">
-      <aside className="w-sm bg-primary self-stretch -ml-4 -mt-4 -mb-4 ">
+      <aside className="w-sm bg-surface self-stretch -ml-4 -mt-4 -mb-4 z-50">
         <div className="flex flex-col">
           <NavButton href="/members">Medlemsside</NavButton>
           <NavButton href="/members/slipp">Slipp</NavButton>
