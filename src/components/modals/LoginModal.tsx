@@ -63,7 +63,10 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
         </div>
 
         {view === 'login' ? (
-          <form className="flex flex-col p-6 gap-4">
+          <form className="flex flex-col p-6 gap-4" onSubmit={(e) => {
+            e.preventDefault()
+            handleLogin()
+          }}>
             <div className="flex flex-col gap-1">
               {error && <p className="text-red-600 text-sm">{error}</p>}
               <h2 className="text-text font-medium text-sm uppercase">E-post</h2>
@@ -99,7 +102,7 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
             </BaseButton>
 
             <div className="flex justify-end pt-2">
-              <BaseButton type="submit" onClick={handleLogin}>Logg Inn</BaseButton>
+              <BaseButton type="submit">Logg Inn</BaseButton>
             </div>
           </form>
         ) : (
