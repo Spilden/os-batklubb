@@ -15,12 +15,14 @@ export default async function SlippPage() {
   ])
 
   return (
-    <main className="py-8">
+    <>
+      <h1 className="text-text font-display text-center text-3xl p-10">Booking av slipp plass</h1>
       <SlippCalendar
         currentUser={user}
         initialRequests={requests}
         settings={settings}
       />
-    </main>
+      <p className="text-text text-center text-xl p-10">Klikk på dagen du vil booke eller dra over de dagene/timene du ønsker å booke slipp.</p>
+    </>
   )
 }

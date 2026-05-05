@@ -2,7 +2,6 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { SlippCalendar } from '@/components/SlippCalendar'
 
 export default async function MembersPage() {
   const payload = await getPayload({ config })
@@ -10,7 +9,9 @@ export default async function MembersPage() {
   if (!user) redirect('/admin/login')
 
   return (
-    <main className="py-8">
-    </main>
+    <div className="w-full">
+      <h1 className="font-display text-text text-3xl font-bold text-center pb-4">Velkommen {user.name}</h1>
+      <p className="text-primary text-xl text-center">Dette vil være din side med mer informasjon på veg</p>
+    </div>
   )
 }
