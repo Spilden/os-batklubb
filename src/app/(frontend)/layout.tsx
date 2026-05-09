@@ -16,7 +16,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     <html lang="en">
       <body className="bg-background flex flex-col min-h-screen">
         <Header />
-        <main className="flex flex-1 max-w-[1920px] w-full mx-auto p-4">{children}</main>
+        <main className="flex-1 max-w-[1920px] w-full mx-auto p-4">{children}</main>
         <Footer />
       </body>
     </html>
