@@ -28,8 +28,25 @@ export default async function MembersPage() {
 
   return (
     <div className="w-full">
-      <h1 className="font-display text-text text-3xl font-bold text-center pb-4">Velkommen {user.name}</h1>
-      <p className="text-primary text-xl text-center">Dette vil være din side med mer informasjon på veg</p>
+      <h1 className="font-display text-text text-3xl font-bold text-center pb-4">
+        Velkommen {user.name}
+      </h1>
+      <div className="w-full flex flex-col gap-4">
+        <div className="grid grid-cols-4 gap-4">
+          <BaseCard
+            title={`Neste ${highLowWater}`}
+            content={`${nextTide?.verdi} cm`}
+            footer={`Klokken ${nextTide?.tid.toLocaleTimeString('nb-NO', { hour: '2-digit', minute: '2-digit' })}`}
+          />
+          <BaseCard title="Min Plass" content="A-32" footer="Brygge A" />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <BaseCard title="tittel" content="innhold" footer="footer" ><p>test</p></BaseCard>
+          <BaseCard title="tittel" content="innhold" footer="footer" />
+          <BaseCard title="tittel" content="innhold" footer="footer" />
+          <BaseCard title="tittel" content="innhold" footer="footer" />
+        </div>
+      </div>
     </div>
   )
 }
