@@ -39,7 +39,7 @@ export default function HeaderNav({ user }: props) {
     <header className="bg-white p-8 shadow-lg relative">
       <nav className="flex items-center justify-between">
         <Link href="/">
-          <Image src="/obk_logo.svg" alt="Os Båtklubb" width={120} height={60} />
+          <Image src="/obk_logo.svg" alt="Os Båtklubb" width={120} height={60} priority />
         </Link>
 
         {/*Desktop navigasjon*/}
@@ -83,7 +83,7 @@ export default function HeaderNav({ user }: props) {
             className="fixed inset-0 bg-black/50 z-40 lg:hidden"
             onClick={() => setMenuOpen(false)}
           >
-            <ul className="fixed top-0 right-0 h-full w-72 bg-white z-50 flex flex-col gap-2 p-8 shadow-2xl lg:hidden">
+            <ul className="fixed top-0 right-0 h-full w-auto max-w-xs bg-white z-50 flex flex-col gap-2 p-8 shadow-2xl lg:hidden items-end">
               <li className="mb-4">
                 <BaseButton variant="secondary" onClick={() => setMenuOpen(false)}>
                   X

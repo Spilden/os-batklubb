@@ -63,26 +63,15 @@ export default function ContactForm() {
         <input id="url" type="text" name="url" tabIndex={-1} autoComplete="nope" />
       </div>
 
-      <div className="flex flex-col gap-1 text-text font-medium text-sm uppercase">
+      <div className="flex flex-col gap-2 text-text font-medium text-sm uppercase">
         <label>Send til</label>
-        <div className="flex gap-4">
-          <label className="flex items-center gap-2 cursor-pointer">
-            <input
-              type="radio"
-              name="recipient"
-              value="board"
-              required
-              className="cursor-pointer"
-            />
+        <div className="flex gap-3">
+          <label className="flex items-center gap-2 cursor-pointer border border-ocean rounded-lg px-4 py-2 has-checked:bg-ocean has-checked:text-surface transition-colors">
+            <input type="radio" name="recipient" value="board" required className="sr-only" />
             Styret
           </label>
-          <label className="flex items-center gap-2 cursor-pointer">
-            <input
-              type="radio"
-              name="recipient"
-              value="slipway"
-              className="cursor-pointer"
-            />
+          <label className="flex items-center gap-2 cursor-pointer border border-ocean rounded-lg px-4 py-2 has-checked:bg-ocean has-checked:text-surface transition-colors">
+            <input type="radio" name="recipient" value="slipway" className="sr-only" />
             Slippvakt
           </label>
         </div>
@@ -97,7 +86,7 @@ export default function ContactForm() {
           name="name"
           type="text"
           required
-          className="border border-ocean rounded-lg p-2 bg-surface text-text focus:outline-none focus:ring-2 focus:ring-ocean"
+          className="border border-ocean rounded-lg p-2 bg-background text-text focus:outline-none focus:ring-2 focus:ring-ocean"
         />
       </div>
 
@@ -110,7 +99,7 @@ export default function ContactForm() {
           name="email"
           type="email"
           required
-          className="border border-ocean rounded-lg p-2 bg-surface text-text focus:outline-none focus:ring-2 focus:ring-ocean"
+          className="border border-ocean rounded-lg p-2 bg-background text-text focus:outline-none focus:ring-2 focus:ring-ocean"
         />
       </div>
 
@@ -123,7 +112,7 @@ export default function ContactForm() {
           name="message"
           required
           rows={5}
-          className="border border-ocean rounded-lg p-2 bg-surface text-text focus:outline-none focus:ring-2 focus:ring-ocean resize-none"
+          className="border border-ocean rounded-lg p-2 bg-background text-text focus:outline-none focus:ring-2 focus:ring-ocean resize-none"
         />
       </div>
 
