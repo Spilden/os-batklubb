@@ -63,6 +63,31 @@ export default function ContactForm() {
         <input id="url" type="text" name="url" tabIndex={-1} autoComplete="nope" />
       </div>
 
+      <div className="flex flex-col gap-1 text-text font-medium text-sm uppercase">
+        <label>Send til</label>
+        <div className="flex gap-4">
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="radio"
+              name="recipient"
+              value="board"
+              required
+              className="cursor-pointer"
+            />
+            Styret
+          </label>
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="radio"
+              name="recipient"
+              value="slipway"
+              className="cursor-pointer"
+            />
+            Slippvakt
+          </label>
+        </div>
+      </div>
+
       <div className="flex flex-col gap-1">
         <label htmlFor="name" className="text-text font-medium text-sm uppercase">
           Navn
