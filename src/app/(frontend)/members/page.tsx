@@ -29,7 +29,7 @@ export default async function MembersPage() {
     <div className="w-full">
       <h1 className="font-display text-text text-3xl font-bold p-4 pb-16">Velkommen {user.name}</h1>
       <div className="w-full flex flex-col gap-4">
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <BaseMemberCard title="Min Plass" content="A-32" footer="Brygge A" />
           <BaseMemberCard
             title={`Neste ${highLowWater}`}
@@ -47,7 +47,7 @@ export default async function MembersPage() {
             footer={vind.obsTimeLocal.slice(5, 16).replace('-', '/')}
           />
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid lg:grid-cols-2 gap-4">
           <BaseMemberCard title="tittel" content="innhold" footer="footer">
             <p>test</p>
           </BaseMemberCard>

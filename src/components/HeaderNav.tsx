@@ -122,6 +122,11 @@ export default function HeaderNav({ user }: props) {
                   <BaseButton>Kontakt</BaseButton>
                 </Link>
               </li>
+              <li className={`${user ? 'block' : 'hidden'}`}>
+                <Link href="/members">
+                  <BaseButton>Medlemmer</BaseButton>
+                </Link>
+              </li>
               <li>{loginButton}</li>
             </ul>
           </div>
