@@ -7,8 +7,8 @@ type Props = {
   info: React.ReactNode
   confirmLabel?: string
   showComment?: boolean
-  onConfirm: (comment: string) => void
-  onCancel: () => void
+  onConfirmAction: (comment: string) => void
+  onCancelAction: () => void
 }
 
 export function SlippBookingModal({
@@ -16,8 +16,8 @@ export function SlippBookingModal({
   info,
   confirmLabel = 'Bekreft',
   showComment = true,
-  onConfirm,
-  onCancel,
+  onConfirmAction,
+  onCancelAction,
 }: Props) {
   const [comment, setComment] = useState('')
   const downOnOverlay = useRef(false)
@@ -29,7 +29,7 @@ export function SlippBookingModal({
         downOnOverlay.current = e.target === e.currentTarget
       }}
       onMouseUp={() => {
-        if (downOnOverlay.current) onCancel()
+        if (downOnOverlay.current) onCancelAction()
       }}
     >
       <div className="w-full max-w-md bg-surface rounded-2xl p-6 border border-border">
@@ -48,13 +48,13 @@ export function SlippBookingModal({
 
         <div className="flex justify-end gap-2">
           <button
-            onClick={onCancel}
+            onClick={onCancelAction}
             className="rounded-lg border border-border px-4 py-2 text-sm text-text hover:bg-background"
           >
             Avbryt
           </button>
           <button
-            onClick={() => onConfirm(comment)}
+            onClick={() => onConfirmAction(comment)}
             className="rounded-lg bg-primary px-4 py-2 text-sm text-surface hover:bg-primary-light"
           >
             {confirmLabel}

@@ -140,8 +140,8 @@ export function SlippCalendar({ currentUser, initialRequests, settings }: Props)
           title="Send slipp-forespørsel"
           info={`${formatTime(selected.start)} – ${formatTime(selected.end)}`}
           confirmLabel="Send forespørsel"
-          onConfirm={handleSubmit}
-          onCancel={() => setSelected(null)}
+          onConfirmAction={handleSubmit}
+          onCancelAction={() => setSelected(null)}
         />
       )}
     </>
