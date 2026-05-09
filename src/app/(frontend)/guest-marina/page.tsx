@@ -8,16 +8,14 @@ import Link from 'next/link'
 
 export default async function GuestMarinaPage() {
   const payload = await getPayload({ config: payloadConfig })
-
   const data = await payload.findGlobal({ slug: 'guestMarina' })
-  console.log(JSON.stringify(data.content))
 
   const image = imageGuard(data.image)
 
   return (
     <div className="flex flex-col gap-y-40">
-      <div className="flex flex-row w-full gap-6">
-        <div className="w-3/5 shrink-0">
+      <div className="flex flex-col lg:flex-row w-full gap-6">
+        <div className="lg:w-3/5 shrink-0">
           <div className="sticky aspect-video top-4">
             {image && (
               <Image
@@ -33,7 +31,7 @@ export default async function GuestMarinaPage() {
         <RichText className="prose lg:prose-xl" data={data.content} />
       </div>
 
-      <div className="flex w-full justify-evenly">
+      <div className="flex flex-col lg:flex-row w-full lg:justify-evenly">
         <div className="flex flex-col p-6">
           <h2 className="text-text text-2xl font-display pb-4">Priser</h2>
           <p>{`Døgnleie for gjestehavnen: ${data.price},-`}</p>
@@ -58,7 +56,7 @@ export default async function GuestMarinaPage() {
         </div>
         <div className="p-6">
           <h2 className="text-text text-2xl font-display pb-4">Våre serverdigheter</h2>
-          <ul className="list-disc">
+          <ul className="list-disc pl-4">
             {data.facilities?.map((item, index) => (
               <li key={index}>{item.facility}</li>
             ))}

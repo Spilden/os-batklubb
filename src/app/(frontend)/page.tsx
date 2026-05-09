@@ -43,8 +43,8 @@ export default async function HomePage() {
             className="h-screen bg-fixed bg-top bg-cover"
             style={{ backgroundImage: `url(${section.image})` }}
           />
-          <div className="flex justify-center bg-sage py-16">
-            <div className="w-xl max-w-[90vw]">
+          <div className="flex justify-center bg-surface py-16">
+            <div className="w-xl max-w-[90vw] pl-4">
               <h2 className="text-text text-4xl font-bold mb-4">{section.title}</h2>
               <p className="text-text-muted  text-lg">{section.text}</p>
             </div>
@@ -53,7 +53,7 @@ export default async function HomePage() {
       ))}
 
       {partners.length > 0 && (
-        <section className="bg-sage rounded-xl shadow-lg w-full mt-4">
+        <section className="bg-surface rounded-xl shadow-lg w-full mt-4">
           <div className="flex flex-wrap justify-center gap-4 p-4">
             {partners.map((partner) => (
               <PartnerCard partner={partner} key={partner.id} />
