@@ -2,70 +2,62 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { JSX } from 'react'
+import {getWind, getTidevann} from '@/app/(frontend)/members/actions'
+import { BaseMemberCard } from '@/components/BaseMemberCard'
 
 export default async function MembersPage() {
   const payload = await getPayload({ config })
   const { user } = await payload.auth({ headers: await headers() })
   if (!user) redirect('/admin/login')
+  const [tidevann, vind] = await Promise.all([getTidevann(), getWind()])
 
-  const response = await fetch(
-    'https://vannstand.kartverket.no/tideapi.php?lat=60.1529229&lon=5.4455994&fromtime=2026-05-08T00%3A00&totime=2026-05-10T00%3A00&datatype=tab&refcode=cd&place=&file=&lang=nn&interval=10&dst=0&tzone=&tide_request=locationdata',
-  )
-  const text = await response.text()
+  function WindArrow() {
+    return (
+      <div style={{ transform: `rotate(${vind.winddir}deg)` }} className="text-2xl">
+        ↑
+      </div>
+    )
+  }
+
   const currentTime = new Date()
-
-  const result = [
-    ...text.matchAll(/<waterlevel value="([\d.]+)" time="([^"]+)" flag="([^"]+)"/g),
-  ].map((m) => ({
-    verdi: parseFloat(m[1]),
-    tid: new Date(m[2]),
-    flag: m[3],
-  }))
-  const nextTide = result.find((t) => t.tid > currentTime)
-
+  const nextTide = tidevann?.find((t) => t.tid > currentTime)
   const highLowWater = nextTide?.flag === 'high' ? 'høyvann' : 'lavvann'
+  if(!vind) return <p>Kunne ikke hente vindinformasjon</p>
+  if(!tidevann) return <p>Kunne ikke hente tidevannet</p>
 
   return (
     <div className="w-full">
-      <h1 className="font-display text-text text-3xl font-bold text-center pb-4">
-        Velkommen {user.name}
-      </h1>
+      <h1 className="font-display text-text text-3xl font-bold p-4 pb-16">Velkommen {user.name}</h1>
       <div className="w-full flex flex-col gap-4">
         <div className="grid grid-cols-4 gap-4">
-          <BaseCard
+          <BaseMemberCard title="Min Plass" content="A-32" footer="Brygge A" />
+          <BaseMemberCard
             title={`Neste ${highLowWater}`}
             content={`${nextTide?.verdi} cm`}
             footer={`Klokken ${nextTide?.tid.toLocaleTimeString('nb-NO', { hour: '2-digit', minute: '2-digit' })}`}
           />
-          <BaseCard title="Min Plass" content="A-32" footer="Brygge A" />
+          <BaseMemberCard
+            title="Vinden på kaia"
+            content={
+              <div className="flex items-center gap-4">
+                <span>{vind.metric.windSpeed} m/s</span>
+                <WindArrow/>
+              </div>
+            }
+            footer={vind.obsTimeLocal.slice(5, 16).replace('-', '/')}
+          />
         </div>
         <div className="grid grid-cols-2 gap-4">
-          <BaseCard title="tittel" content="innhold" footer="footer" ><p>test</p></BaseCard>
-          <BaseCard title="tittel" content="innhold" footer="footer" />
-          <BaseCard title="tittel" content="innhold" footer="footer" />
-          <BaseCard title="tittel" content="innhold" footer="footer" />
+          <BaseMemberCard title="tittel" content="innhold" footer="footer">
+            <p>test</p>
+          </BaseMemberCard>
+          <BaseMemberCard title="tittel" content="innhold" footer="footer" />
+          <BaseMemberCard title="tittel" content="innhold" footer="footer" />
+          <BaseMemberCard title="tittel" content="innhold" footer="footer" />
         </div>
       </div>
     </div>
   )
 }
 
-type BaseCardProps = {
-  className?: string
-  title?: string
-  content?: string
-  footer?: string
-  children?: JSX.Element
-}
 
-export function BaseCard({ title, content, footer, className, children}: BaseCardProps) {
-  return (
-    <div className={`bg-surface p-4 rounded-xl w-full pl-8 ${className}`}>
-      <h2 className="text-text-muted font-display italic">{title}</h2>
-      <p>{content}</p>
-      {children}
-      <p>{footer}</p>
-    </div>
-  )
-}
