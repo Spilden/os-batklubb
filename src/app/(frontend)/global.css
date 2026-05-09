@@ -41,3 +41,13 @@
     --fc-border-color: var(--color-border);
     --fc-today-bg-color: var(--color-apricot);
 }
+
+@media (max-width: 1024px) {
+    .fc .fc-button {
+        @apply px-2 py-1 text-xs tracking-normal;
+    }
+
+    .fc .fc-toolbar-title {
+        @apply text-base;
+    }
+}

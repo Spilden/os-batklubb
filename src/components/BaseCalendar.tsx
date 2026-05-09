@@ -9,7 +9,7 @@ import type { CalendarOptions } from '@fullcalendar/core'
 
 export function BaseCalendar(props: CalendarOptions) {
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-surface rounded-2xl shadow-[0_6px_32px_rgba(100,70,40,0.12)] border border-border">
+    <div className="max-w-4xl mx-auto p-4 lg:p-8 bg-surface rounded-2xl shadow-[0_6px_32px_rgba(100,70,40,0.12)] border border-border">
       <FullCalendar
         plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
