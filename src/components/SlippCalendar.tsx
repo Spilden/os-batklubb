@@ -1,6 +1,6 @@
 ﻿'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import type { EventContentArg, DateSelectArg } from '@fullcalendar/core'
 import { BaseCalendar } from './BaseCalendar'
@@ -20,6 +20,7 @@ export function SlippCalendar({ currentUser, initialRequests, settings }: Props)
   const router = useRouter()
   const [selected, setSelected] = useState<Selected>(null)
   const [error, setError] = useState<string | null>(null)
+  const justClickedRef = useRef(false)
 
   const isLocked = (start: Date, end: Date) => {
     for (const season of settings.highSeasons ?? []) {
@@ -93,21 +94,38 @@ export function SlippCalendar({ currentUser, initialRequests, settings }: Props)
 
       <BaseCalendar
         selectable
-        select={handleSelect}
+        dateClick={(arg) => {
+          justClickedRef.current = true
+          const start = arg.date
+          const end = new Date(start)
+          end.setDate(end.getDate() + 1)
+          handleSelect({ start, end, allDay: true } as DateSelectArg)
+          setTimeout(() => {
+            justClickedRef.current = false
+          }, 100)
+        }}
+        select={(arg) => {
+          if (justClickedRef.current) return
+          handleSelect(arg)
+        }}
         events={events}
         eventContent={(info: EventContentArg) => {
           const { req, isMine } = info.event.extendedProps as { req: SlippBooking; isMine: boolean }
           if (!req) return null
 
           const color = isMine
-            ? req.status === 'approved' ? 'bg-ocean text-surface'
-              : req.status === 'rejected' ? 'bg-border text-text line-through'
+            ? req.status === 'approved'
+              ? 'bg-ocean text-surface'
+              : req.status === 'rejected'
+                ? 'bg-border text-text line-through'
                 : 'bg-sand text-text'
             : 'bg-border text-text'
 
           const label = isMine
             ? { pending: 'Venter', approved: 'Godkjent', rejected: 'Avslått' }[req.status as string]
-            : typeof req.user === 'object' ? req.user.name || req.user.email : ''
+            : typeof req.user === 'object'
+              ? req.user.name || req.user.email
+              : ''
 
           return (
             <div className={`${color} rounded-md px-2 py-1 text-xs h-full overflow-hidden`}>

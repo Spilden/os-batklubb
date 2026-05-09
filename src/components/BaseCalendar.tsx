@@ -16,7 +16,7 @@ export function BaseCalendar(props: CalendarOptions) {
         headerToolbar={{
           left: 'dayGridMonth,timeGridWeek',
           center: 'title',
-          right: 'today prev,next'
+          right: 'today prev,next',
         }}
         locale={nbLocale}
         firstDay={1}
@@ -28,6 +28,8 @@ export function BaseCalendar(props: CalendarOptions) {
         allDaySlot={false}
         nowIndicator={false}
         buttonText={{ today: 'I dag', month: 'Måned', week: 'Uke' }}
+        longPressDelay={200}
+        selectMinDistance={5}
         {...props}
       />
     </div>
