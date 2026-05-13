@@ -19,6 +19,7 @@ export default function MembersLayout(props: { children: React.ReactNode }) {
         <div className="flex flex-col">
           <NavButton href="/members">Medlemsside</NavButton>
           <NavButton href="/members/slipp">Slipp</NavButton>
+          <NavButton href="/members/clubhouse">Klubbhus</NavButton>
         </div>
       </aside>
       <div className="flex-1">{children}</div>
