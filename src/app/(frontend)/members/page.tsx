@@ -48,12 +48,10 @@ export default async function MembersPage() {
           />
         </div>
         <div className="grid lg:grid-cols-2 gap-4">
-          <BaseMemberCard title="tittel" content="innhold" footer="footer">
-            <p>test</p>
-          </BaseMemberCard>
-          <BaseMemberCard title="tittel" content="innhold" footer="footer" />
-          <BaseMemberCard title="tittel" content="innhold" footer="footer" />
-          <BaseMemberCard title="tittel" content="innhold" footer="footer" />
+          <BaseMemberCard title="Mine Reservasjoner" content={showReservations()}/>
+          <BaseMemberCard title="Min Båt" content="innhold" footer="footer" />
+          <BaseMemberCard title="Min Bruker" content="innhold" footer="footer" />
+          <BaseMemberCard title="Eventkalender" content="innhold" footer="footer" />
         </div>
       </div>
     </div>
