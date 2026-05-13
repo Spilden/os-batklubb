@@ -1,8 +1,7 @@
 ﻿'use client'
 
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import type { EventContentArg, DateSelectArg } from '@fullcalendar/core'
 import { BaseCalendar } from './BaseCalendar'
 import { BookingModal } from './modals/BookingModal'
 import { createSlippRequest } from '@/app/(frontend)/members/slipp/actions'
@@ -20,8 +19,6 @@ export function SlippCalendar({ currentUser, initialRequests, settings }: Props)
   const router = useRouter()
   const [selected, setSelected] = useState<Selected>(null)
   const [error, setError] = useState<string | null>(null)
-  const justClickedRef = useRef(false)
-
   const isLocked = (start: Date, end: Date) => {
     for (const season of settings.highSeasons ?? []) {
       const seasonStart = new Date(season.start)
@@ -64,14 +61,25 @@ export function SlippCalendar({ currentUser, initialRequests, settings }: Props)
     }),
   ]
 
-  const handleSelect = (arg: DateSelectArg) => {
-    const lock = isLocked(arg.start, arg.end)
+  const handleSelect = (start: Date, end: Date) => {
+    const lock = isLocked(start, end)
     if (lock) {
       setError(lock)
       return
     }
+
+    const conflict = initialRequests.find((req) => {
+      if (req.status !== 'approved') return false
+      return start < new Date(req.endTime) && end > new Date(req.startTime)
+    })
+
+    if (conflict) {
+      setError('Det er allerede en godkjent booking i denne perioden')
+      return
+    }
+
     setError(null)
-    setSelected({ start: arg.start, end: arg.end })
+    setSelected({ start, end })
   }
 
   const handleSubmit = async (comment: string) => {
@@ -92,48 +100,7 @@ export function SlippCalendar({ currentUser, initialRequests, settings }: Props)
         </div>
       )}
 
-      <BaseCalendar
-        selectable
-        dateClick={(arg) => {
-          justClickedRef.current = true
-          const start = arg.date
-          const end = new Date(start)
-          end.setDate(end.getDate() + 1)
-          handleSelect({ start, end, allDay: true } as DateSelectArg)
-          setTimeout(() => {
-            justClickedRef.current = false
-          }, 100)
-        }}
-        select={(arg) => {
-          if (justClickedRef.current) return
-          handleSelect(arg)
-        }}
-        events={events}
-        eventContent={(info: EventContentArg) => {
-          const { req, isMine } = info.event.extendedProps as { req: SlippBooking; isMine: boolean }
-          if (!req) return null
-
-          const color = isMine
-            ? req.status === 'approved'
-              ? 'bg-ocean text-surface'
-              : req.status === 'rejected'
-                ? 'bg-border text-text line-through'
-                : 'bg-sand text-text'
-            : 'bg-border text-text'
-
-          const label = isMine
-            ? { pending: 'Venter', approved: 'Godkjent', rejected: 'Avslått' }[req.status as string]
-            : typeof req.user === 'object'
-              ? req.user.name || req.user.email
-              : ''
-
-          return (
-            <div className={`${color} rounded-md px-2 py-1 text-xs h-full overflow-hidden`}>
-              <div className="font-semibold truncate">{label}</div>
-            </div>
-          )
-        }}
-      />
+      <BaseCalendar bookable onDateSelected={handleSelect} events={events} />
 
       {selected && (
         <BookingModal
