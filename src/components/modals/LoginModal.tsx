@@ -27,7 +27,6 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
         }),
       })
       if (response.ok) {
-        router.push('/members')
         router.refresh()
         onCloseAction()
       } else {
@@ -64,7 +63,10 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
         </div>
 
         {view === 'login' ? (
-          <div className="flex flex-col p-6 gap-4">
+          <form className="flex flex-col p-6 gap-4" onSubmit={(e) => {
+            e.preventDefault()
+            handleLogin()
+          }}>
             <div className="flex flex-col gap-1">
               {error && <p className="text-red-600 text-sm">{error}</p>}
               <h2 className="text-text font-medium text-sm uppercase">E-post</h2>
@@ -100,11 +102,11 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
             </BaseButton>
 
             <div className="flex justify-end pt-2">
-              <BaseButton onClick={handleLogin}>Logg Inn</BaseButton>
+              <BaseButton type="submit">Logg Inn</BaseButton>
             </div>
-          </div>
+          </form>
         ) : (
-          <div className="flex flex-col p-6 gap-4">
+          <form className="flex flex-col p-6 gap-4">
             <div className="flex flex-col gap-1">
               {message ? (
                 <p>{message}</p>
@@ -124,6 +126,7 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
             <div className="flex justify-between items-center pt-2">
               <BaseButton
                 variant="text"
+                type="submit"
                 onClick={() => {
                   setMessage('')
                   setView('login')
@@ -133,7 +136,7 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
               </BaseButton>
               {!message && <BaseButton onClick={handleForgotPassword}>Send lenke</BaseButton>}
             </div>
-          </div>
+          </form>
         )}
       </div>
     </div>
