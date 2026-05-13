@@ -6,15 +6,16 @@ import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 import { resendAdapter } from '@payloadcms/email-resend'
 
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
-import { News } from './collections/News'
-import { Partners} from './collections/Partners'
-import { About } from './globals/About'
+import { Users } from '@/collections/Users'
+import { Media } from '@/collections/Media'
+import { News } from '@/collections/News'
+import { Partners } from '@/collections/Partners'
+import { About } from '@/globals/About'
 import { GuestMarina } from '@/globals/GuestMarina'
-import { ContactSubmissions} from './collections/ContactSubmissions'
+import { ContactSubmissions } from '@/collections/ContactSubmissions'
 import { SlippBookings } from '@/collections/SlippBookings'
 import { SlippSettings } from '@/globals/SlippSettings'
+import { ClubhouseBookings } from '@/collections/ClubhouseBookings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -32,7 +33,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, News, Partners, ContactSubmissions, SlippBookings],
+  collections: [Users, Media, News, Partners, ContactSubmissions, SlippBookings, ClubhouseBookings],
   globals: [About, GuestMarina, SlippSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
