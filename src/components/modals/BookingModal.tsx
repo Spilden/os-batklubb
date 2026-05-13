@@ -11,7 +11,7 @@ type Props = {
   onCancelAction: () => void
 }
 
-export function SlippBookingModal({
+export function BookingModal({
   title,
   info,
   confirmLabel = 'Bekreft',

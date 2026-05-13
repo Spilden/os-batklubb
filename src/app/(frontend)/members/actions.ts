@@ -2,7 +2,7 @@ export async function getTidevann() {
   try {
     const now = new Date();
     const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setDate(tomorrow.getDate() + 2);
     const format = (d: Date) =>
       `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}T00:00`;
 
@@ -13,7 +13,7 @@ export async function getTidevann() {
       console.error('status', response.status, response.statusText)
     }
     const text = await response.text()
-
+    console.log(text)
     return [...text.matchAll(/<waterlevel value="([\d.]+)" time="([^"]+)" flag="([^"]+)"/g)].map(
       (m) => ({
         verdi: parseFloat(m[1]),
