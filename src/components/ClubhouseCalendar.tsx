@@ -1,57 +1,30 @@
-﻿'use client'
+'use client'
 
 import { useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import type { EventContentArg, DateSelectArg } from '@fullcalendar/core'
 import { BaseCalendar } from './BaseCalendar'
 import { BookingModal } from './modals/BookingModal'
-import { createSlippRequest } from '@/app/(frontend)/members/slipp/actions'
-import type { SlippBooking, SlippSetting, User } from '@/payload-types'
+// import { createSlippRequest } from '@/app/(frontend)/members/slipp/actions'
+import type { ClubhouseBooking, User } from '@/payload-types'
+import { createClubhouseBookingRequest } from '@/app/(frontend)/members/clubhouse/actions'
 
 type Props = {
   currentUser: User
-  initialRequests: SlippBooking[]
-  settings: SlippSetting
+  initialRequests: ClubhouseBooking[]
 }
 
 type Selected = { start: Date; end: Date } | null
 
-export function SlippCalendar({ currentUser, initialRequests, settings }: Props) {
+export function ClubhouseCalendar({ currentUser, initialRequests}: Props) {
   const router = useRouter()
   const [selected, setSelected] = useState<Selected>(null)
   const [error, setError] = useState<string | null>(null)
   const justClickedRef = useRef(false)
 
-  const isLocked = (start: Date, end: Date) => {
-    for (const season of settings.highSeasons ?? []) {
-      const seasonStart = new Date(season.start)
-      const seasonEnd = new Date(season.end)
-      const seasonOpen = new Date(season.openDate)
-      const now = new Date()
 
-      const overlaps = start <= seasonEnd && end >= seasonStart
-      if (!overlaps) continue
-
-      if (now < seasonOpen) {
-        return `Bookingen Åpner ${seasonOpen.toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' })}`
-      }
-
-      if (now > seasonEnd) return 'Denne sesongen er over'
-    }
-    return null
-  }
-
-  const lockEvents = (settings.highSeasons ?? [])
-    .filter((s) => new Date() < new Date(s.openDate) || new Date() > new Date(s.end))
-    .map((s) => ({
-      start: s.start,
-      end: s.end,
-      display: 'background',
-      color: '#C9A87C',
-    }))
 
   const events = [
-    ...lockEvents,
     ...initialRequests.map((req) => {
       const isMine =
         typeof req.user === 'object' ? req.user.id === currentUser.id : req.user === currentUser.id
@@ -65,18 +38,13 @@ export function SlippCalendar({ currentUser, initialRequests, settings }: Props)
   ]
 
   const handleSelect = (arg: DateSelectArg) => {
-    const lock = isLocked(arg.start, arg.end)
-    if (lock) {
-      setError(lock)
-      return
-    }
     setError(null)
     setSelected({ start: arg.start, end: arg.end })
   }
 
   const handleSubmit = async (comment: string) => {
     if (!selected) return
-    await createSlippRequest(selected.start.toISOString(), selected.end.toISOString(), comment)
+    await createClubhouseBookingRequest(selected.start.toISOString(), selected.end.toISOString(), comment)
     setSelected(null)
     router.refresh()
   }
@@ -110,7 +78,7 @@ export function SlippCalendar({ currentUser, initialRequests, settings }: Props)
         }}
         events={events}
         eventContent={(info: EventContentArg) => {
-          const { req, isMine } = info.event.extendedProps as { req: SlippBooking; isMine: boolean }
+          const { req, isMine } = info.event.extendedProps as { req: ClubhouseBooking; isMine: boolean }
           if (!req) return null
 
           const color = isMine
@@ -137,7 +105,7 @@ export function SlippCalendar({ currentUser, initialRequests, settings }: Props)
 
       {selected && (
         <BookingModal
-          title="Send slipp-forespørsel"
+          title="Send klubbhus booking forespørsel"
           info={`${formatTime(selected.start)} – ${formatTime(selected.end)}`}
           confirmLabel="Send forespørsel"
           onConfirmAction={handleSubmit}
