@@ -44,6 +44,31 @@ export async function getWind() {
   }
 }
 
+
+type MetTimeseries = {
+  time: string
+  data: {
+    instant: {
+      details: {
+        air_temperature: number
+        wind_speed: number
+      }
+    }
+    next_1_hours?: {
+      summary: { symbol_code: string }
+    }
+    next_6_hours?: {
+      summary: { symbol_code: string }
+    }
+  }
+}
+
+type MetResponse = {
+  properties: {
+    timeseries: MetTimeseries[]
+  }
+}
+
 export async function getWeather() {
   try {
     const res = await fetch(
@@ -57,7 +82,18 @@ export async function getWeather() {
     )
     if (!res.ok) return null
 
-    return res.json()
+    const data: MetResponse = await res.json()
+    const current = data.properties.timeseries[0]
+
+    return {
+      temperature: current.data.instant.details.air_temperature,
+      windSpeed: current.data.instant.details.wind_speed,
+      symbolCode:
+      current.data.next_1_hours?.summary.symbol_code ??
+        current.data.next_6_hours?.summary.symbol_code ??
+        'cloudy'
+    }
+
   } catch {
     return null
   }

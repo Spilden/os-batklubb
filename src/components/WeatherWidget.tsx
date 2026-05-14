@@ -3,10 +3,14 @@ import { getWeather } from '@/utils/weather'
 
 export default async function WeatherWidget() {
   const data = await getWeather()
-  console.log(data)
-  return(
+
+  if (!data) return null
+
+  return (
     <div>
-      <p>vær</p>
+      <p>{data.temperature}°C</p>
+      <p>{data.symbolCode}</p>
+      <p>{data.windSpeed} m/s</p>
     </div>
   )
 }
