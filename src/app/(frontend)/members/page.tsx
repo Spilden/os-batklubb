@@ -99,7 +99,7 @@ export default async function MembersPage() {
           <p className="">Til</p>
         </div>
         {allReservations.map((reservation) => (
-          <div key={reservation.id} className="grid grid-cols-4">
+          <div key={`${reservation.type}-${reservation.id}`} className="grid grid-cols-4">
             <p>{reservation.type === 'klubbhus' ? 'klubbhus' : 'Slipp'}</p>
             <p>
               {reservation.status === 'pending'
