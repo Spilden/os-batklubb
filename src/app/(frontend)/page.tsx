@@ -3,6 +3,8 @@ import React from 'react'
 import config from '@/payload.config'
 import PartnerCard from '@/components/PartnerCard'
 
+import WeatherWidget from '@/components/WeatherWidget'
+
 export default async function HomePage() {
   const payload = await getPayload({ config })
   const { docs: partners } = await payload.find({
@@ -54,6 +56,7 @@ export default async function HomePage() {
 
       <section className="bg-surface rounded-xl shadow-lg w-full mt-4">
         <div className="h-50">
+          <WeatherWidget></WeatherWidget>
 
         </div>
       </section>
