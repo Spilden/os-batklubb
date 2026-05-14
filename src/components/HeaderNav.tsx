@@ -18,7 +18,7 @@ export default function HeaderNav({ user }: props) {
 
   async function handleLogout() {
     await fetch('/api/users/logout', { method: 'POST', credentials: 'include' })
-    router.push("/")
+    router.push('/')
     router.refresh()
   }
 
@@ -39,14 +39,14 @@ export default function HeaderNav({ user }: props) {
   )
 
   return (
-    <header className="bg-surface p-8 shadow-lg sticky top-0 z-50">
+    <header className="bg-surface p-4 lg:p-8 shadow-lg sticky top-0 z-50">
       <nav className="flex items-center justify-between">
         <Link href="/">
           <Image src="/obk_logo.svg" alt="Os Båtklubb" width={120} height={60} priority />
         </Link>
 
         {/*Desktop navigasjon*/}
-        <ul className="hidden lg:flex gap-2">
+        <ul className="hidden lg:flex gap-1">
           <li>
             <Link href="/">
               <BaseButton>Hjem</BaseButton>
@@ -59,7 +59,7 @@ export default function HeaderNav({ user }: props) {
           </li>
           <li>
             <Link href="/about">
-              <BaseButton>Om Klubben</BaseButton>
+              <BaseButton>Om oss</BaseButton>
             </Link>
           </li>
           <li>
@@ -74,7 +74,7 @@ export default function HeaderNav({ user }: props) {
           </li>
           <li className={`${user ? 'block' : 'hidden'}`}>
             <Link href="/members">
-              <BaseButton>Medlemmer</BaseButton>
+              <BaseButton>Medlem</BaseButton>
             </Link>
           </li>
           <li>{loginButton}</li>
