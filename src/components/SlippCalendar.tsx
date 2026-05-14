@@ -56,6 +56,8 @@ export function SlippCalendar({ currentUser, initialRequests, settings }: Props)
         id: String(req.id),
         start: req.startTime,
         end: req.endTime,
+        backgroundColor: 'transparent',
+        borderColor: 'transparent',
         extendedProps: { req, isMine },
       }
     }),

@@ -17,7 +17,19 @@ function renderEventContent(info: EventContentArg) {
     req: { status: string; user: { id: number; name?: string; email?: string } | number }
     isMine: boolean
   }
-  if (!req) return null
+  if (!req) {
+    return (
+      <div
+        className="rounded-md px-2 py-1 text-xs h-full overflow-hidden cursor-pointer ring-0 hover:ring-1 hover:ring-ocean transition-all"
+        style={{
+          backgroundColor: info.event.extendedProps.color ?? '#378ADD',
+          color: '#fff',
+        }}
+      >
+        <div className="font-semibold truncate">{info.event.title}</div>
+      </div>
+    )
+  }
 
   const color = isMine
     ? req.status === 'approved'

@@ -4,6 +4,7 @@ import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import {getWind, getTidevann} from '@/utils/weather'
 import { BaseMemberCard } from '@/components/BaseMemberCard'
+import { EventCalendar } from '@/components/EventCalendar'
 
 export default async function MembersPage() {
   const payload = await getPayload({ config })
@@ -22,8 +23,8 @@ export default async function MembersPage() {
   const currentTime = new Date()
   const nextTide = tidevann?.find((t) => t.tid > currentTime)
   const highLowWater = nextTide?.flag === 'high' ? 'høyvann' : 'lavvann'
-  if(!vind) return <p>Kunne ikke hente vindinformasjon</p>
-  if(!tidevann) return <p>Kunne ikke hente tidevannet</p>
+  if (!vind) return <p>Kunne ikke hente vindinformasjon</p>
+  if (!tidevann) return <p>Kunne ikke hente tidevannet</p>
 
   const now = new Date().toISOString()
 
@@ -40,8 +41,8 @@ export default async function MembersPage() {
         {
           endTime: {
             greater_than_equal: now,
-          }
-        }
+          },
+        },
       ],
     },
   })
@@ -74,11 +75,11 @@ export default async function MembersPage() {
     ...(venueReservations ?? []),
   ].sort((a, b) => a.startTime.localeCompare(b.startTime))
 
-  function formatDate(isoString: string){
+  function formatDate(isoString: string) {
     const date = new Date(isoString).toLocaleDateString('nb-NO', {
       day: '2-digit',
       month: '2-digit',
-      year: '2-digit'
+      year: '2-digit',
     })
     const time = new Date(isoString).toLocaleTimeString('nb-NO', {
       hour: '2-digit',
@@ -88,7 +89,7 @@ export default async function MembersPage() {
     return `${date}  ${time}`
   }
 
-  function showReservations(){
+  function showReservations() {
     return (
       <>
         <div className="grid grid-cols-4">
@@ -101,12 +102,8 @@ export default async function MembersPage() {
           <div key={reservation.id} className="grid grid-cols-4">
             <p>Slipp</p>
             <p>{reservation.status}</p>
-            <p>
-              {formatDate(reservation.startTime)}
-            </p>
-            <p>
-              {formatDate(reservation.endTime)}
-            </p>
+            <p>{formatDate(reservation.startTime)}</p>
+            <p>{formatDate(reservation.endTime)}</p>
           </div>
         ))}
       </>
@@ -129,21 +126,21 @@ export default async function MembersPage() {
             content={
               <div className="flex items-center gap-4">
                 <span>{vind.metric.windSpeed} m/s</span>
-                <WindArrow/>
+                <WindArrow />
               </div>
             }
             footer={vind.obsTimeLocal.slice(5, 16).replace('-', '/')}
           />
         </div>
-        <div className="grid lg:grid-cols-2 gap-4">
-          <BaseMemberCard title="Mine Reservasjoner" content={showReservations()}/>
+        <div className="grid xl:grid-cols-2 gap-4">
+          <BaseMemberCard title="Mine Reservasjoner" content={showReservations()} />
           <BaseMemberCard title="Min Båt" content="innhold" footer="footer" />
           <BaseMemberCard title="Min Bruker" content="innhold" footer="footer" />
-          <BaseMemberCard title="Eventkalender" content="innhold" footer="footer" />
+          <BaseMemberCard className="pl-4">
+            <EventCalendar />
+          </BaseMemberCard>
         </div>
       </div>
     </div>
   )
 }
-
-
