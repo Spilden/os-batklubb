@@ -52,6 +52,12 @@ export default async function HomePage() {
         </div>
       ))}
 
+      <section className="bg-surface rounded-xl shadow-lg w-full mt-4">
+        <div className="h-50">
+
+        </div>
+      </section>
+
       {partners.length > 0 && (
         <section className="bg-surface rounded-xl shadow-lg w-full mt-4">
           <div className="flex flex-wrap justify-center gap-4 p-4">
