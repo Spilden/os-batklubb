@@ -1,6 +1,6 @@
 ﻿import { NavButton } from '@/components/NavButton'
 import React from 'react'
-import Link from 'next/link'
+import BaseButton from '@/components/BaseButton'
 
 export default function MembersLayout(props: { children: React.ReactNode }) {
   const { children } = props
@@ -8,15 +8,19 @@ export default function MembersLayout(props: { children: React.ReactNode }) {
   return (
     <div className="flex flex-col lg:flex-row w-full gap-4 min-h-[calc(100vh-296px)]">
       <nav className="flex lg:hidden">
-        <Link href="/members" className="flex-1 text-center p-3 text-sm">
+        <BaseButton href="/members" variant="text" className="flex-1 text-center p-3 text-sm">
           Medlemsside
-        </Link>
-        <Link href="/members/slipp" className="flex-1 text-center p-3 text-sm">
+        </BaseButton>
+        <BaseButton href="/members/slipp" variant="text" className="flex-1 text-center p-3 text-sm">
           Slipp
-        </Link>
-        <Link href="/members/clubhouse" className="flex-1 text-center p-3 text-sm">
+        </BaseButton>
+        <BaseButton
+          href="/members/clubhouse"
+          variant="text"
+          className="flex-1 text-center p-3 text-sm"
+        >
           Klubbhus
-        </Link>
+        </BaseButton>
       </nav>
       <aside className="hidden lg:block w-xs bg-surface self-stretch -ml-4 -mt-4 -mb-4 z-10">
         <div className="flex flex-col fixed w-xs top-[123] pt-8">
