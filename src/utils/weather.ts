@@ -44,7 +44,6 @@ export async function getWind() {
   }
 }
 
-
 type MetTimeseries = {
   time: string
   data: {
@@ -89,12 +88,30 @@ export async function getWeather() {
       temperature: current.data.instant.details.air_temperature,
       windSpeed: current.data.instant.details.wind_speed,
       symbolCode:
-      current.data.next_1_hours?.summary.symbol_code ??
+        current.data.next_1_hours?.summary.symbol_code ??
         current.data.next_6_hours?.summary.symbol_code ??
-        'cloudy'
+        'cloudy',
     }
-
   } catch {
     return null
   }
+}
+
+type WeatherInfo = {
+  label: string
+  icon: string
+}
+
+export function getWeatherInfo(symbolCode: string): WeatherInfo {
+  if (symbolCode.startsWith('clearsky')) return { label: 'Klarvær', icon: 'sun' }
+  if (symbolCode.startsWith('fair') || symbolCode.startsWith('partlycloudy'))
+    return { label: 'Delvis skyet', icon: 'cloud-sun' }
+  if (symbolCode.startsWith('cloudy')) return { label: 'Skyet', icon: 'cloud' }
+  if (symbolCode.startsWith('rain') || symbolCode.startsWith('lightrain'))
+    return { label: 'Regn', icon: 'cloud-rain' }
+  if (symbolCode.startsWith('sleet')) return { label: 'Sludd', icon: 'cloud-rain' }
+  if (symbolCode.startsWith('snow')) return { label: 'Snø', icon: 'cloud-snow' }
+  if (symbolCode.startsWith('thunder')) return { label: 'Tordenvær', icon: 'cloud-lightning' }
+  if (symbolCode.startsWith('fog')) return { label: 'Tåke', icon: 'cloud' }
+  return { label: 'Skyet', icon: 'cloud' }
 }
