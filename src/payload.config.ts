@@ -16,6 +16,7 @@ import { ContactSubmissions } from '@/collections/ContactSubmissions'
 import { SlippBookings } from '@/collections/SlippBookings'
 import { SlippSettings } from '@/globals/SlippSettings'
 import { ClubhouseBookings } from '@/collections/ClubhouseBookings'
+import { Events } from '@/collections/Events'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -33,7 +34,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, News, Partners, ContactSubmissions, SlippBookings, ClubhouseBookings],
+  collections: [Users, Media, News, Partners, ContactSubmissions, SlippBookings, ClubhouseBookings, Events],
   globals: [About, GuestMarina, SlippSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
