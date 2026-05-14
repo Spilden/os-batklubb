@@ -2,7 +2,7 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
-import {getWind, getTidevann} from '@/utils/weather'
+import { getWind, getTidevann } from '@/utils/weather'
 import { BaseMemberCard } from '@/components/BaseMemberCard'
 import { EventCalendar } from '@/components/EventCalendar'
 import WeatherWidget from '@/components/WeatherWidget'
@@ -48,8 +48,8 @@ export default async function MembersPage() {
     },
   })
 
-  /*const venueResponse = await payload.find({
-    collection: 'venue-bookings',
+  const venueResponse = await payload.find({
+    collection: 'clubhouse-bookings',
     depth: 1,
     where: {
       and: [
@@ -61,19 +61,18 @@ export default async function MembersPage() {
         {
           endTime: {
             greater_than_equal: now,
-          }
-        }
-      ]
-    }
-  })*/
+          },
+        },
+      ],
+    },
+  })
 
-  // const venueReservations = venueResponse.docs
-  const venueReservations = null // slett når data er kommet
+  const venueReservations = venueResponse.docs
   const slippReservations = slippResponse.docs
 
   const allReservations = [
-    ...(slippReservations ?? []),
-    ...(venueReservations ?? []),
+    ...slippReservations.map((r) => ({ ...r, type: 'slipp' })),
+    ...venueReservations.map((r) => ({ ...r, type: 'klubbhus' })),
   ].sort((a, b) => a.startTime.localeCompare(b.startTime))
 
   function formatDate(isoString: string) {
@@ -101,8 +100,14 @@ export default async function MembersPage() {
         </div>
         {allReservations.map((reservation) => (
           <div key={reservation.id} className="grid grid-cols-4">
-            <p>Slipp</p>
-            <p>{reservation.status}</p>
+            <p>{reservation.type === 'klubbhus' ? 'klubbhus' : 'Slipp'}</p>
+            <p>
+              {reservation.status === 'pending'
+                ? 'Venter'
+                : reservation.status === 'approved'
+                  ? 'Godkjent'
+                  : 'Avslått'}
+            </p>
             <p>{formatDate(reservation.startTime)}</p>
             <p>{formatDate(reservation.endTime)}</p>
           </div>
