@@ -43,3 +43,22 @@ export async function getWind() {
     return null
   }
 }
+
+export async function getWeather() {
+  try {
+    const res = await fetch(
+      'https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=60.1893&lon=5.4674',
+      {
+        headers: {
+          'User-Agent': `OsBatklubb/1.0 ${process.env.WEATHER_CONTACT_EMAIL}`,
+        },
+        next: { revalidate: 1800 },
+      },
+    )
+    if (!res.ok) return null
+
+    return res.json()
+  } catch {
+    return null
+  }
+}
