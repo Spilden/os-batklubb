@@ -81,7 +81,7 @@ export function BaseCalendar({ bookable, onDateSelected, ...props }: Props) {
   }
   return (
     <>
-      <div className="hidden lg:block max-w-4xl mx-auto p-4 lg:p-8 bg-surface rounded-2xl shadow-[0_6px_32px_rgba(100,70,40,0.12)] border border-border">
+      <div className="hidden lg:block max-w-4xl mx-auto p-4 lg:p-8 bg-surface rounded-2xl border border-border">
         <FullCalendar
           plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin]}
           initialView="dayGridMonth"

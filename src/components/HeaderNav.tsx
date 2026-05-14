@@ -1,5 +1,4 @@
 'use client'
-
 import Link from 'next/link'
 import Image from 'next/image'
 import BaseButton from '@/components/BaseButton'
@@ -48,34 +47,22 @@ export default function HeaderNav({ user }: props) {
         {/*Desktop navigasjon*/}
         <ul className="hidden lg:flex gap-1">
           <li>
-            <Link href="/">
-              <BaseButton>Hjem</BaseButton>
-            </Link>
+            <BaseButton href="/">Hjem</BaseButton>
           </li>
           <li>
-            <Link href="/news">
-              <BaseButton>Nyheter</BaseButton>
-            </Link>
+            <BaseButton href="/news">Nyheter</BaseButton>
           </li>
           <li>
-            <Link href="/about">
-              <BaseButton>Om oss</BaseButton>
-            </Link>
+            <BaseButton href="/about">Om oss</BaseButton>
           </li>
           <li>
-            <Link href="/guest-marina">
-              <BaseButton>Gjestehavn</BaseButton>
-            </Link>
+            <BaseButton href="/guest-marina">Gjestehavn</BaseButton>
           </li>
           <li>
-            <Link href="/contact">
-              <BaseButton>Kontakt</BaseButton>
-            </Link>
+            <BaseButton href="/contact">Kontakt</BaseButton>
           </li>
           <li className={`${user ? 'block' : 'hidden'}`}>
-            <Link href="/members">
-              <BaseButton>Medlem</BaseButton>
-            </Link>
+            <BaseButton href="/members">Medlem</BaseButton>
           </li>
           <li>{loginButton}</li>
         </ul>
@@ -98,34 +85,32 @@ export default function HeaderNav({ user }: props) {
                 </BaseButton>
               </li>
               <li>
-                <Link href="/" onClick={() => setMenuOpen(false)}>
-                  <BaseButton>Hjem</BaseButton>
-                </Link>
+                <BaseButton href="/" onClick={() => setMenuOpen(false)}>
+                  Hjem
+                </BaseButton>
               </li>
               <li>
-                <Link href="/news" onClick={() => setMenuOpen(false)}>
-                  <BaseButton>Nyheter</BaseButton>
-                </Link>
+                <BaseButton href="/news" onClick={() => setMenuOpen(false)}>
+                  Nyheter
+                </BaseButton>
               </li>
               <li>
-                <Link href="/about" onClick={() => setMenuOpen(false)}>
-                  <BaseButton>Om Klubben</BaseButton>
-                </Link>
+                <BaseButton href="/about" onClick={() => setMenuOpen(false)}>
+                  Om Klubben
+                </BaseButton>
               </li>
               <li>
-                <Link href="/guest-marina" onClick={() => setMenuOpen(false)}>
-                  <BaseButton>Gjestehavn</BaseButton>
-                </Link>
+                <BaseButton href="/guest-marina" onClick={() => setMenuOpen(false)}>
+                  Gjestehavn
+                </BaseButton>
               </li>
               <li>
-                <Link href="/contact" onClick={() => setMenuOpen(false)}>
-                  <BaseButton>Kontakt</BaseButton>
-                </Link>
+                <BaseButton href="/contact" onClick={() => setMenuOpen(false)}>
+                  Kontakt
+                </BaseButton>
               </li>
               <li className={`${user ? 'block' : 'hidden'}`}>
-                <Link href="/members">
-                  <BaseButton>Medlemmer</BaseButton>
-                </Link>
+                <BaseButton href="/members">Medlemmer</BaseButton>
               </li>
               <li>{loginButton}</li>
             </ul>
