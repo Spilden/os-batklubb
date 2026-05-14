@@ -14,6 +14,9 @@ export default function MembersLayout(props: { children: React.ReactNode }) {
         <Link href="/members/slipp" className="flex-1 text-center p-3 text-sm">
           Slipp
         </Link>
+        <Link href="/members/clubhouse" className="flex-1 text-center p-3 text-sm">
+          Klubbhus
+        </Link>
       </nav>
       <aside className="hidden lg:block w-xs bg-surface self-stretch -ml-4 -mt-4 -mb-4 z-50">
         <div className="flex flex-col">

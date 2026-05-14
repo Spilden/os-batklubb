@@ -1,5 +1,5 @@
 import { getPayload } from 'payload'
-import config from '@/payload.config'
+import config from 'src/payload.config'
 import { headers } from 'next/headers'
 
 export async function getUser() {
