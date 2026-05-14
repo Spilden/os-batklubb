@@ -5,6 +5,7 @@ import Image from 'next/image'
 import BaseButton from '@/components/BaseButton'
 import { useState } from 'react'
 import LoginModal from '@/components/modals/LoginModal'
+import { useRouter } from 'next/navigation'
 
 type props = {
   user: { email: string } | null
@@ -13,10 +14,12 @@ type props = {
 export default function HeaderNav({ user }: props) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [showLoginModal, setShowLoginModal] = useState(false)
+  const router = useRouter()
 
   async function handleLogout() {
     await fetch('/api/users/logout', { method: 'POST', credentials: 'include' })
-    window.location.reload()
+    router.push('/')
+    router.refresh()
   }
 
   const loginButton = user ? (
@@ -36,14 +39,14 @@ export default function HeaderNav({ user }: props) {
   )
 
   return (
-    <header className="bg-white p-8 shadow-lg relative">
+    <header className="bg-surface p-4 lg:p-8 shadow-lg sticky top-0 z-50">
       <nav className="flex items-center justify-between">
         <Link href="/">
-          <Image src="/obk_logo.svg" alt="Os Båtklubb" width={240} height={120} />
+          <Image src="/obk_logo.svg" alt="Os Båtklubb" width={120} height={60} priority />
         </Link>
 
         {/*Desktop navigasjon*/}
-        <ul className="hidden lg:flex gap-2">
+        <ul className="hidden lg:flex gap-1">
           <li>
             <Link href="/">
               <BaseButton>Hjem</BaseButton>
@@ -56,7 +59,7 @@ export default function HeaderNav({ user }: props) {
           </li>
           <li>
             <Link href="/about">
-              <BaseButton>Om Klubben</BaseButton>
+              <BaseButton>Om oss</BaseButton>
             </Link>
           </li>
           <li>
@@ -67,6 +70,11 @@ export default function HeaderNav({ user }: props) {
           <li>
             <Link href="/contact">
               <BaseButton>Kontakt</BaseButton>
+            </Link>
+          </li>
+          <li className={`${user ? 'block' : 'hidden'}`}>
+            <Link href="/members">
+              <BaseButton>Medlem</BaseButton>
             </Link>
           </li>
           <li>{loginButton}</li>
@@ -83,7 +91,7 @@ export default function HeaderNav({ user }: props) {
             className="fixed inset-0 bg-black/50 z-40 lg:hidden"
             onClick={() => setMenuOpen(false)}
           >
-            <ul className="fixed top-0 right-0 h-full w-72 bg-white z-50 flex flex-col gap-2 p-8 shadow-2xl lg:hidden">
+            <ul className="fixed top-0 right-0 h-full w-auto max-w-xs bg-white z-50 flex flex-col gap-2 p-8 shadow-2xl lg:hidden items-end">
               <li className="mb-4">
                 <BaseButton variant="secondary" onClick={() => setMenuOpen(false)}>
                   X
@@ -112,6 +120,11 @@ export default function HeaderNav({ user }: props) {
               <li>
                 <Link href="/contact" onClick={() => setMenuOpen(false)}>
                   <BaseButton>Kontakt</BaseButton>
+                </Link>
+              </li>
+              <li className={`${user ? 'block' : 'hidden'}`}>
+                <Link href="/members">
+                  <BaseButton>Medlemmer</BaseButton>
                 </Link>
               </li>
               <li>{loginButton}</li>
