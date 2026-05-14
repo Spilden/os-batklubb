@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { BaseModal } from '@/components/modals/BaseModal'
+import BaseButton from '@/components/BaseButton'
 
 type Props = {
   title: string
@@ -38,18 +39,18 @@ export function BookingModal({
         )}
 
         <div className="flex justify-end gap-2">
-          <button
+          <BaseButton
             onClick={onCancelAction}
-            className="rounded-lg border border-border px-4 py-2 text-sm text-text hover:bg-background"
+            variant="secondary"
           >
             Avbryt
-          </button>
-          <button
+          </BaseButton>
+          <BaseButton
             onClick={() => onConfirmAction(comment)}
-            className="rounded-lg bg-primary px-4 py-2 text-sm text-surface hover:bg-primary-light"
+            variant="primary"
           >
             {confirmLabel}
-          </button>
+          </BaseButton>
         </div>
     </BaseModal>)
 }
