@@ -1,4 +1,4 @@
-import { getUser } from '@/app/lib/auth'
+import { getUser } from '@/lib/auth'
 import HeaderNav from '@/components/HeaderNav'
 
 export default async function Header() {

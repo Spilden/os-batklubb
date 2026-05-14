@@ -2,7 +2,7 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
-import {getWind, getTidevann} from '@/app/(frontend)/members/actions'
+import {getWind, getTidevann} from '@/utils/weather'
 import { BaseMemberCard } from '@/components/BaseMemberCard'
 
 export default async function MembersPage() {
