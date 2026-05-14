@@ -20,10 +20,16 @@ export default async function WeatherWidget() {
 
   return (
     <div>
-      <Icon></Icon>
-      <p>{data.temperature}°C</p>
-      <p>{label}</p>
-      <p>{data.windSpeed} m/s</p>
+      <div className="flex items-center gap-6 px-6 py-4">
+        <Icon className="w-10 h-10" />
+        <div>
+          <p className="text-2xl font-bold">{Math.round(data.temperature)}°C</p>
+          <p className="text-sm text-text-muted">{label}</p>
+        </div>
+        <div className="border-l pl-6">
+          <p className="text-sm text-text-muted">{Math.round(data.windSpeed)} m/s</p>
+        </div>
+      </div>
     </div>
   )
 }
