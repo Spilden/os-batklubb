@@ -4,7 +4,7 @@ export const ContactSubmissions: CollectionConfig = {
   slug: 'contact-submissions',
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'email', 'createdAt'],
+    defaultColumns: ['recipient', 'name', 'email', 'createdAt'],
   },
   access: {
     create: () => true,
@@ -13,6 +13,13 @@ export const ContactSubmissions: CollectionConfig = {
     delete: () => false,
   },
   fields: [
+    {
+      name: 'recipient',
+      type: 'text',
+      label: 'Mottaker',
+      required: true,
+    },
+
     {
       name: 'name',
       type: 'text',
@@ -30,6 +37,6 @@ export const ContactSubmissions: CollectionConfig = {
       type: 'textarea',
       label: 'Melding',
       required: true,
-    }
-  ]
+    },
+  ],
 }

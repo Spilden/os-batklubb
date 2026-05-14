@@ -4,27 +4,38 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
+import { resendAdapter } from '@payloadcms/email-resend'
 
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
-import { News } from './collections/News'
-import { Partners} from './collections/Partners'
-import { About } from './globals/About'
+import { Users } from '@/collections/Users'
+import { Media } from '@/collections/Media'
+import { News } from '@/collections/News'
+import { Partners } from '@/collections/Partners'
+import { About } from '@/globals/About'
 import { GuestMarina } from '@/globals/GuestMarina'
-import { ContactSubmissions} from './collections/ContactSubmissions'
+import { ContactSubmissions } from '@/collections/ContactSubmissions'
+import { SlippBookings } from '@/collections/SlippBookings'
+import { SlippSettings } from '@/globals/SlippSettings'
+import { ClubhouseBookings } from '@/collections/ClubhouseBookings'
+import { Events } from '@/collections/Events'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  serverURL: process.env.NEXT_PUBLIC_URL,
+  email: resendAdapter({
+    defaultFromAddress: process.env.CONTACT_FROM_EMAIL ?? '',
+    defaultFromName: 'Os Båtklubb',
+    apiKey: process.env.RESEND_API_KEY ?? '',
+  }),
   admin: {
     user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, News, Partners],
-  globals: [About, GuestMarina],
+  collections: [Users, Media, News, Partners, ContactSubmissions, SlippBookings, ClubhouseBookings, Events],
+  globals: [About, GuestMarina, SlippSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
