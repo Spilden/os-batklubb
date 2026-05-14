@@ -39,7 +39,7 @@ export default function HeaderNav({ user }: props) {
   )
 
   return (
-    <header className="bg-surface p-8 shadow-lg relative">
+    <header className="bg-surface p-8 shadow-lg sticky top-0 z-50">
       <nav className="flex items-center justify-between">
         <Link href="/">
           <Image src="/obk_logo.svg" alt="Os Båtklubb" width={120} height={60} priority />
