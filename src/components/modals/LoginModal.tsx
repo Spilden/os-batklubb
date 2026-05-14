@@ -2,6 +2,7 @@
 import BaseButton from '@/components/BaseButton'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { BaseModal } from '@/components/modals/BaseModal'
 
 type View = 'login' | 'forgot'
 
@@ -51,22 +52,19 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
   }
 
   return (
-    <div
-      className="fixed inset-0 bg-black/50 flex items-center justify-center z-100"
-      onClick={onCloseAction}
-    >
-      <div className="bg-background rounded-xl shadow-lg" onClick={(e) => e.stopPropagation()}>
-        <div className="rounded-t-xl bg-background p-4">
+    <BaseModal onCloseAction={onCloseAction}>
           <h1 className="text-text text-2xl font-bold text-center">
             {view === 'login' ? 'Logg Inn' : 'Glemt Passord'}
           </h1>
-        </div>
 
         {view === 'login' ? (
-          <form className="flex flex-col p-6 gap-4" onSubmit={(e) => {
-            e.preventDefault()
-            handleLogin()
-          }}>
+          <form
+            className="flex flex-col p-6 gap-4"
+            onSubmit={(e) => {
+              e.preventDefault()
+              handleLogin()
+            }}
+          >
             <div className="flex flex-col gap-1">
               {error && <p className="text-red-600 text-sm">{error}</p>}
               <h2 className="text-text font-medium text-sm uppercase">E-post</h2>
@@ -138,7 +136,6 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
             </div>
           </form>
         )}
-      </div>
-    </div>
+    </BaseModal>
   )
 }

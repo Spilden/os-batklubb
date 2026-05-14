@@ -1,6 +1,7 @@
 ﻿'use client'
 
 import { useState, useRef } from 'react'
+import { BaseModal } from '@/components/modals/BaseModal'
 
 type Props = {
   title: string
@@ -23,16 +24,7 @@ export function BookingModal({
   const downOnOverlay = useRef(false)
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-text/40 p-4"
-      onMouseDown={(e) => {
-        downOnOverlay.current = e.target === e.currentTarget
-      }}
-      onMouseUp={() => {
-        if (downOnOverlay.current) onCancelAction()
-      }}
-    >
-      <div className="w-full max-w-md bg-surface rounded-2xl p-6 border border-border">
+    <BaseModal onCloseAction={onCancelAction}>
         <h2 className="font-display mb-4 text-xl font-semibold text-text">{title}</h2>
         <div className="mb-4 text-sm text-text">{info}</div>
 
@@ -60,7 +52,5 @@ export function BookingModal({
             {confirmLabel}
           </button>
         </div>
-      </div>
-    </div>
-  )
+    </BaseModal>)
 }

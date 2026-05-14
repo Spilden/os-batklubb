@@ -1,4 +1,5 @@
 import { Event } from '@/payload-types'
+import { BaseModal } from '@/components/modals/BaseModal'
 
 type SelectedEvent = Event | null
 
@@ -33,14 +34,7 @@ function Row({ icon, children }: { icon: string; children: React.ReactNode }) {
 
 export function EventModal({ event, onClose }: { event: Event; onClose: () => void }) {
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40"
-      onClick={onClose}
-    >
-      <div
-        className="bg-surface border border-border rounded-2xl shadow-lg w-full max-w-md p-6"
-        onClick={(e) => e.stopPropagation()}
-      >
+    <BaseModal onCloseAction={onClose}>
         <div className="flex items-start justify-between mb-4">
           <div>
             {event.status === 'cancelled' && (
@@ -75,7 +69,6 @@ export function EventModal({ event, onClose }: { event: Event; onClose: () => vo
             {event.comment}
           </div>
         )}
-      </div>
-    </div>
+    </BaseModal>
   )
 }
