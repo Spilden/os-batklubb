@@ -1,10 +1,10 @@
 export async function getTidevann() {
   try {
-    const now = new Date();
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 2);
+    const now = new Date()
+    const tomorrow = new Date()
+    tomorrow.setDate(tomorrow.getDate() + 2)
     const format = (d: Date) =>
-      `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}T00:00`;
+      `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}T00:00`
 
     const response = await fetch(
       `https://vannstand.kartverket.no/tideapi.php?lat=60.1529229&lon=5.4455994&fromtime=${encodeURIComponent(format(now))}&totime=${encodeURIComponent(format(tomorrow))}&datatype=tab&refcode=cd&place=&file=&lang=nn&interval=10&dst=0&tzone=&tide_request=locationdata`,
