@@ -3,6 +3,8 @@ import React from 'react'
 import config from '@/payload.config'
 import PartnerCard from '@/components/PartnerCard'
 
+import WeatherWidget from '@/components/WeatherWidget'
+
 export default async function HomePage() {
   const payload = await getPayload({ config })
   const { docs: partners } = await payload.find({
@@ -51,6 +53,12 @@ export default async function HomePage() {
           </div>
         </div>
       ))}
+
+      <section className="bg-surface rounded-xl shadow-lg w-full mt-4 p-6">
+        <div className="flex justify-center items-center w-full">
+          <WeatherWidget days={3} />
+        </div>
+      </section>
 
       {partners.length > 0 && (
         <section className="bg-surface rounded-xl shadow-lg w-full mt-4">

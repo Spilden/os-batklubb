@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation'
 import {getWind, getTidevann} from '@/utils/weather'
 import { BaseMemberCard } from '@/components/BaseMemberCard'
 import { EventCalendar } from '@/components/EventCalendar'
+import WeatherWidget from '@/components/WeatherWidget'
 
 export default async function MembersPage() {
   const payload = await getPayload({ config })
@@ -131,6 +132,11 @@ export default async function MembersPage() {
             }
             footer={vind.obsTimeLocal.slice(5, 16).replace('-', '/')}
           />
+          <BaseMemberCard title="Været nå">
+            <div className="flex justify-center">
+              <WeatherWidget days={1} variant="compact" />
+            </div>
+          </BaseMemberCard>
         </div>
         <div className="grid xl:grid-cols-2 gap-4">
           <BaseMemberCard title="Mine Reservasjoner" content={showReservations()} />
