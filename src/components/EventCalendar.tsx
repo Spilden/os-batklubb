@@ -73,7 +73,7 @@ export function EventCalendar() {
           right: 'prev,next',
         }}
       />
-      {selected && <EventModal event={selected} onClose={() => setSelected(null)} />}
+      {selected && <EventModal event={selected} onCloseAction={() => setSelected(null)} />}
     </>
   )
 }

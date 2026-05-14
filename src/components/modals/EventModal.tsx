@@ -1,8 +1,6 @@
 import { Event } from '@/payload-types'
 import { BaseModal } from '@/components/modals/BaseModal'
 
-type SelectedEvent = Event | null
-
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString('nb-NO', {
     weekday: 'long',
@@ -32,9 +30,9 @@ function Row({ icon, children }: { icon: string; children: React.ReactNode }) {
   )
 }
 
-export function EventModal({ event, onClose }: { event: Event; onClose: () => void }) {
+export function EventModal({ event, onCloseAction }: { event: Event; onCloseAction: () => void }) {
   return (
-    <BaseModal onCloseAction={onClose}>
+    <BaseModal onCloseAction={onCloseAction}>
         <div className="flex items-start justify-between mb-4">
           <div>
             {event.status === 'cancelled' && (
@@ -45,7 +43,7 @@ export function EventModal({ event, onClose }: { event: Event; onClose: () => vo
             <h2 className="text-xl font-semibold text-text">{event.title}</h2>
           </div>
           <button
-            onClick={onClose}
+            onClick={onCloseAction}
             className="ml-4 p-1.5 rounded-lg hover:bg-border/30 text-text-muted transition-colors"
             aria-label="Lukk"
           >

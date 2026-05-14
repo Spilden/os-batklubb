@@ -1,6 +1,6 @@
 ﻿'use client'
 
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { BaseModal } from '@/components/modals/BaseModal'
 
 type Props = {
@@ -21,7 +21,6 @@ export function BookingModal({
   onCancelAction,
 }: Props) {
   const [comment, setComment] = useState('')
-  const downOnOverlay = useRef(false)
 
   return (
     <BaseModal onCloseAction={onCancelAction}>
