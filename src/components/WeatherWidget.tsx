@@ -28,7 +28,7 @@ export default async function WeatherWidget({
 
   return (
     <div
-      className={`flex items-center  w-full gap-12  ${variant === 'compact' ? 'p-0' : 'px-6 py-4'}`}
+      className={`flex items-center gap-12 ${variant === 'compact' ? 'p-0 w-full' : 'px-6 py-4 w-fit mx-auto'}`}
     >
       <div className="flex flex-col items-center gap-2">
         {variant === 'full' && <p className="text-sm text-text-muted">Nå</p>}

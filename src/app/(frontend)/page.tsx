@@ -54,8 +54,10 @@ export default async function HomePage() {
         </div>
       ))}
 
-      <section className="bg-surface rounded-xl shadow-lg w-full mt-4 p-6 flex justify-center">
-        <WeatherWidget days={3} />
+      <section className="bg-surface rounded-xl shadow-lg w-full mt-4 p-6">
+        <div className="flex justify-center items-center w-full">
+          <WeatherWidget days={3} />
+        </div>
       </section>
 
       {partners.length > 0 && (
