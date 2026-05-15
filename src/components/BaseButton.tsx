@@ -29,7 +29,7 @@ export default function BaseButton({
   }
   const classes = `${variants[variant]}${className ? ` ${className}` : ''}`
   if (href){
-    console.log(classes)
+
     return (
       <Link className={`inline-block ${classes}`} href={href}>
         {children}
