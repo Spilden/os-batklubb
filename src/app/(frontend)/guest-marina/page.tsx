@@ -5,10 +5,11 @@ import { RichText } from '@payloadcms/richtext-lexical/react'
 import { imageGuard } from '@/utils/ImageGuard'
 import Image from 'next/image'
 import Link from 'next/link'
+import type { GuestMarina } from '@/payload-types'
 
 export default async function GuestMarinaPage() {
   const payload = await getPayload({ config: payloadConfig })
-  const data = await payload.findGlobal({ slug: 'guestMarina' })
+  const data: GuestMarina = await payload.findGlobal({ slug: 'guestMarina' })
 
   const image = imageGuard(data.image)
 
