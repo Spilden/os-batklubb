@@ -7,7 +7,7 @@ export function VaktbokInstructionsModal({ onCloseAction }: { onCloseAction: () 
         <h2 className="text-xl font-semibold text-text">Slik fungerer kameravakten</h2>
         <button
           onClick={onCloseAction}
-          className="ml-4 p-1.5 rounded-lg hover:bg-border/30 text-text-muted transition-colors"
+          className="ml-4 p-1.5 rounded-lg hover:bg-border/30 text-text-muted transition-colors cursor-pointer"
           aria-label="Lukk"
         >
           ✕

@@ -57,7 +57,7 @@ export function VaktbokForm() {
         )}
 
         <div className="flex justify-end">
-          <BaseButton type="button" variant="text" onClick={() => setShowInstructions(true)}>
+          <BaseButton type="button" variant="secondary" onClick={() => setShowInstructions(true)}>
             Instruksjoner
           </BaseButton>
         </div>
