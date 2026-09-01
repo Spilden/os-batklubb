@@ -14,8 +14,19 @@ export const CameraLogEntries: CollectionConfig = {
   access: {
     read: ({ req: { user } }) => Boolean(user),
     create: ({ req: { user } }) => Boolean(user),
-    update: ({ req: { user } }) => Boolean(user),
-    delete: ({ req: { user } }) => Boolean(user),
+    update: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
+    delete: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
+  },
+  hooks: {
+    beforeChange: [
+      ({ req, operation, data }) => {
+        if (operation === 'create' && req.user) {
+          data.user = req.user.id
+          data.authorName = req.user.name
+        }
+        return data
+      },
+    ],
   },
   fields: [
     {
