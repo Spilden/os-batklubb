@@ -54,12 +54,10 @@ export function VaktbokForm() {
       )}
 
       <div className="flex flex-col gap-1">
-        <label htmlFor="content" className="text-text font-medium text-sm uppercase">
-          Rapport
-        </label>
         <textarea
           id="content"
           name="content"
+          aria-label="Rapport"
           required
           rows={4}
           placeholder="Alt i orden"
