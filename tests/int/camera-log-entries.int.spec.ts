@@ -37,4 +37,24 @@ describe('camera-log-entries collection', () => {
     expect(entry.user).toBeFalsy()
     expect(entry.period).toBeFalsy()
   })
+
+  it('rejects create for an unauthenticated request', async () => {
+    await expect(
+      payload.create({
+        collection: 'camera-log-entries',
+        overrideAccess: false,
+        data: {
+          date: new Date().toISOString(),
+          authorName: 'Uinnlogget',
+          content: 'Skal ikke gå gjennom',
+        },
+      }),
+    ).rejects.toThrow()
+  })
+
+  it('rejects read for an unauthenticated request', async () => {
+    await expect(
+      payload.find({ collection: 'camera-log-entries', overrideAccess: false }),
+    ).rejects.toThrow()
+  })
 })

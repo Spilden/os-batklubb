@@ -11,6 +11,12 @@ export const CameraLogEntries: CollectionConfig = {
     defaultColumns: ['authorName', 'user', 'period', 'date', 'source'],
     defaultSort: '-date',
   },
+  access: {
+    read: ({ req: { user } }) => Boolean(user),
+    create: ({ req: { user } }) => Boolean(user),
+    update: ({ req: { user } }) => Boolean(user),
+    delete: ({ req: { user } }) => Boolean(user),
+  },
   fields: [
     {
       name: 'date',
