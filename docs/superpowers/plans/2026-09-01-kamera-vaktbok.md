@@ -12,7 +12,8 @@
 
 ## Global Constraints
 
-- `camera-log-entries` requires an authenticated user for `read`, `create`, `update`, and `delete` (`Boolean(req.user)`) — unlike `slipp-bookings` / `clubhouse-bookings`, which stay open. This entry log determines who owes money for incomplete dugnad, so both reading and writing it through the public Payload REST/GraphQL API must be closed to anyone who isn't logged in. The page's own `if (!user) redirect(...)` check is additional, not a substitute — the Payload Local API calls in `page.tsx`/`actions.ts` use the default `overrideAccess: true` and so aren't gated by this block themselves, but every request that reaches them has already passed the page's own auth check.
+- `camera-log-entries` requires an authenticated user for `read` and `create` (`Boolean(req.user)`), and additionally requires the `admin` role for `update` and `delete` (`Boolean(user?.roles?.includes('admin'))`) — unlike `slipp-bookings` / `clubhouse-bookings`, which stay open. This entry log determines who owes money for incomplete dugnad, so reading/writing it through the public Payload REST/GraphQL API must be closed to anyone not logged in, and changing/deleting entries closed to everyone but admins (ordinary members only ever create and read — corrections happen via `/admin`). The page's own `if (!user) redirect(...)` check is additional, not a substitute — the Payload Local API calls in `page.tsx`/`actions.ts` use the default `overrideAccess: true` and so aren't gated by this block themselves, but every request that reaches them has already passed the page's own auth check.
+- `camera-log-entries` has a `beforeChange` hook that overwrites `user`/`authorName` with the authenticated requester's own identity on every `create` where `req.user` is set — this stops one logged-in member from impersonating another by submitting someone else's name/id directly to the API (the in-app form was never going to send the wrong identity, but a hand-crafted API call could). The one-off import script creates entries with no `req.user` in scope, so it's unaffected and keeps setting historical author names freely.
 - No digital vaktliste/turnusfordeling (duty roster) in this plan — logging only. Admin cross-checks manually against the external roster.
 - `period` is always optional and never enforced against the actual clock — it's a soft label the user can freely override.
 - All user-facing text is Norwegian (bokmål), matching the rest of the app.
@@ -52,8 +53,19 @@ export const CameraLogEntries: CollectionConfig = {
   access: {
     read: ({ req: { user } }) => Boolean(user),
     create: ({ req: { user } }) => Boolean(user),
-    update: ({ req: { user } }) => Boolean(user),
-    delete: ({ req: { user } }) => Boolean(user),
+    update: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
+    delete: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
+  },
+  hooks: {
+    beforeChange: [
+      ({ req, operation, data }) => {
+        if (operation === 'create' && req.user) {
+          data.user = req.user.id
+          data.authorName = req.user.name
+        }
+        return data
+      },
+    ],
   },
   fields: [
     {
@@ -144,11 +156,35 @@ import { describe, it, beforeAll, afterAll, expect } from 'vitest'
 
 let payload: Payload
 let createdId: number
+let memberUser: { id: number; email: string; collection: 'users' }
+let adminUser: { id: number; email: string; collection: 'users' }
 
 describe('camera-log-entries collection', () => {
   beforeAll(async () => {
     const payloadConfig = await config
     payload = await getPayload({ config: payloadConfig })
+
+    const member = await payload.create({
+      collection: 'users',
+      data: {
+        email: 'camera-log-member-test@example.com',
+        name: 'Medlem Testesen',
+        password: 'test1234',
+        roles: ['member'],
+      },
+    })
+    memberUser = { id: member.id, email: member.email, collection: 'users' }
+
+    const admin = await payload.create({
+      collection: 'users',
+      data: {
+        email: 'camera-log-admin-test@example.com',
+        name: 'Admin Testesen',
+        password: 'test1234',
+        roles: ['admin'],
+      },
+    })
+    adminUser = { id: admin.id, email: admin.email, collection: 'users' }
   })
 
   afterAll(async () => {
@@ -158,6 +194,8 @@ describe('camera-log-entries collection', () => {
         where: { id: { equals: createdId } },
       })
     }
+    await payload.delete({ collection: 'users', where: { id: { equals: memberUser.id } } })
+    await payload.delete({ collection: 'users', where: { id: { equals: adminUser.id } } })
   })
 
   it('creates an entry with required fields and defaults the source to live', async () => {
@@ -197,15 +235,95 @@ describe('camera-log-entries collection', () => {
       payload.find({ collection: 'camera-log-entries', overrideAccess: false }),
     ).rejects.toThrow()
   })
+
+  it('forces authorName and user to the authenticated requester on create, ignoring spoofed values', async () => {
+    const entry = await payload.create({
+      collection: 'camera-log-entries',
+      overrideAccess: false,
+      user: memberUser,
+      data: {
+        date: new Date().toISOString(),
+        authorName: 'Noen Andre',
+        user: adminUser.id,
+        content: 'Forsøk på å late som noen andre',
+      },
+    })
+
+    expect(entry.authorName).toBe('Medlem Testesen')
+    expect(entry.user).toBe(memberUser.id)
+
+    await payload.delete({ collection: 'camera-log-entries', id: entry.id })
+  })
+
+  it('rejects update from a non-admin member but allows it for an admin', async () => {
+    const entry = await payload.create({
+      collection: 'camera-log-entries',
+      data: {
+        date: new Date().toISOString(),
+        authorName: 'Medlem Testesen',
+        content: 'Original tekst',
+      },
+    })
+
+    await expect(
+      payload.update({
+        collection: 'camera-log-entries',
+        id: entry.id,
+        overrideAccess: false,
+        user: memberUser,
+        data: { content: 'Uautorisert forsøk' },
+      }),
+    ).rejects.toThrow()
+
+    const updated = await payload.update({
+      collection: 'camera-log-entries',
+      id: entry.id,
+      overrideAccess: false,
+      user: adminUser,
+      data: { content: 'Rettet av admin' },
+    })
+    expect(updated.content).toBe('Rettet av admin')
+
+    await payload.delete({ collection: 'camera-log-entries', id: entry.id })
+  })
+
+  it('rejects delete from a non-admin member but allows it for an admin', async () => {
+    const entry = await payload.create({
+      collection: 'camera-log-entries',
+      data: {
+        date: new Date().toISOString(),
+        authorName: 'Medlem Testesen',
+        content: 'Skal slettes',
+      },
+    })
+
+    await expect(
+      payload.delete({
+        collection: 'camera-log-entries',
+        id: entry.id,
+        overrideAccess: false,
+        user: memberUser,
+      }),
+    ).rejects.toThrow()
+
+    await payload.delete({
+      collection: 'camera-log-entries',
+      id: entry.id,
+      overrideAccess: false,
+      user: adminUser,
+    })
+  })
 })
 ```
 
-The first test (`creates an entry with required fields...`) uses the Local API's default `overrideAccess: true`, so it is unaffected by the new `access` block — that's intentional, it's testing the schema, not the access rules. The two new tests explicitly opt back into access checking with `overrideAccess: false` to prove `read` and `create` actually reject an unauthenticated request now that the collection requires one.
+The first test (`creates an entry with required fields...`) uses the Local API's default `overrideAccess: true`, so it is unaffected by the new `access` block — that's intentional, it's testing the schema, not the access rules. All later tests explicitly opt back into access checking with `overrideAccess: false` and a specific `user` to prove the actual rules: unauthenticated `read`/`create` are rejected, an authenticated create can never plant a spoofed `authorName`/`user` no matter what the caller sends, and `update`/`delete` require the admin role specifically (a plain member is rejected, an admin succeeds).
+
+**If the exact shape Payload's Local API expects for the `user` option doesn't match what's written above** (check `node_modules/payload/dist/collections/operations/local/*.d.ts` or just try it and read the TypeScript error), adjust to whatever the installed Payload 3.79 version actually requires — the required *behavior* (each `it()`'s assertions) is what's fixed, not this exact plumbing. Get it green for real; don't leave a test that merely compiles.
 
 - [ ] **Step 5: Run the test**
 
 Run: `npx vitest run --config ./vitest.config.mts tests/int/camera-log-entries.int.spec.ts`
-Expected: PASS (3 tests)
+Expected: PASS (6 tests)
 
 - [ ] **Step 6: Commit**
 

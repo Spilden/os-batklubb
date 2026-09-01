@@ -64,14 +64,29 @@ admin: {
 }
 ```
 
-**Access:** `read`, `create`, `update` og `delete` krever alle en
-innlogget bruker (`Boolean(req.user)`). Loggen brukes til å avgjøre hvem
-som må betale for ikke fullført dugnad, så både lesing og skriving via
-det åpne Payload REST/GraphQL-API-et må være stengt for alle andre enn
-innloggede medlemmer — i motsetning til `slipp-bookings`/
-`clubhouse-bookings`, som ikke har denne typen konsekvens og derfor
-holdes uten access-blokk. Sidens egen `if (!user) redirect(...)`-sjekk
-kommer i tillegg, ikke i stedet for, denne access-kontrollen.
+**Access:** `read` og `create` krever en innlogget bruker
+(`Boolean(req.user)`) — hvilket som helst medlem kan se historikken og
+sende inn en rapport. `update` og `delete` krever i tillegg admin-rolle
+(`Boolean(user?.roles?.includes('admin'))`) — vanlige medlemmer skal
+ikke kunne endre eller slette noens oppføringer via API-et, kun rette
+via `/admin` (jf. Ikke-mål). Loggen brukes til å avgjøre hvem som må
+betale for ikke fullført dugnad, så både lesing og skriving via det
+åpne Payload REST/GraphQL-API-et må være stengt for alle andre enn
+innloggede medlemmer, og endring/sletting stengt for alle andre enn
+admin — i motsetning til `slipp-bookings`/`clubhouse-bookings`, som
+ikke har denne typen konsekvens og derfor holdes uten access-blokk.
+Sidens egen `if (!user) redirect(...)`-sjekk kommer i tillegg, ikke i
+stedet for, denne access-kontrollen.
+
+**Impersonasjonsvern:** en `beforeChange`-hook tvinger `user` og
+`authorName` til å samsvare med den innloggede requesteren for enhver
+`create` der `req.user` finnes — uansett hva klienten faktisk sender
+inn i disse feltene. Uten dette kunne et hvilket som helst innlogget
+medlem (ikke bare uinnloggede utenforstående) forfalske hvem som har
+sjekket kameraet, ved å sende API-kall direkte utenom appens skjema.
+Importskriptet (som kjører uten en innlogget request, altså uten
+`req.user`) er upåvirket av hooken og kan fortsatt sette historiske
+forfatternavn fritt.
 
 ## Frontend: `/members/vaktbok`
 
