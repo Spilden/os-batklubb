@@ -9,23 +9,9 @@ const initialState = {
   error: '',
 }
 
-const PERIODS: Array<{ value: string; label: string }> = [
-  { value: 'morgen', label: 'Morgen' },
-  { value: 'ettermiddag', label: 'Ettermiddag' },
-  { value: 'kveld', label: 'Kveld' },
-]
-
-function guessCurrentPeriod(): string {
-  const hour = new Date().getHours()
-  if (hour < 11) return 'morgen'
-  if (hour < 18) return 'ettermiddag'
-  return 'kveld'
-}
-
 export function VaktbokForm() {
   const [state, action, isPending] = useActionState(submitVaktbokEntry, initialState)
   const formRef = useRef<HTMLFormElement>(null)
-  const [period, setPeriod] = useState(guessCurrentPeriod())
   const [showToast, setShowToast] = useState<{ type: 'success' | 'error'; message: string } | null>(
     null,
   )
@@ -36,7 +22,6 @@ export function VaktbokForm() {
     }
     if (state.success) {
       formRef.current?.reset()
-      setPeriod(guessCurrentPeriod())
       setShowToast({ type: 'success', message: 'Rapport lagret, takk!' })
       setTimeout(() => setShowToast(null), 5000)
     }
@@ -67,28 +52,6 @@ export function VaktbokForm() {
           </button>
         </div>
       )}
-
-      <div className="flex flex-col gap-2 text-text font-medium text-sm uppercase">
-        <label>Periode</label>
-        <div className="flex gap-3">
-          {PERIODS.map((p) => (
-            <label
-              key={p.value}
-              className="flex items-center gap-2 cursor-pointer border border-ocean rounded-lg px-4 py-2 has-checked:bg-ocean has-checked:text-surface transition-colors"
-            >
-              <input
-                type="radio"
-                name="period"
-                value={p.value}
-                checked={period === p.value}
-                onChange={() => setPeriod(p.value)}
-                className="sr-only"
-              />
-              {p.label}
-            </label>
-          ))}
-        </div>
-      </div>
 
       <div className="flex flex-col gap-1">
         <label htmlFor="content" className="text-text font-medium text-sm uppercase">

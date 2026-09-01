@@ -8,13 +8,17 @@ export const CameraLogEntries: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'authorName',
-    defaultColumns: ['authorName', 'user', 'period', 'date', 'source'],
+    defaultColumns: ['authorName', 'user', 'date', 'source'],
   },
   defaultSort: '-date',
   access: {
     read: ({ req: { user } }) => Boolean(user),
     create: ({ req: { user } }) => Boolean(user),
-    update: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
+    update: ({ req: { user } }) => {
+      if (!user) return false
+      if (user.roles?.includes('admin')) return true
+      return { user: { equals: user.id } }
+    },
     delete: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
   },
   hooks: {
@@ -34,16 +38,6 @@ export const CameraLogEntries: CollectionConfig = {
       type: 'date',
       required: true,
       admin: { date: { pickerAppearance: 'dayAndTime' } },
-    },
-    {
-      name: 'period',
-      type: 'select',
-      label: 'Periode',
-      options: [
-        { label: 'Morgen', value: 'morgen' },
-        { label: 'Ettermiddag', value: 'ettermiddag' },
-        { label: 'Kveld', value: 'kveld' },
-      ],
     },
     {
       name: 'user',

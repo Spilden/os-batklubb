@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { stripHtml, guessPeriod, buildReportText } from '@/scripts/vaktbok-import-helpers'
+import { stripHtml, buildReportText } from '@/scripts/vaktbok-import-helpers'
 
 describe('stripHtml', () => {
   it('removes tags and decodes common entities', () => {
@@ -18,40 +18,6 @@ describe('stripHtml', () => {
     expect(stripHtml('Litt kaldt &#8211; alt i orden &raquo;ok&laquo;&#8230;')).toBe(
       'Litt kaldt – alt i orden »ok«…',
     )
-  })
-})
-
-describe('guessPeriod', () => {
-  it('detects morgen', () => {
-    expect(guessPeriod('TIRSDAG MORGEN 01.09.26')).toBe('morgen')
-  })
-
-  it('detects formiddag as morgen', () => {
-    expect(guessPeriod('Formiddagsrunde 01.09.26')).toBe('morgen')
-  })
-
-  it('detects ettermiddag', () => {
-    expect(guessPeriod('ettermiddag tirsdag 01.09.26')).toBe('ettermiddag')
-  })
-
-  it('detects a standalone "dag" as ettermiddag', () => {
-    expect(guessPeriod('vakt dag.')).toBe('ettermiddag')
-  })
-
-  it('prefers ettermiddag over the standalone-dag fallback', () => {
-    expect(guessPeriod('mandag ettermiddag. 31.08.26')).toBe('ettermiddag')
-  })
-
-  it('detects kveld', () => {
-    expect(guessPeriod('Kveld 30.')).toBe('kveld')
-  })
-
-  it('detects natt as kveld', () => {
-    expect(guessPeriod('Nattevakt 01.09.26')).toBe('kveld')
-  })
-
-  it('returns undefined when no keyword matches', () => {
-    expect(guessPeriod('stille rolig')).toBeUndefined()
   })
 })
 

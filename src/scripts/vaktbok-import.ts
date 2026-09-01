@@ -1,5 +1,5 @@
 import type { Payload } from 'payload'
-import { stripHtml, guessPeriod, buildReportText } from './vaktbok-import-helpers'
+import { buildReportText } from './vaktbok-import-helpers'
 
 export type WpVaktbokPost = {
   status: string
@@ -12,7 +12,6 @@ export type WpVaktbokPost = {
 
 export type ParsedVaktbokEntry = {
   date: string
-  period?: 'morgen' | 'ettermiddag' | 'kveld'
   authorName: string
   content: string
   source: 'imported'
@@ -23,11 +22,9 @@ export function parseWpPost(post: WpVaktbokPost): ParsedVaktbokEntry | null {
 
   const title = post.title.rendered
   const authorName = post._embedded?.author?.[0]?.name || `Bruker ${post.author}`
-  const period = guessPeriod(title)
 
   return {
     date: new Date(post.date).toISOString(),
-    ...(period ? { period } : {}),
     authorName,
     content: buildReportText(title, post.content.rendered),
     source: 'imported',

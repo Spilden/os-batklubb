@@ -37,7 +37,6 @@ describe('parseWpPost', () => {
     const entry = parseWpPost(fixturePosts[0])
     expect(entry).toMatchObject({
       authorName: 'Bjørg Frotveit',
-      period: 'ettermiddag',
       content: 'ettermiddag tirsdag 01.09.26\n\nstille rolig.',
       source: 'imported',
     })

@@ -60,7 +60,6 @@ describe('camera-log-entries collection', () => {
     expect(entry.content).toBe('Alt i orden')
     expect(entry.source).toBe('live')
     expect(entry.user).toBeFalsy()
-    expect(entry.period).toBeFalsy()
   })
 
   it('rejects create for an unauthenticated request', async () => {
@@ -131,6 +130,29 @@ describe('camera-log-entries collection', () => {
       data: { content: 'Rettet av admin' },
     })
     expect(updated.content).toBe('Rettet av admin')
+
+    await payload.delete({ collection: 'camera-log-entries', id: entry.id })
+  })
+
+  it('allows a member to update their own entry', async () => {
+    const entry = await payload.create({
+      collection: 'camera-log-entries',
+      data: {
+        date: new Date().toISOString(),
+        authorName: 'Medlem Testesen',
+        user: memberUser.id,
+        content: 'Original tekst',
+      },
+    })
+
+    const updated = await payload.update({
+      collection: 'camera-log-entries',
+      id: entry.id,
+      overrideAccess: false,
+      user: memberUser,
+      data: { content: 'Rettet av meg selv' },
+    })
+    expect(updated.content).toBe('Rettet av meg selv')
 
     await payload.delete({ collection: 'camera-log-entries', id: entry.id })
   })

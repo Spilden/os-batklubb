@@ -52,7 +52,7 @@ export default async function VaktbokPage({
         <h2 className="text-text font-display text-xl">
           {isHistoryView ? 'Historikk' : `Siste ${DAYS_IN_DEFAULT_VIEW} dager`}
         </h2>
-        <VaktbokList entries={result.docs} />
+        <VaktbokList entries={result.docs} currentUserId={user.id} />
         <div className="flex justify-center gap-4">
           {isHistoryView && result.hasPrevPage && (
             <BaseButton href={`/members/vaktbok?history=1&page=${page - 1}`} variant="text">
