@@ -17,6 +17,7 @@ import { SlippBookings } from '@/collections/SlippBookings'
 import { SlippSettings } from '@/globals/SlippSettings'
 import { ClubhouseBookings } from '@/collections/ClubhouseBookings'
 import { Events } from '@/collections/Events'
+import { CameraLogEntries } from '@/collections/CameraLogEntries'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -34,7 +35,17 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, News, Partners, ContactSubmissions, SlippBookings, ClubhouseBookings, Events],
+  collections: [
+    Users,
+    Media,
+    News,
+    Partners,
+    ContactSubmissions,
+    SlippBookings,
+    ClubhouseBookings,
+    Events,
+    CameraLogEntries,
+  ],
   globals: [About, GuestMarina, SlippSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
