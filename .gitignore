@@ -57,3 +57,6 @@ node_modules/
 # Autogenererte Payload filer
 src/app/(payload)/admin/importMap.js
 src/payload-types.ts
+
+# Git worktrees
+.worktrees/
