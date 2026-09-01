@@ -46,34 +46,36 @@ export default async function VaktbokPage({
       })
 
   return (
-    <div className="w-full flex flex-col gap-8">
+    <>
       <h1 className="text-text font-display text-center text-3xl p-10">Kameravaktbok</h1>
-      <BaseMemberCard title="Rapport" content={<VaktbokForm />} />
-      <BaseMemberCard
-        title={isHistoryView ? 'Historikk' : `Siste ${DAYS_IN_DEFAULT_VIEW} dager`}
-        content={
-          <div className="flex flex-col gap-4">
-            <VaktbokList entries={result.docs} currentUserId={user.id} />
-            <div className="flex justify-center gap-4">
-              {isHistoryView && result.hasPrevPage && (
-                <BaseButton href={`/members/vaktbok?history=1&page=${page - 1}`} variant="text">
-                  Forrige
-                </BaseButton>
-              )}
-              {!isHistoryView && (
-                <BaseButton href="/members/vaktbok?history=1&page=1" variant="text">
-                  Vis eldre
-                </BaseButton>
-              )}
-              {isHistoryView && result.hasNextPage && (
-                <BaseButton href={`/members/vaktbok?history=1&page=${page + 1}`} variant="text">
-                  Neste
-                </BaseButton>
-              )}
+      <div className="w-full flex flex-col gap-8">
+        <BaseMemberCard title="Rapport" content={<VaktbokForm />} />
+        <BaseMemberCard
+          title={isHistoryView ? 'Historikk' : `Siste ${DAYS_IN_DEFAULT_VIEW} dager`}
+          content={
+            <div className="flex flex-col gap-4">
+              <VaktbokList entries={result.docs} currentUserId={user.id} />
+              <div className="flex justify-center gap-4">
+                {isHistoryView && result.hasPrevPage && (
+                  <BaseButton href={`/members/vaktbok?history=1&page=${page - 1}`} variant="text">
+                    Forrige
+                  </BaseButton>
+                )}
+                {!isHistoryView && (
+                  <BaseButton href="/members/vaktbok?history=1&page=1" variant="text">
+                    Vis eldre
+                  </BaseButton>
+                )}
+                {isHistoryView && result.hasNextPage && (
+                  <BaseButton href={`/members/vaktbok?history=1&page=${page + 1}`} variant="text">
+                    Neste
+                  </BaseButton>
+                )}
+              </div>
             </div>
-          </div>
-        }
-      />
-    </div>
+          }
+        />
+      </div>
+    </>
   )
 }
