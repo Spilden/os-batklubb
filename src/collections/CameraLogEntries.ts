@@ -9,8 +9,8 @@ export const CameraLogEntries: CollectionConfig = {
   admin: {
     useAsTitle: 'authorName',
     defaultColumns: ['authorName', 'user', 'period', 'date', 'source'],
-    defaultSort: '-date',
   },
+  defaultSort: '-date',
   access: {
     read: ({ req: { user } }) => Boolean(user),
     create: ({ req: { user } }) => Boolean(user),
@@ -66,7 +66,6 @@ export const CameraLogEntries: CollectionConfig = {
     {
       name: 'source',
       type: 'select',
-      required: true,
       defaultValue: 'live',
       options: [
         { label: 'Ny rapport', value: 'live' },
