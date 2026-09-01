@@ -5,6 +5,7 @@ import { createVaktbokEntry } from '@/app/(frontend)/members/vaktbok/createEntry
 
 let payload: Payload
 let testUserId: number
+const createdEntryIds: number[] = []
 
 describe('createVaktbokEntry', () => {
   beforeAll(async () => {
@@ -23,10 +24,12 @@ describe('createVaktbokEntry', () => {
   })
 
   afterEach(async () => {
+    if (createdEntryIds.length === 0) return
     await payload.delete({
       collection: 'camera-log-entries',
-      where: { source: { equals: 'live' } },
+      where: { id: { in: [...createdEntryIds] } },
     })
+    createdEntryIds.length = 0
   })
 
   afterAll(async () => {
@@ -40,6 +43,7 @@ describe('createVaktbokEntry', () => {
       content: '  Alt i orden  ',
       period: 'kveld',
     })
+    createdEntryIds.push(entry.id)
 
     expect(entry.authorName).toBe('Test Testesen')
     expect(entry.content).toBe('Alt i orden')
@@ -54,6 +58,7 @@ describe('createVaktbokEntry', () => {
       content: 'Alt i orden',
       period: 'ikke-en-periode',
     })
+    createdEntryIds.push(entry.id)
 
     expect(entry.period).toBeFalsy()
   })

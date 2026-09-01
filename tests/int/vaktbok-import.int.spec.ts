@@ -2,8 +2,10 @@ import { getPayload, Payload } from 'payload'
 import config from '@/payload.config'
 import { describe, it, beforeAll, afterEach, expect } from 'vitest'
 import { importVaktbokPosts, parseWpPost, type WpVaktbokPost } from '@/scripts/vaktbok-import'
+import { buildReportText } from '@/scripts/vaktbok-import-helpers'
 
 let payload: Payload
+const createdEntryIds: number[] = []
 
 const fixturePosts: WpVaktbokPost[] = [
   {
@@ -59,20 +61,41 @@ describe('importVaktbokPosts', () => {
   })
 
   afterEach(async () => {
+    if (createdEntryIds.length === 0) return
     await payload.delete({
       collection: 'camera-log-entries',
-      where: { source: { equals: 'imported' } },
+      where: { id: { in: [...createdEntryIds] } },
     })
+    createdEntryIds.length = 0
   })
 
   it('creates one entry per publishable post and skips the rest', async () => {
     const created = await importVaktbokPosts(payload, fixturePosts)
     expect(created).toBe(2)
 
+    // Content is deterministic from the fixture (title + stripped body), and combined with the
+    // exact publish date and source, this can only ever match the two rows this test just
+    // created — never pre-existing imported data (e.g. from `npm run import:vaktbok`).
+    const expectedContents = [
+      buildReportText(fixturePosts[0].title.rendered, fixturePosts[0].content.rendered),
+      buildReportText(fixturePosts[1].title.rendered, fixturePosts[1].content.rendered),
+    ]
+    const expectedDates = [
+      new Date(fixturePosts[0].date).toISOString(),
+      new Date(fixturePosts[1].date).toISOString(),
+    ]
+
     const { docs } = await payload.find({
       collection: 'camera-log-entries',
-      where: { source: { equals: 'imported' } },
+      where: {
+        and: [
+          { source: { equals: 'imported' } },
+          { content: { in: expectedContents } },
+          { date: { in: expectedDates } },
+        ],
+      },
     })
     expect(docs).toHaveLength(2)
+    createdEntryIds.push(...docs.map((doc) => doc.id))
   })
 })

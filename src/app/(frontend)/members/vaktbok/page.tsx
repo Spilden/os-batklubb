@@ -12,17 +12,17 @@ const PAGE_SIZE = 20
 export default async function VaktbokPage({
   searchParams,
 }: {
-  searchParams: Promise<{ page?: string }>
+  searchParams: Promise<{ history?: string; page?: string }>
 }) {
   const payload = await getPayload({ config })
   const { user } = await payload.auth({ headers: await headers() })
   if (!user) redirect('/admin/login')
 
-  const { page: pageParam } = await searchParams
+  const { history: historyParam, page: pageParam } = await searchParams
+  const isHistoryView = historyParam !== undefined
   const page = pageParam ? Number(pageParam) : 1
-  const isPaginatedView = page > 1
 
-  const result = isPaginatedView
+  const result = isHistoryView
     ? await payload.find({
         collection: 'camera-log-entries',
         sort: '-date',
@@ -33,7 +33,7 @@ export default async function VaktbokPage({
     : await payload.find({
         collection: 'camera-log-entries',
         sort: '-date',
-        limit: 50,
+        limit: PAGE_SIZE,
         depth: 0,
         where: {
           date: {
@@ -50,22 +50,22 @@ export default async function VaktbokPage({
       <VaktbokForm />
       <div className="flex flex-col gap-4">
         <h2 className="text-text font-display text-xl">
-          {isPaginatedView ? 'Historikk' : `Siste ${DAYS_IN_DEFAULT_VIEW} dager`}
+          {isHistoryView ? 'Historikk' : `Siste ${DAYS_IN_DEFAULT_VIEW} dager`}
         </h2>
         <VaktbokList entries={result.docs} />
         <div className="flex justify-center gap-4">
-          {isPaginatedView && result.hasPrevPage && (
-            <BaseButton href={`/members/vaktbok?page=${page - 1}`} variant="text">
+          {isHistoryView && result.hasPrevPage && (
+            <BaseButton href={`/members/vaktbok?history=1&page=${page - 1}`} variant="text">
               Forrige
             </BaseButton>
           )}
-          {!isPaginatedView && (
-            <BaseButton href="/members/vaktbok?page=2" variant="text">
+          {!isHistoryView && (
+            <BaseButton href="/members/vaktbok?history=1&page=1" variant="text">
               Vis eldre
             </BaseButton>
           )}
-          {isPaginatedView && result.hasNextPage && (
-            <BaseButton href={`/members/vaktbok?page=${page + 1}`} variant="text">
+          {isHistoryView && result.hasNextPage && (
+            <BaseButton href={`/members/vaktbok?history=1&page=${page + 1}`} variant="text">
               Neste
             </BaseButton>
           )}
