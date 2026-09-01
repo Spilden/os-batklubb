@@ -9,7 +9,7 @@ export function VaktbokList({
   currentUserId: number
 }) {
   if (entries.length === 0) {
-    return <p className="text-text-muted">Ingen rapporter funnet.</p>
+    return <p className="text-text-muted text-center p-10">Ingen rapporter funnet.</p>
   }
 
   return (

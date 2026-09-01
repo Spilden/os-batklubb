@@ -48,7 +48,7 @@ export function VaktbokEntry({ entry, canEdit }: { entry: CameraLogEntry; canEdi
             defaultValue={entry.content}
             className="border border-ocean rounded-lg p-2 bg-background text-text focus:outline-none focus:ring-2 focus:ring-ocean resize-none"
           />
-          {state.error && <p className="text-red-700 text-sm">{state.error}</p>}
+          {state.error && <p className="text-red-600 text-sm">{state.error}</p>}
           <div className="flex justify-end gap-2">
             <BaseButton type="button" variant="text" onClick={() => setIsEditing(false)}>
               Avbryt
