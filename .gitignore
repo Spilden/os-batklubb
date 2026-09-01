@@ -60,3 +60,6 @@ src/payload-types.ts
 
 # Git worktrees
 .worktrees/
+
+# Superpowers subagent-driven-development scratch workspace
+.superpowers/
