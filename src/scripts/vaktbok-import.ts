@@ -21,12 +21,15 @@ export function parseWpPost(post: WpVaktbokPost): ParsedVaktbokEntry | null {
   if (post.status !== 'publish') return null
 
   const title = post.title.rendered
+  const content = buildReportText(title, post.content.rendered)
+  if (!content) return null
+
   const authorName = post._embedded?.author?.[0]?.name || `Bruker ${post.author}`
 
   return {
     date: new Date(post.date).toISOString(),
     authorName,
-    content: buildReportText(title, post.content.rendered),
+    content,
     source: 'imported',
   }
 }
