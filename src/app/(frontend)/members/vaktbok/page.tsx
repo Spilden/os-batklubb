@@ -48,7 +48,7 @@ export default async function VaktbokPage({
   return (
     <div className="w-full flex flex-col gap-8">
       <h1 className="text-text font-display text-center text-3xl p-10">Kameravaktbok</h1>
-      <BaseMemberCard title="Rapporter kameravakt" content={<VaktbokForm />} />
+      <BaseMemberCard title="Rapport" content={<VaktbokForm />} />
       <BaseMemberCard
         title={isHistoryView ? 'Historikk' : `Siste ${DAYS_IN_DEFAULT_VIEW} dager`}
         content={
