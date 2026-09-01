@@ -13,6 +13,12 @@ describe('stripHtml', () => {
   it('returns an empty string for empty input', () => {
     expect(stripHtml('')).toBe('')
   })
+
+  it('decodes numeric entities and the named entities that actually occur in the migration data', () => {
+    expect(stripHtml('Litt kaldt &#8211; alt i orden &raquo;ok&laquo;&#8230;')).toBe(
+      'Litt kaldt – alt i orden »ok«…',
+    )
+  })
 })
 
 describe('guessPeriod', () => {

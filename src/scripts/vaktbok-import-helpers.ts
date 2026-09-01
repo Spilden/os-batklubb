@@ -7,6 +7,9 @@ export function stripHtml(html: string): string {
     .replace(/&#0?39;/gi, "'")
     .replace(/&lt;/gi, '<')
     .replace(/&gt;/gi, '>')
+    .replace(/&raquo;/gi, '»')
+    .replace(/&laquo;/gi, '«')
+    .replace(/&#(\d+);/g, (_match, code: string) => String.fromCharCode(Number(code)))
     .replace(/\s+/g, ' ')
     .trim()
 }
