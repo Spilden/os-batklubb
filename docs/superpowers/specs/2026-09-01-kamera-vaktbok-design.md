@@ -64,9 +64,14 @@ admin: {
 }
 ```
 
-**Access:** ingen `access`-blokk (samme mønster som `slipp-bookings` og
-`clubhouse-bookings` — API-et er åpent, tilgang håndheves på
-sidenivå via innloggingssjekk, ikke i Payloads access-lag).
+**Access:** `read`, `create`, `update` og `delete` krever alle en
+innlogget bruker (`Boolean(req.user)`). Loggen brukes til å avgjøre hvem
+som må betale for ikke fullført dugnad, så både lesing og skriving via
+det åpne Payload REST/GraphQL-API-et må være stengt for alle andre enn
+innloggede medlemmer — i motsetning til `slipp-bookings`/
+`clubhouse-bookings`, som ikke har denne typen konsekvens og derfor
+holdes uten access-blokk. Sidens egen `if (!user) redirect(...)`-sjekk
+kommer i tillegg, ikke i stedet for, denne access-kontrollen.
 
 ## Frontend: `/members/vaktbok`
 

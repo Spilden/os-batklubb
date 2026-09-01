@@ -12,7 +12,7 @@
 
 ## Global Constraints
 
-- No `access` block on the new collection — matches `slipp-bookings` / `clubhouse-bookings`. The API is open; access is enforced on the page via a login redirect, not at the Payload access-control layer.
+- `camera-log-entries` requires an authenticated user for `read`, `create`, `update`, and `delete` (`Boolean(req.user)`) — unlike `slipp-bookings` / `clubhouse-bookings`, which stay open. This entry log determines who owes money for incomplete dugnad, so both reading and writing it through the public Payload REST/GraphQL API must be closed to anyone who isn't logged in. The page's own `if (!user) redirect(...)` check is additional, not a substitute — the Payload Local API calls in `page.tsx`/`actions.ts` use the default `overrideAccess: true` and so aren't gated by this block themselves, but every request that reaches them has already passed the page's own auth check.
 - No digital vaktliste/turnusfordeling (duty roster) in this plan — logging only. Admin cross-checks manually against the external roster.
 - `period` is always optional and never enforced against the actual clock — it's a soft label the user can freely override.
 - All user-facing text is Norwegian (bokmål), matching the rest of the app.
@@ -48,6 +48,12 @@ export const CameraLogEntries: CollectionConfig = {
     useAsTitle: 'authorName',
     defaultColumns: ['authorName', 'user', 'period', 'date', 'source'],
     defaultSort: '-date',
+  },
+  access: {
+    read: ({ req: { user } }) => Boolean(user),
+    create: ({ req: { user } }) => Boolean(user),
+    update: ({ req: { user } }) => Boolean(user),
+    delete: ({ req: { user } }) => Boolean(user),
   },
   fields: [
     {
@@ -171,13 +177,35 @@ describe('camera-log-entries collection', () => {
     expect(entry.user).toBeFalsy()
     expect(entry.period).toBeFalsy()
   })
+
+  it('rejects create for an unauthenticated request', async () => {
+    await expect(
+      payload.create({
+        collection: 'camera-log-entries',
+        overrideAccess: false,
+        data: {
+          date: new Date().toISOString(),
+          authorName: 'Uinnlogget',
+          content: 'Skal ikke gå gjennom',
+        },
+      }),
+    ).rejects.toThrow()
+  })
+
+  it('rejects read for an unauthenticated request', async () => {
+    await expect(
+      payload.find({ collection: 'camera-log-entries', overrideAccess: false }),
+    ).rejects.toThrow()
+  })
 })
 ```
+
+The first test (`creates an entry with required fields...`) uses the Local API's default `overrideAccess: true`, so it is unaffected by the new `access` block — that's intentional, it's testing the schema, not the access rules. The two new tests explicitly opt back into access checking with `overrideAccess: false` to prove `read` and `create` actually reject an unauthenticated request now that the collection requires one.
 
 - [ ] **Step 5: Run the test**
 
 Run: `npx vitest run --config ./vitest.config.mts tests/int/camera-log-entries.int.spec.ts`
-Expected: PASS (1 test)
+Expected: PASS (3 tests)
 
 - [ ] **Step 6: Commit**
 
