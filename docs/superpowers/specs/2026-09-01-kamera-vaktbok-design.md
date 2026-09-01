@@ -53,16 +53,25 @@ Ny Payload-collection: `camera-log-entries` (norsk admin-label
 | `user` | `relationship` → `users` | Nei | Satt for alle nye rapporter (innlogget bruker). Tom for importerte historiske rader (gamle WP-brukere matcher ikke nødvendigvis Payload-brukere). |
 | `authorName` | `text` | Ja | Visningsnavn for oppføringen. Ved ny rapport: `user.name` på innsendingstidspunktet. Ved import: WP-forfatterens navn. Lar listevisningen vise forfatter uten ekstra oppslag, og fungerer identisk for importerte og nye rader. |
 | `content` | `textarea` | Ja | Selve rapportteksten. |
-| `source` | `select`: `live` / `imported` | Ja (default `live`) | Skiller nye rapporter fra historikk. Brukes til filtrering i admin-panelet og til å style historiske rader annerledes i listevisningen om ønskelig. |
+| `source` | `select`: `live` / `imported` | Nei (`defaultValue: 'live'`, ikke `required` — se merknad under) | Skiller nye rapporter fra historikk. Brukes til filtrering i admin-panelet og til å style historiske rader annerledes i listevisningen om ønskelig. |
 
 **Admin-konfig på collectionen:**
 ```ts
+defaultSort: '-date', // toppnivå på CollectionConfig, ikke inni admin
 admin: {
   useAsTitle: 'authorName',
   defaultColumns: ['authorName', 'user', 'period', 'date', 'source'],
-  defaultSort: '-date',
 }
 ```
+
+**Merknad om `source` og `required`:** feltet har bevisst ikke
+`required: true`, selv om det alltid har en verdi i praksis via
+`defaultValue: 'live'`. Payloads genererte TypeScript-type for
+`payload.create()`s `data`-parameter unntar ikke felt med
+`defaultValue` fra å være påkrevd — kun `required: true` styrer det —
+så hadde `source` vært `required: true` ville alle `create`-kall som
+(korrekt) utelater det, feile typesjekk. Samme mønster brukes allerede
+for `SlippBookings.status`.
 
 **Access:** `read` og `create` krever en innlogget bruker
 (`Boolean(req.user)`) — hvilket som helst medlem kan se historikken og

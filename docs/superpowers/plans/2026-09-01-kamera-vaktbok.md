@@ -45,10 +45,10 @@ export const CameraLogEntries: CollectionConfig = {
     singular: 'Kameravaktlogg',
     plural: 'Kameravaktlogg',
   },
+  defaultSort: '-date',
   admin: {
     useAsTitle: 'authorName',
     defaultColumns: ['authorName', 'user', 'period', 'date', 'source'],
-    defaultSort: '-date',
   },
   access: {
     read: ({ req: { user } }) => Boolean(user),
@@ -105,7 +105,6 @@ export const CameraLogEntries: CollectionConfig = {
     {
       name: 'source',
       type: 'select',
-      required: true,
       defaultValue: 'live',
       options: [
         { label: 'Ny rapport', value: 'live' },
@@ -115,6 +114,10 @@ export const CameraLogEntries: CollectionConfig = {
   ],
 }
 ```
+
+Two deliberate details, both required for `npx tsc --noEmit` to pass — get these wrong and the file type-checks against the wrong Payload API shape:
+- `defaultSort` is a top-level `CollectionConfig` property, not an `admin` option (`node_modules/payload/dist/collections/config/types.d.ts:471` — `defaultSort?: Sort` sits outside `admin`). Nesting it under `admin` compiles as a plain object literal but fails `tsc` with "does not exist in type 'CollectionAdminOptions'".
+- `source` has no `required: true`. Payload's generated `RequiredDataFromCollectionSlug` type (used by `payload.create`'s `data` parameter) does not exempt fields with a `defaultValue` — only `id`/`createdAt`/`updatedAt`/`collection`/`deletedAt` are ever optional there. A `required: true` field the caller doesn't supply (which is every create call in this plan — `source` is always left to its `defaultValue`) makes TypeScript unable to match `payload.create()`'s non-draft overload, and it falls through to a confusing "Property 'draft' is missing" error instead. `defaultValue` alone already guarantees the field is always populated at runtime; `SlippBookings.status` (`src/collections/SlippBookings.ts`) already follows this same defaultValue-without-required pattern for exactly this reason — match it, don't reintroduce `required: true` here.
 
 - [ ] **Step 2: Register the collection**
 
@@ -324,6 +327,11 @@ The first test (`creates an entry with required fields...`) uses the Local API's
 
 Run: `npx vitest run --config ./vitest.config.mts tests/int/camera-log-entries.int.spec.ts`
 Expected: PASS (6 tests)
+
+- [ ] **Step 5b: Type-check**
+
+Run: `npx tsc --noEmit`
+Expected: no errors in `src/collections/CameraLogEntries.ts` or `tests/int/camera-log-entries.int.spec.ts`. If either the `defaultSort` placement or the `source` field's `required` flag drifts from Step 1's code, this is where it will show up as a `CollectionAdminOptions`/`draft`-union error — see the notes after Step 1's code block for what's correct and why.
 
 - [ ] **Step 6: Commit**
 
