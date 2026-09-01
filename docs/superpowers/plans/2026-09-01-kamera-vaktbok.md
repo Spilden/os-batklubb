@@ -373,6 +373,12 @@ describe('stripHtml', () => {
   it('returns an empty string for empty input', () => {
     expect(stripHtml('')).toBe('')
   })
+
+  it('decodes numeric entities and the named entities that actually occur in the migration data', () => {
+    expect(stripHtml('Litt kaldt &#8211; alt i orden &raquo;ok&laquo;&#8230;')).toBe(
+      'Litt kaldt – alt i orden »ok«…',
+    )
+  })
 })
 
 describe('guessPeriod', () => {
@@ -441,9 +447,14 @@ export function stripHtml(html: string): string {
     .replace(/&#0?39;/gi, "'")
     .replace(/&lt;/gi, '<')
     .replace(/&gt;/gi, '>')
+    .replace(/&raquo;/gi, '»')
+    .replace(/&laquo;/gi, '«')
+    .replace(/&#(\d+);/g, (_match, code: string) => String.fromCharCode(Number(code)))
     .replace(/\s+/g, ' ')
     .trim()
 }
+
+Grounded in the real data, not speculative: `grep -oE '&[a-zA-Z]+;' migration_data/vaktbok_logger.json | sort | uniq -c` and the equivalent for `&#[0-9]+;` show the actual entities present across the 4910 posts — `&#8211;` (en dash, 412 occurrences), `&#8230;` (ellipsis, 80), `&raquo;`/`&laquo;` (guillemets, 33/31), `&amp;` (9), `&hellip;`/`&#8217;`/`&#8212;` (single digits). Norwegian letters (æ/ø/å) are not HTML-entity-encoded anywhere in this file — WordPress stores them as literal UTF-8 in `content.rendered`, so no `&oslash;`/`&aelig;`/`&aring;` handling is needed. The generic `&#(\d+);` numeric-entity decoder covers `&#8211;`/`&#8230;`/`&#8217;`/`&#8212;` and any other numeric entity in one rule rather than hand-listing each one; `&raquo;`/`&laquo;` are the only additional *named* entities that actually appear, so those two are added explicitly. Without this, ~580 of the imported historical entries would show raw `&#8211;`/`&raquo;` text instead of the actual punctuation.
 
 type Period = 'morgen' | 'ettermiddag' | 'kveld'
 
@@ -473,7 +484,7 @@ export function buildReportText(title: string, contentHtml: string): string {
 - [ ] **Step 4: Run tests to verify they pass**
 
 Run: `npx vitest run --config ./vitest.config.mts tests/int/vaktbok-import-helpers.int.spec.ts`
-Expected: PASS (10 tests)
+Expected: PASS (13 tests)
 
 - [ ] **Step 5: Commit**
 
