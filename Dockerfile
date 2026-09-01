@@ -14,6 +14,8 @@ ENV PAYLOAD_SECRET=$PAYLOAD_SECRET
 ENV DATABASE_URL=$DATABASE_URL
 ENV NEXT_TELEMETRY_DISABLED=1
 
+RUN npm run generate:types
+
 RUN npm run build
 
 RUN mkdir -p /app/db /app/media \
