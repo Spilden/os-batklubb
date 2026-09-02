@@ -2,6 +2,24 @@ import type { CollectionConfig } from 'payload'
 
 export const Events: CollectionConfig = {
   slug: 'events',
+  access: {
+    create: ({ req: { user } }) => Boolean(user),
+    read: ({ req: { user } }) => {
+      if (!user) return false
+      if (user.roles?.includes('admin')) return true
+      return { user: { equals: user.id } }
+    },
+    update: ({ req: { user } }) => {
+      if (!user) return false
+      if (user.roles?.includes('admin')) return true
+      return { user: { equals: user.id } }
+    },
+    delete: ({ req: { user } }) => {
+      if (!user) return false
+      if (user.roles?.includes('admin')) return true
+      return { user: { equals: user.id } }
+    },
+  },
   fields: [
     {
       name: 'title',

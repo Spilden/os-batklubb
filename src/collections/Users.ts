@@ -24,6 +24,18 @@ export const Users: CollectionConfig = {
   },
   access: {
     admin: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
+    create: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
+    read: ({ req: { user } }) => {
+      if (!user) return false
+      if (user.roles?.includes('admin')) return true
+      return { id: { equals: user.id } }
+    },
+    update: ({ req: { user } }) => {
+      if (!user) return false
+      if (user.roles?.includes('admin')) return true
+      return { id: { equals: user.id } }
+    },
+    delete: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
   },
   fields: [
     {
@@ -39,6 +51,9 @@ export const Users: CollectionConfig = {
       hasMany: true,
       required: true,
       defaultValue: ['member'],
+      access: {
+        update: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
+      },
       options: [
         { label: 'Admin', value: 'admin' },
         { label: 'Medlem', value: 'member' },
