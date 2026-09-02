@@ -19,7 +19,7 @@ export function VaktbokInstructionsModal({ onCloseAction }: { onCloseAction: () 
           Når du har kameravakt skal du sjekke <span className="font-medium text-text">alle kameraene 3 ganger i løpet av døgnet</span> — for eksempel morgen, ettermiddag og kveld. Det er ikke bundet til faste klokkeslett, bare fordelt utover dagen.
         </p>
         <p>
-          For hver sjekk skriver du en kort rapport i feltet over og trykker <span className="font-medium text-text">Lagre</span>. &quot;Alt i orden&quot; er en fullgod rapport hvis det ikke er noe å bemerke.
+          For hver enkelt sjekk skriver du en kort rapport i feltet over og trykker <span className="font-medium text-text">Lagre</span> med en gang. Det blir altså <span className="font-medium text-text">3 separate rapporter i løpet av dagen</span> — ikke én samlet rapport som oppsummerer alle sjekkene på slutten av dagen. &quot;Alt i orden&quot; er en fullgod rapport hvis det ikke er noe å bemerke.
         </p>
         <p>
           Du kan se hva som er rapportert tidligere lenger ned på siden, og rette dine egne rapporter i etterkant om du oppdager en feil.

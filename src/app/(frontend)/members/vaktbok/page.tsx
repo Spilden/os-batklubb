@@ -49,6 +49,13 @@ export default async function VaktbokPage({
     <>
       <h1 className="text-text font-display text-center text-3xl p-10">Kameravaktbok</h1>
       <div className="w-full flex flex-col gap-8">
+        {user.roles?.includes('admin') && (
+          <div className="flex justify-end">
+            <BaseButton href="/members/vaktbok/oversikt" variant="text">
+              Admin-oversikt
+            </BaseButton>
+          </div>
+        )}
         <BaseMemberCard title="Rapport" content={<VaktbokForm />} />
         <BaseMemberCard
           title={isHistoryView ? 'Historikk' : `Siste ${DAYS_IN_DEFAULT_VIEW} dager`}
