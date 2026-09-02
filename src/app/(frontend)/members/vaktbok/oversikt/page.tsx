@@ -47,6 +47,7 @@ export default async function VaktbokOversiktPage({
     }),
     payload.find({
       collection: 'users',
+      where: { roles: { contains: 'kameravakt' } },
       limit: 0,
       depth: 0,
     }),
@@ -62,9 +63,10 @@ export default async function VaktbokOversiktPage({
     }
   }
 
-  // Union of every current member's name (so people with zero reports still show up,
-  // instead of just being absent from the list) and every authorName that actually
-  // reported (covers historical/imported names that don't match a current member).
+  // Union of every kameravakt member's name (so people with zero reports still show
+  // up, instead of just being absent from the list) and every authorName that
+  // actually reported this year (so nobody who did report gets hidden just because
+  // they don't have the kameravakt role, e.g. it hasn't been assigned to them yet).
   const allNames = new Set([...members.map((m) => m.name), ...byAuthor.keys()])
 
   const rows = [...allNames]
@@ -90,7 +92,9 @@ export default async function VaktbokOversiktPage({
           title="Antall rapporter per person"
           content={
             rows.length === 0 ? (
-              <p className="text-text-muted text-center p-10">Ingen medlemmer funnet.</p>
+              <p className="text-text-muted text-center p-10">
+                Ingen medlemmer har rollen Kameravakt ennå.
+              </p>
             ) : (
               <div className="flex flex-col gap-4">
                 <p className="text-text-muted text-sm">

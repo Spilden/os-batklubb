@@ -43,6 +43,7 @@ export const Users: CollectionConfig = {
         { label: 'Admin', value: 'admin' },
         { label: 'Medlem', value: 'member' },
         { label: 'Nyhetsredaktør', value: 'news_admin' },
+        { label: 'Kameravakt', value: 'kameravakt' },
       ],
     },
   ],
