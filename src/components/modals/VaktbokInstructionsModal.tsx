@@ -16,7 +16,7 @@ export function VaktbokInstructionsModal({ onCloseAction }: { onCloseAction: () 
 
       <div className="space-y-3 text-sm text-text-muted leading-relaxed">
         <p>
-          Når du har kameravakt skal du sjekke kameraene <span className="font-medium text-text">3 ganger i løpet av døgnet</span> — for eksempel morgen, ettermiddag og kveld. Det er ikke bundet til faste klokkeslett, bare fordelt utover dagen.
+          Når du har kameravakt skal du sjekke <span className="font-medium text-text">alle kameraene 3 ganger i løpet av døgnet</span> — for eksempel morgen, ettermiddag og kveld. Det er ikke bundet til faste klokkeslett, bare fordelt utover dagen.
         </p>
         <p>
           For hver sjekk skriver du en kort rapport i feltet over og trykker <span className="font-medium text-text">Lagre</span>. &quot;Alt i orden&quot; er en fullgod rapport hvis det ikke er noe å bemerke.

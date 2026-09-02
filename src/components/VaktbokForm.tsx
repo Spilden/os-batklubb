@@ -1,6 +1,7 @@
 'use client'
 
 import { useActionState, useEffect, useRef, useState } from 'react'
+import { Info } from 'lucide-react'
 import { submitVaktbokEntry } from '@/app/(frontend)/members/vaktbok/actions'
 import BaseButton from '@/components/BaseButton'
 import { VaktbokInstructionsModal } from '@/components/modals/VaktbokInstructionsModal'
@@ -57,9 +58,14 @@ export function VaktbokForm() {
         )}
 
         <div className="flex justify-end">
-          <BaseButton type="button" variant="secondary" onClick={() => setShowInstructions(true)}>
-            Instruksjoner
-          </BaseButton>
+          <button
+            type="button"
+            onClick={() => setShowInstructions(true)}
+            aria-label="Instruksjoner"
+            className="text-text-muted hover:text-primary transition-colors cursor-pointer"
+          >
+            <Info size={20} />
+          </button>
         </div>
 
         <div className="flex flex-col gap-1">
