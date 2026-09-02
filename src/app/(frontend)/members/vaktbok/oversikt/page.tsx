@@ -53,13 +53,14 @@ export default async function VaktbokOversiktPage({
     }),
   ])
 
-  const byAuthor = new Map<string, string[]>()
+  const byAuthor = new Map<string, Array<{ date: string; content: string }>>()
   for (const doc of docs) {
-    const dates = byAuthor.get(doc.authorName)
-    if (dates) {
-      dates.push(doc.date)
+    const entries = byAuthor.get(doc.authorName)
+    const entry = { date: doc.date, content: doc.content }
+    if (entries) {
+      entries.push(entry)
     } else {
-      byAuthor.set(doc.authorName, [doc.date])
+      byAuthor.set(doc.authorName, [entry])
     }
   }
 
@@ -70,8 +71,8 @@ export default async function VaktbokOversiktPage({
   const allNames = new Set([...members.map((m) => m.name), ...byAuthor.keys()])
 
   const rows = [...allNames]
-    .map((authorName) => ({ authorName, dates: byAuthor.get(authorName) ?? [] }))
-    .sort((a, b) => a.dates.length - b.dates.length)
+    .map((authorName) => ({ authorName, entries: byAuthor.get(authorName) ?? [] }))
+    .sort((a, b) => a.entries.length - b.entries.length)
 
   return (
     <>
@@ -103,7 +104,7 @@ export default async function VaktbokOversiktPage({
                 </p>
                 <div className="flex flex-col gap-2">
                   {rows.map((row) =>
-                    row.dates.length === 0 ? (
+                    row.entries.length === 0 ? (
                       <div
                         key={row.authorName}
                         className="flex justify-between border-b border-border/50 py-2"
@@ -116,13 +117,19 @@ export default async function VaktbokOversiktPage({
                         <summary className="flex justify-between cursor-pointer text-text">
                           <span>{row.authorName}</span>
                           <span className="text-text-muted">
-                            {row.dates.length} rapport{row.dates.length === 1 ? '' : 'er'} · sist{' '}
-                            {formatDate(row.dates[0])}
+                            {row.entries.length} rapport{row.entries.length === 1 ? '' : 'er'} ·
+                            sist {formatDate(row.entries[0].date)}
                           </span>
                         </summary>
-                        <ul className="pt-2 pl-4 text-sm text-text-muted list-disc">
-                          {row.dates.map((date, i) => (
-                            <li key={i}>{formatDateTime(date)}</li>
+                        <ul className="pt-2 pl-4 text-sm flex flex-col gap-2">
+                          {row.entries.map((entry, i) => (
+                            <li key={i} className="flex gap-2 min-w-0">
+                              <span className="text-text-muted whitespace-nowrap">
+                                {formatDateTime(entry.date)}
+                              </span>
+                              <span className="text-text-muted">—</span>
+                              <span className="text-text truncate">{entry.content}</span>
+                            </li>
                           ))}
                         </ul>
                       </details>
