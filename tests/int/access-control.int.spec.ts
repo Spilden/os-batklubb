@@ -160,4 +160,52 @@ describe('Access control', () => {
 
     expect(found.id).toBe(event.id)
   })
+
+  it("does not expose another member's comment on a shared event", async () => {
+    const event = await payload.create({
+      collection: 'events',
+      data: {
+        title: 'Dugnad',
+        description: 'Test',
+        startTime: new Date().toISOString(),
+        endTime: new Date().toISOString(),
+        user: memberA.id,
+        status: 'published',
+        comment: 'Hemmelig notat fra Member A',
+      },
+    })
+
+    const found = await payload.findByID({
+      collection: 'events',
+      id: event.id,
+      overrideAccess: false,
+      user: memberB,
+    })
+
+    expect(found.comment).toBeFalsy()
+  })
+
+  it("does not expose another member's adminComment on a shared event", async () => {
+    const event = await payload.create({
+      collection: 'events',
+      data: {
+        title: 'Dugnad',
+        description: 'Test',
+        startTime: new Date().toISOString(),
+        endTime: new Date().toISOString(),
+        user: memberA.id,
+        status: 'published',
+        adminComment: 'Intern admin-vurdering',
+      },
+    })
+
+    const found = await payload.findByID({
+      collection: 'events',
+      id: event.id,
+      overrideAccess: false,
+      user: memberB,
+    })
+
+    expect(found.adminComment).toBeFalsy()
+  })
 })
