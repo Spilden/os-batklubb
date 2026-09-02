@@ -56,6 +56,8 @@ export default buildConfig({
     client: {
       url: process.env.DATABASE_URL || '',
     },
+    migrationDir: path.resolve(dirname, 'migrations'),
+    push: false,
   }),
   sharp,
   plugins: [],
