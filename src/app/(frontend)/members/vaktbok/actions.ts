@@ -50,7 +50,10 @@ export async function editVaktbokEntry(_prevState: unknown, formData: FormData) 
     console.error(error)
     return {
       success: false,
-      error: 'Du kan bare rette dine egne rapporter',
+      error:
+        error instanceof Error && error.message === 'Rapporten kan ikke være tom'
+          ? error.message
+          : 'Du kan bare rette dine egne rapporter',
     }
   }
 }

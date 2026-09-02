@@ -23,10 +23,14 @@ export const CameraLogEntries: CollectionConfig = {
   },
   hooks: {
     beforeChange: [
-      ({ req, operation, data }) => {
+      ({ req, operation, data, originalDoc }) => {
         if (operation === 'create' && req.user) {
           data.user = req.user.id
           data.authorName = req.user.name
+        }
+        if (operation === 'update' && originalDoc) {
+          data.user = originalDoc.user
+          data.authorName = originalDoc.authorName
         }
         return data
       },

@@ -157,6 +157,33 @@ describe('camera-log-entries collection', () => {
     await payload.delete({ collection: 'camera-log-entries', id: entry.id })
   })
 
+  it('ignores attempts to change authorName/user on update, even by the owner', async () => {
+    const entry = await payload.create({
+      collection: 'camera-log-entries',
+      data: {
+        date: new Date().toISOString(),
+        authorName: 'Medlem Testesen',
+        user: memberUser.id,
+        content: 'Original tekst',
+      },
+    })
+
+    const updated = await payload.update({
+      collection: 'camera-log-entries',
+      id: entry.id,
+      overrideAccess: false,
+      user: memberUser,
+      depth: 0,
+      data: { content: 'Rettet', authorName: 'Noen Andre', user: adminUser.id },
+    })
+
+    expect(updated.content).toBe('Rettet')
+    expect(updated.authorName).toBe('Medlem Testesen')
+    expect(updated.user).toBe(memberUser.id)
+
+    await payload.delete({ collection: 'camera-log-entries', id: entry.id })
+  })
+
   it('rejects delete from a non-admin member but allows it for an admin', async () => {
     const entry = await payload.create({
       collection: 'camera-log-entries',
