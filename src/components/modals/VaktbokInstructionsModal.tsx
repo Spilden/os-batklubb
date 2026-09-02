@@ -16,13 +16,25 @@ export function VaktbokInstructionsModal({ onCloseAction }: { onCloseAction: () 
 
       <div className="space-y-3 text-sm text-text-muted leading-relaxed">
         <p>
-          Når du har kameravakt skal du sjekke <span className="font-medium text-text">alle kameraene 3 ganger i løpet av døgnet</span> — for eksempel morgen, ettermiddag og kveld. Det er ikke bundet til faste klokkeslett, bare fordelt utover dagen.
+          Når du har kameravakt skal du{' '}
+          <span className="font-semibold text-text">
+            sjekke alle kameraene og skrive en rapport 3 ganger i løpet av døgnet
+          </span>{' '}
+          — for eksempel morgen, ettermiddag og kveld. Det er ikke bundet til faste klokkeslett,
+          bare fordelt utover dagen.
         </p>
+
         <p>
-          For hver enkelt sjekk skriver du en kort rapport i feltet over og trykker <span className="font-medium text-text">Lagre</span> med en gang. Det blir altså <span className="font-medium text-text">3 separate rapporter i løpet av dagen</span> — ikke én samlet rapport som oppsummerer alle sjekkene på slutten av dagen. &quot;Alt i orden&quot; er en fullgod rapport hvis det ikke er noe å bemerke.
+          Skriv rapport hver gang du har gått gjennom kameraene, og trykk{' '}
+          <span className="font-semibold text-text">Lagre</span>. Rapportene gjør det enkelt å
+          dokumentere at kameravakten er gjennomført som den skal.{' '}
+          <span className="font-medium text-text">&quot;Alt i orden&quot;</span> er en fullgod
+          rapport hvis det ikke er noe å bemerke.
         </p>
+
         <p>
-          Du kan se hva som er rapportert tidligere lenger ned på siden, og rette dine egne rapporter i etterkant om du oppdager en feil.
+          Du kan se hva som er rapportert tidligere lenger ned på siden, og rette dine egne
+          rapporter i etterkant om du oppdager en feil.
         </p>
       </div>
     </BaseModal>
