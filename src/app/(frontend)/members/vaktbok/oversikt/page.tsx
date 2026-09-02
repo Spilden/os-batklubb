@@ -80,6 +80,11 @@ export default async function VaktbokOversiktPage({
         Vaktbok-oversikt {year}
       </h1>
       <div className="w-full flex flex-col gap-8">
+        <div className="flex justify-start">
+          <BaseButton href="/members/vaktbok" variant="text">
+            Tilbake
+          </BaseButton>
+        </div>
         <div className="flex items-center justify-center gap-4">
           <BaseButton href={`/members/vaktbok/oversikt?year=${year - 1}`} variant="text">
             ◀ {year - 1}
