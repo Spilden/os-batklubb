@@ -137,4 +137,27 @@ describe('Access control', () => {
       }),
     ).rejects.toThrow()
   })
+
+  it("allows a member to read another member's event (shared calendar)", async () => {
+    const event = await payload.create({
+      collection: 'events',
+      data: {
+        title: 'Dugnad',
+        description: 'Test',
+        startTime: new Date().toISOString(),
+        endTime: new Date().toISOString(),
+        user: memberA.id,
+        status: 'published',
+      },
+    })
+
+    const found = await payload.findByID({
+      collection: 'events',
+      id: event.id,
+      overrideAccess: false,
+      user: memberB,
+    })
+
+    expect(found.id).toBe(event.id)
+  })
 })

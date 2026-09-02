@@ -4,11 +4,7 @@ export const Events: CollectionConfig = {
   slug: 'events',
   access: {
     create: ({ req: { user } }) => Boolean(user),
-    read: ({ req: { user } }) => {
-      if (!user) return false
-      if (user.roles?.includes('admin')) return true
-      return { user: { equals: user.id } }
-    },
+    read: ({ req: { user } }) => Boolean(user),
     update: ({ req: { user } }) => {
       if (!user) return false
       if (user.roles?.includes('admin')) return true
