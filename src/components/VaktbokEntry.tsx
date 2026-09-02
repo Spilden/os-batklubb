@@ -35,7 +35,14 @@ export function VaktbokEntry({ entry, canEdit }: { entry: CameraLogEntry; canEdi
     <li className="bg-surface rounded-xl p-4 shadow-sm">
       <div className="flex justify-between text-text-muted text-sm uppercase">
         <span>{entry.authorName}</span>
-        <span>{formatEntryDate(entry.date)}</span>
+        <div className="flex flex-col items-end">
+          <span>{formatEntryDate(entry.date)}</span>
+          {entry.editedAt && (
+            <span className="text-xs italic normal-case">
+              Endret {formatEntryDate(entry.editedAt)}
+            </span>
+          )}
+        </div>
       </div>
 
       {isEditing ? (

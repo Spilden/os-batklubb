@@ -31,6 +31,7 @@ export const CameraLogEntries: CollectionConfig = {
         if (operation === 'update' && originalDoc) {
           data.user = originalDoc.user
           data.authorName = originalDoc.authorName
+          data.editedAt = new Date().toISOString()
         }
         return data
       },
@@ -60,6 +61,12 @@ export const CameraLogEntries: CollectionConfig = {
       type: 'textarea',
       label: 'Rapport',
       required: true,
+    },
+    {
+      name: 'editedAt',
+      type: 'date',
+      label: 'Sist endret',
+      admin: { hidden: true, date: { pickerAppearance: 'dayAndTime' } },
     },
     {
       name: 'source',
