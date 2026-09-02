@@ -4,7 +4,6 @@ import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { VaktbokForm } from '@/components/VaktbokForm'
 import { VaktbokList } from '@/components/VaktbokList'
-import { VaktbokInstructionsButton } from '@/components/VaktbokInstructionsButton'
 import BaseButton from '@/components/BaseButton'
 import { BaseMemberCard } from '@/components/BaseMemberCard'
 
@@ -50,15 +49,7 @@ export default async function VaktbokPage({
     <>
       <h1 className="text-text font-display text-center text-3xl p-10">Kameravaktbok</h1>
       <div className="w-full flex flex-col gap-8">
-        <BaseMemberCard
-          title={
-            <div className="flex items-center justify-between gap-2">
-              <span>Rapport</span>
-              <VaktbokInstructionsButton />
-            </div>
-          }
-          content={<VaktbokForm />}
-        />
+        <BaseMemberCard title="Rapport" content={<VaktbokForm />} />
         <BaseMemberCard
           title={isHistoryView ? 'Historikk' : `Siste ${DAYS_IN_DEFAULT_VIEW} dager`}
           content={

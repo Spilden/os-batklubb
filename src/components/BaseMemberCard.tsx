@@ -3,7 +3,7 @@ import {twMerge} from 'tailwind-merge'
 
 type BaseCardProps = {
   className?: string
-  title?: React.ReactNode
+  title?: string
   content?: React.ReactNode
   footer?: string
   children?: JSX.Element
