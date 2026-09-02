@@ -62,7 +62,7 @@ export function VaktbokForm() {
             type="button"
             onClick={() => setShowInstructions(true)}
             aria-label="Instruksjoner"
-            className="text-text-muted hover:text-primary transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg hover:bg-border/30 text-text-muted transition-colors cursor-pointer"
           >
             <Info size={20} />
           </button>
