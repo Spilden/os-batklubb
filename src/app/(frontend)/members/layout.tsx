@@ -33,7 +33,7 @@ export default function MembersLayout(props: { children: React.ReactNode }) {
           <NavButton href="/members/vaktbok">Vaktbok</NavButton>
         </div>
       </aside>
-      <div className="flex-1">{children}</div>
+      <div className="flex-1 min-w-0">{children}</div>
     </div>
   )
 }
