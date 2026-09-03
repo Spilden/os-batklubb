@@ -1,7 +1,7 @@
 import type { Payload } from 'payload'
 import fs from 'fs'
 import path from 'path'
-import { buildLexicalContent, parseContentBlocks, type ContentBlock } from './news-import-helpers'
+import { buildLexicalContent, decodeHtmlEntities, parseContentBlocks, type ContentBlock } from './news-import-helpers'
 
 export type RawNewsPost = {
   id: number
@@ -41,7 +41,7 @@ export type SkippedPost = {
 const NOISE_TITLE = 'Hei, verden!'
 
 function excerptFrom(text: string): string {
-  const trimmed = text.trim()
+  const trimmed = decodeHtmlEntities(text).trim()
   if (trimmed.length <= 200) return trimmed
   return trimmed.slice(0, 200).trimEnd() + '…'
 }
@@ -86,7 +86,10 @@ export function prepareNewsPosts(sources: NewsSource[]): {
       // A few WP posts have no title set at all - the "headline" only exists as
       // styled text inside the body. Fall back to the body text so News.title
       // (required) never ends up empty.
-      const title = raw.tittel.trim() || raw.innhold_tekst.trim().slice(0, 100) || 'Uten tittel'
+      const title =
+        decodeHtmlEntities(raw.tittel).trim() ||
+        decodeHtmlEntities(raw.innhold_tekst).trim().slice(0, 100) ||
+        'Uten tittel'
 
       posts.push({
         title,

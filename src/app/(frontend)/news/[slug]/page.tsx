@@ -22,6 +22,11 @@ export default async function NewsStoryPage({ params }: NewsStoryPageProps) {
   const article = articles.docs[0]
   const image = imageGuard(article.image)
   const isPortrait = image ? image.height > image.width : false
+  const publishedDate = new Date(article.publishedAt).toLocaleDateString('nb-NO', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
   return (
     <div className={`flex flex-col ${isPortrait ? 'lg:flex-row' : ''} gap-6 pt-4 mx-4`}>
       {image && (
@@ -34,7 +39,8 @@ export default async function NewsStoryPage({ params }: NewsStoryPageProps) {
         />
       )}
       <div className="flex flex-col h-full justify-start">
-        <h1 className="text-3xl text-text font-display text-center pb-8">{article.title}</h1>
+        <h1 className="text-3xl text-text font-display text-center pb-2">{article.title}</h1>
+        <p className="text-text-muted text-sm text-center pb-8">{publishedDate}</p>
           <RichText
             className="prose lg:prose-xl text-text-muted whitespace-pre-wrap mx-auto "
             data={article.content}
