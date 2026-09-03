@@ -3,6 +3,7 @@
 import { useState, useTransition } from 'react'
 import type { News } from '@/payload-types'
 import NewsCard from '@/components/NewsCard'
+import BaseButton from '@/components/BaseButton'
 import { loadMoreNews } from '@/app/(frontend)/news/actions'
 
 type NewsListProps = {
@@ -34,14 +35,9 @@ export default function NewsList({ initialArticles, initialHasNextPage }: NewsLi
         articles.map((article) => <NewsCard article={article} key={article.id} />)
       )}
       {hasNextPage && (
-        <button
-          type="button"
-          onClick={handleLoadMore}
-          disabled={isPending}
-          className="self-center rounded-lg bg-ocean px-6 py-2 text-surface font-display disabled:opacity-50"
-        >
+        <BaseButton onClick={handleLoadMore} disabled={isPending} className="self-center">
           {isPending ? 'Laster…' : 'Se flere nyheter'}
-        </button>
+        </BaseButton>
       )}
     </div>
   )
