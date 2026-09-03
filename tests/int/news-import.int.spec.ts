@@ -9,7 +9,7 @@ import { describe, it, beforeAll, afterEach, expect } from 'vitest'
 import fs from 'fs'
 import os from 'os'
 import path from 'path'
-import { parseContentBlocks, buildLexicalContent } from '@/scripts/news-import-helpers'
+import { parseContentBlocks, buildLexicalContent, decodeHtmlEntities } from '@/scripts/news-import-helpers'
 import { prepareNewsPosts, importNewsPosts, type RawNewsPost } from '@/scripts/news-import'
 
 describe('parseContentBlocks', () => {
@@ -32,6 +32,15 @@ describe('parseContentBlocks', () => {
     expect(parseContentBlocks('<p>&nbsp;</p><br/><p>Innhold.</p>')).toEqual([
       { kind: 'text', text: 'Innhold.' },
     ])
+  })
+})
+
+describe('decodeHtmlEntities', () => {
+  it('decodes named and numeric entities that occur in the source titles/excerpts', () => {
+    expect(decodeHtmlEntities("Flistar&#8217;en i lausa lokto!")).toBe('Flistar’en i lausa lokto!')
+    expect(decodeHtmlEntities('Båtopptaket gikk fint uten større problem,&nbsp; bra.')).toBe(
+      'Båtopptaket gikk fint uten større problem,  bra.',
+    )
   })
 })
 

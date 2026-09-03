@@ -3,6 +3,14 @@ import crypto from 'crypto'
 
 export type ContentBlock = { kind: 'text'; text: string } | { kind: 'image' }
 
+// tittel/innhold_tekst come from the source JSON as plain strings, not parsed
+// HTML - a handful still contain raw entities (e.g. "&#8217;") that the WP
+// export never decoded. innhold_html doesn't have this problem since it goes
+// through an actual HTML parser in parseContentBlocks.
+export function decodeHtmlEntities(text: string): string {
+  return new JSDOM(`<body>${text}</body>`).window.document.body.textContent || ''
+}
+
 // The source HTML only ever contains simple blocks (paragraphs, lists, image
 // wrappers) - see migration_data/varganytt_nyheter*.json. Formatting like bold/links
 // is dropped; this is a historical archive import, not a live editor round-trip.

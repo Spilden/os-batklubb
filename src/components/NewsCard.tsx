@@ -9,6 +9,11 @@ type NewsCardProps = {
 
 export default function NewsCard({ article }: NewsCardProps) {
   const image = imageGuard(article.image)
+  const publishedDate = new Date(article.publishedAt).toLocaleDateString('nb-NO', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
   return (
     <Link
       key={article.id}
@@ -28,6 +33,7 @@ export default function NewsCard({ article }: NewsCardProps) {
       )}
       <div className="flex flex-col gap-y-4 min-w-0">
         <h2 className="text-3xl text-text font-display text-center">{article.title}</h2>
+        <p className="text-text-muted text-sm text-center">{publishedDate}</p>
         <p className="text-text-muted whitespace-pre-wrap">{article.excerpt}</p>
       </div>
     </Link>
