@@ -65,7 +65,11 @@ function uploadNode(mediaId: number) {
 // blocks are silently skipped.
 type LexicalNode = { type: string; version: number; [k: string]: unknown }
 
-export function buildLexicalContent(blocks: ContentBlock[], imageMediaId: number | null) {
+export function buildLexicalContent(
+  blocks: ContentBlock[],
+  imageMediaId: number | null,
+  fallbackText: string,
+) {
   const children: LexicalNode[] = []
   let imageInserted = false
 
@@ -81,7 +85,7 @@ export function buildLexicalContent(blocks: ContentBlock[], imageMediaId: number
   }
 
   if (children.length === 0) {
-    children.push(paragraphNode(''))
+    children.push(paragraphNode(fallbackText))
   }
 
   return {

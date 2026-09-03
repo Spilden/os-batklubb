@@ -49,15 +49,21 @@ describe('buildLexicalContent', () => {
     const content = buildLexicalContent(
       [{ kind: 'image' }, { kind: 'text', text: 'Tekst' }, { kind: 'image' }],
       42,
+      '',
     )
     const children = content.root.children as Array<{ type: string; value?: number }>
     expect(children.map((c) => c.type)).toEqual(['upload', 'paragraph'])
     expect(children[0].value).toBe(42)
   })
 
-  it('falls back to an empty paragraph when there are no blocks', () => {
-    const content = buildLexicalContent([], null)
-    expect(content.root.children).toHaveLength(1)
+  it('falls back to a paragraph with the given fallback text when there are no blocks', () => {
+    const content = buildLexicalContent([], null, 'Pinsetur til Strandvik')
+    const children = content.root.children as Array<{
+      type: string
+      children?: Array<{ text?: string }>
+    }>
+    expect(children).toHaveLength(1)
+    expect(children[0].children?.[0]?.text).toBe('Pinsetur til Strandvik')
   })
 })
 

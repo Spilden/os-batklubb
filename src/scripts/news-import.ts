@@ -155,7 +155,7 @@ export async function importNewsPosts(
       data: {
         title: post.title,
         excerpt: post.excerpt,
-        content: buildLexicalContent(post.contentBlocks, mediaId),
+        content: buildLexicalContent(post.contentBlocks, null, post.title),
         image: mediaId ?? undefined,
         publishedAt: post.publishedAt,
       },
