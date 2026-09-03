@@ -18,8 +18,11 @@ export default function NewsCard({ article }: NewsCardProps) {
     <Link
       key={article.id}
       href={`/news/${article.slug}`}
-      className="flex flex-col md:flex-row bg-surface rounded-lg p-4 shadow-lg w-full gap-4 cursor-pointer hover:shadow-ocean"
+      className="relative flex flex-col md:flex-row bg-surface rounded-lg p-4 shadow-lg w-full gap-4 cursor-pointer hover:shadow-ocean"
     >
+      <span className="absolute top-2 right-2 bg-surface/90 text-text-muted text-xs px-2 py-0.5 rounded">
+        {publishedDate}
+      </span>
       {image && (
         <div className="relative w-full md:w-2/5 aspect-video shrink-0">
           <Image
@@ -33,7 +36,6 @@ export default function NewsCard({ article }: NewsCardProps) {
       )}
       <div className="flex flex-col gap-y-4 min-w-0">
         <h2 className="text-3xl text-text font-display text-center">{article.title}</h2>
-        <p className="text-text-muted text-sm text-center">{publishedDate}</p>
         <p className="text-text-muted whitespace-pre-wrap">{article.excerpt}</p>
       </div>
     </Link>
