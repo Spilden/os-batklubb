@@ -45,6 +45,12 @@ export const Users: CollectionConfig = {
       required: true,
     },
     {
+      name: 'medlemSiden',
+      type: 'date',
+      label: 'Medlem siden',
+      admin: { date: { pickerAppearance: 'dayOnly' } },
+    },
+    {
       name: 'roles',
       type: 'select',
       label: 'Roller',
