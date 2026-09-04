@@ -72,7 +72,7 @@ export function ClubhouseCalendar({ currentUser, initialRequests }: Props) {
 
       {selected && (
         <BookingModal
-          title="Send klubbhus booking forespørsel"
+          title="Send forespørsel for klubblokalet"
           info={`${formatTime(selected.start)} – ${formatTime(selected.end)}`}
           confirmLabel="Send forespørsel"
           onConfirmAction={handleSubmit}

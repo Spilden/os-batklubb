@@ -1,8 +1,9 @@
-﻿import { getPayload } from 'payload'
+import { getPayload } from 'payload'
 import config from '@payload-config'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { SlippCalendar } from '@/components/SlippCalendar'
+import BookingNotice from '@/components/BookingNotice'
 
 export default async function SlippPage() {
   const payload = await getPayload({ config })
@@ -16,13 +17,19 @@ export default async function SlippPage() {
 
   return (
     <>
-      <h1 className="text-text font-display text-center text-3xl p-10">Booking av slipp plass</h1>
+      <h1 className="text-text font-display text-center text-3xl pt-8 pb-4">Booking av slipp-plass</h1>
+      <BookingNotice
+        description="Kalenderen og nettbooking for slipp er under utvikling og ikke offisielt i drift ennå. Bindende avtale og reservasjon av slipp må inntil videre gjøres direkte med ansvarlig person."
+        testNotice="Du kan fritt klikke eller markere dager i kalenderen for å teste hvordan bookingen fungerer."
+      />
       <SlippCalendar
         currentUser={user}
         initialRequests={requests}
         settings={settings}
       />
-      <p className="text-text text-center text-xl p-10">Klikk på dagen du vil booke eller dra over de dagene/timene du ønsker å booke slipp.</p>
+      <p className="text-text-muted text-center text-sm p-6">
+        Klikk på en dag eller dra over dagene du ønsker for å prøve bookingfunksjonen.
+      </p>
     </>
   )
 }

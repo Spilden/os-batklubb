@@ -4,7 +4,7 @@ import Image from 'next/image'
 import BaseButton from '@/components/BaseButton'
 import { useState } from 'react'
 import LoginModal from '@/components/modals/LoginModal'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 type props = {
   user: { email: string } | null
@@ -14,6 +14,24 @@ export default function HeaderNav({ user }: props) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [showLoginModal, setShowLoginModal] = useState(false)
   const router = useRouter()
+  const pathname = usePathname()
+
+  const isLinkActive = (href: string) => {
+    if (!pathname) return false
+    if (href === '/') {
+      return pathname === '/'
+    }
+    return pathname === href || pathname.startsWith(`${href}/`)
+  }
+
+  const navLinks = [
+    { href: '/', label: 'Hjem' },
+    { href: '/news', label: 'Nyheter' },
+    { href: '/about', label: 'Om oss' },
+    { href: '/guest-marina', label: 'Gjestehavn' },
+    { href: '/contact', label: 'Kontakt' },
+    ...(user ? [{ href: '/members', label: 'Medlem' }] : []),
+  ]
 
   async function handleLogout() {
     await fetch('/api/users/logout', { method: 'POST', credentials: 'include' })
@@ -46,24 +64,13 @@ export default function HeaderNav({ user }: props) {
 
         {/*Desktop navigasjon*/}
         <ul className="hidden lg:flex gap-1">
-          <li>
-            <BaseButton href="/">Hjem</BaseButton>
-          </li>
-          <li>
-            <BaseButton href="/news">Nyheter</BaseButton>
-          </li>
-          <li>
-            <BaseButton href="/about">Om oss</BaseButton>
-          </li>
-          <li>
-            <BaseButton href="/guest-marina">Gjestehavn</BaseButton>
-          </li>
-          <li>
-            <BaseButton href="/contact">Kontakt</BaseButton>
-          </li>
-          <li className={`${user ? 'block' : 'hidden'}`}>
-            <BaseButton href="/members">Medlem</BaseButton>
-          </li>
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <BaseButton href={link.href} active={isLinkActive(link.href)}>
+                {link.label}
+              </BaseButton>
+            </li>
+          ))}
           <li>{loginButton}</li>
         </ul>
 
@@ -78,40 +85,23 @@ export default function HeaderNav({ user }: props) {
             className="fixed inset-0 bg-black/50 z-40 lg:hidden"
             onClick={() => setMenuOpen(false)}
           >
-            <ul className="fixed top-0 right-0 h-full w-auto max-w-xs bg-white z-50 flex flex-col gap-2 p-8 shadow-2xl lg:hidden items-end">
+            <ul className="fixed top-0 right-0 h-full w-auto max-w-xs bg-surface z-50 flex flex-col gap-2 p-8 shadow-2xl lg:hidden items-end border-l border-border/50">
               <li className="mb-4">
                 <BaseButton variant="secondary" onClick={() => setMenuOpen(false)}>
                   X
                 </BaseButton>
               </li>
-              <li>
-                <BaseButton href="/" onClick={() => setMenuOpen(false)}>
-                  Hjem
-                </BaseButton>
-              </li>
-              <li>
-                <BaseButton href="/news" onClick={() => setMenuOpen(false)}>
-                  Nyheter
-                </BaseButton>
-              </li>
-              <li>
-                <BaseButton href="/about" onClick={() => setMenuOpen(false)}>
-                  Om Klubben
-                </BaseButton>
-              </li>
-              <li>
-                <BaseButton href="/guest-marina" onClick={() => setMenuOpen(false)}>
-                  Gjestehavn
-                </BaseButton>
-              </li>
-              <li>
-                <BaseButton href="/contact" onClick={() => setMenuOpen(false)}>
-                  Kontakt
-                </BaseButton>
-              </li>
-              <li className={`${user ? 'block' : 'hidden'}`}>
-                <BaseButton href="/members">Medlemmer</BaseButton>
-              </li>
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <BaseButton
+                    href={link.href}
+                    active={isLinkActive(link.href)}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {link.label}
+                  </BaseButton>
+                </li>
+              ))}
               <li>{loginButton}</li>
             </ul>
           </div>

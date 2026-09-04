@@ -8,7 +8,7 @@ export const ContactSubmissions: CollectionConfig = {
   },
   access: {
     create: () => true,
-    read: () => true,
+    read: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
     update: () => false,
     delete: () => false,
   },

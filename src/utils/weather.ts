@@ -30,7 +30,7 @@ export async function getTidevann() {
 export async function getWind() {
   try {
     const wuResponse = await fetch(
-      `https://api.weather.com/v2/pws/observations/current?stationId=IOS291&format=json&units=m&apiKey=${process.env.WEATHER_UNDERGROUND_API_KEY}`,
+      `https://api.weather.com/v2/pws/observations/current?stationId=IOS296&format=json&units=m&apiKey=${process.env.WEATHER_UNDERGROUND_API_KEY}`,
     )
     if (!wuResponse.ok) {
       console.error('status', wuResponse.status, wuResponse.statusText)

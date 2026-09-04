@@ -2,6 +2,24 @@
 
 export const SlippBookings: CollectionConfig = {
   slug: 'slipp-bookings',
+  access: {
+    create: ({ req: { user } }) => Boolean(user),
+    read: ({ req: { user } }) => {
+      if (!user) return false
+      if (user.roles?.includes('admin')) return true
+      return { user: { equals: user.id } }
+    },
+    update: ({ req: { user } }) => {
+      if (!user) return false
+      if (user.roles?.includes('admin')) return true
+      return { user: { equals: user.id } }
+    },
+    delete: ({ req: { user } }) => {
+      if (!user) return false
+      if (user.roles?.includes('admin')) return true
+      return { user: { equals: user.id } }
+    },
+  },
   fields: [
     {
       name: 'startTime',
@@ -29,6 +47,9 @@ export const SlippBookings: CollectionConfig = {
       type: 'select',
       defaultValue: 'pending',
       options: ['pending', 'approved', 'rejected'],
+      access: {
+        update: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
+      },
     },
   ],
 }

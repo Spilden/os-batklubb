@@ -22,19 +22,31 @@ export default async function NewsStoryPage({ params }: NewsStoryPageProps) {
   const article = articles.docs[0]
   const image = imageGuard(article.image)
   const isPortrait = image ? image.height > image.width : false
+  const publishedDate = new Date(article.publishedAt).toLocaleDateString('nb-NO', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
   return (
-    <div className={`flex flex-col ${isPortrait ? 'lg:flex-row' : ''} gap-6 pt-4 mx-4`}>
+    <div className={`flex flex-col ${isPortrait ? 'lg:flex-row' : ''} gap-6 pt-4 mx-4 max-w-4xl lg:mx-auto`}>
       {image && (
-        <Image
-          src={image.url}
-          alt={image.alt ?? article.title}
-          width={image.width}
-          height={image.height}
-          className="rounded-lg w-auto h-auto self-center shadow-md"
-        />
+        <div
+          className={`relative shrink-0 overflow-hidden rounded-lg shadow-md ${
+            isPortrait ? 'w-full max-w-xs h-80 self-center lg:self-start' : 'w-full h-64 md:h-96'
+          }`}
+        >
+          <Image
+            src={image.url}
+            alt={image.alt ?? article.title}
+            fill
+            sizes={isPortrait ? '(min-width: 1024px) 320px, 100vw' : '100vw'}
+            className="object-cover"
+          />
+        </div>
       )}
-      <div className="flex flex-col h-full justify-start">
-        <h1 className="text-3xl text-text font-display text-center pb-8">{article.title}</h1>
+      <div className="flex flex-col h-full min-w-0 flex-1 justify-start">
+        <h1 className="text-3xl text-text font-display text-center pb-2">{article.title}</h1>
+        <p className="text-text-muted text-sm text-center pb-8">{publishedDate}</p>
           <RichText
             className="prose lg:prose-xl text-text-muted whitespace-pre-wrap mx-auto "
             data={article.content}

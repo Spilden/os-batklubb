@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+html {
+    scroll-behavior: smooth;
+}
+
 @theme inline {
     --font-sans: 'DM Sans', sans-serif;
     --font-display: 'Playfair Display', serif;
@@ -23,23 +27,46 @@
     --color-logo-conture: #231f20;
 }
 
+.fc {
+    --fc-border-color: var(--color-border);
+    --fc-today-bg-color: var(--color-apricot);
+    --fc-button-text-color: var(--color-surface);
+    --fc-button-bg-color: var(--color-primary);
+    --fc-button-border-color: var(--color-primary);
+    --fc-button-hover-bg-color: var(--color-ocean);
+    --fc-button-hover-border-color: var(--color-ocean);
+    --fc-button-active-bg-color: var(--color-ocean);
+    --fc-button-active-border-color: var(--color-ocean);
+}
+
 .fc .fc-button {
     @apply bg-primary border-primary text-surface
     px-4 py-2 rounded-lg text-xs font-medium
-    tracking-widest uppercase shadow-none;
+    tracking-widest uppercase shadow-none transition-colors;
 }
 
 .fc .fc-button:hover {
-    @apply bg-ocean border-ocean;
+    @apply bg-ocean border-ocean text-surface;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled):active,
+.fc .fc-button.fc-button-active {
+    @apply bg-ocean border-ocean text-surface;
+}
+
+.fc .fc-button-primary:disabled,
+.fc .fc-button:disabled {
+    @apply bg-ocean border-ocean text-surface opacity-50 cursor-not-allowed;
+}
+
+.fc .fc-button:focus,
+.fc .fc-button-primary:focus {
+    @apply ring-2 ring-ocean/30 outline-none shadow-none;
 }
 
 .fc .fc-toolbar-title {
     @apply font-display text-2xl text-text capitalize;
-}
-
-.fc {
-    --fc-border-color: var(--color-border);
-    --fc-today-bg-color: var(--color-apricot);
 }
 
 @media (max-width: 1024px) {
