@@ -13,7 +13,7 @@ export async function getTidevann() {
       console.error('status', response.status, response.statusText)
     }
     const text = await response.text()
-    console.log(text)
+
     return [...text.matchAll(/<waterlevel value="([\d.]+)" time="([^"]+)" flag="([^"]+)"/g)].map(
       (m) => ({
         verdi: parseFloat(m[1]),
