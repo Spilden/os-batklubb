@@ -13,7 +13,7 @@ export function NavButton({ href, children }: NavButtonProps) {
   const isActive = pathname === href
   return (
     <Link
-      className={`hover:bg-sage w-full p-4 pl-22 ${isActive ? 'bg-sage' : ''}`}
+      className={`hover:bg-ocean hover:text-surface transition-colors w-full p-4 pl-22 ${isActive ? 'bg-ocean text-surface' : ''}`}
       href={href}
     >
       {children}

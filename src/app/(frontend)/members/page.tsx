@@ -100,7 +100,7 @@ export default async function MembersPage() {
         </div>
         {allReservations.map((reservation) => (
           <div key={reservation.id} className="grid grid-cols-4">
-            <p>{reservation.type === 'klubbhus' ? 'klubbhus' : 'Slipp'}</p>
+            <p>{reservation.type === 'klubbhus' ? 'Klubblokale' : 'Slipp'}</p>
             <p>
               {reservation.status === 'pending'
                 ? 'Venter'
@@ -121,7 +121,16 @@ export default async function MembersPage() {
       <h1 className="font-display text-text text-3xl font-bold p-4 pb-16">Velkommen {user.name}</h1>
       <div className="w-full flex flex-col gap-4">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <BaseMemberCard title="Min Plass" content="A-32" footer="Brygge A" />
+          <BaseMemberCard
+            title="Min Plass"
+            badge="Under utvikling"
+            content={
+              <div className="py-1">
+                <span className="text-xl font-medium text-text-muted/60">—</span>
+                <p className="text-xs text-text-muted mt-1">Plassadministrasjon er ikke implementert enda</p>
+              </div>
+            }
+          />
           <BaseMemberCard
             title={`Neste ${highLowWater}`}
             content={`${nextTide?.verdi} cm`}
@@ -145,8 +154,34 @@ export default async function MembersPage() {
         </div>
         <div className="grid xl:grid-cols-2 gap-4">
           <BaseMemberCard title="Mine Reservasjoner" content={showReservations()} />
-          <BaseMemberCard title="Min Båt" content="innhold" footer="footer" />
-          <BaseMemberCard title="Min Bruker" content="innhold" footer="footer" />
+          <BaseMemberCard
+            title="Min Båt"
+            badge="Under utvikling"
+            content={
+              <div className="py-2 text-sm text-text-muted">
+                <p>Oversikt over båtopplysninger og båtplasser er ikke implementert enda.</p>
+              </div>
+            }
+          />
+          <BaseMemberCard
+            title="Min Bruker"
+            badge="Under utvikling"
+            content={
+              <div className="py-2 space-y-1.5 text-sm">
+                <div>
+                  <span className="text-text-muted">Navn: </span>
+                  <span className="font-medium text-text">{user.name}</span>
+                </div>
+                <div>
+                  <span className="text-text-muted">E-post: </span>
+                  <span className="font-medium text-text">{user.email}</span>
+                </div>
+                <p className="text-xs text-text-muted pt-2 italic">
+                  Redigering av medlemsprofil og ytterligere innstillinger er under utvikling.
+                </p>
+              </div>
+            }
+          />
           <BaseMemberCard className="pl-4">
             <EventCalendar />
           </BaseMemberCard>

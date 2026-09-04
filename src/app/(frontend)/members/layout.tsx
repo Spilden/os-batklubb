@@ -19,7 +19,7 @@ export default function MembersLayout(props: { children: React.ReactNode }) {
           variant="text"
           className="flex-1 text-center p-3 text-sm"
         >
-          Klubbhus
+          Klubblokale
         </BaseButton>
         <BaseButton href="/members/vaktbok" variant="text" className="flex-1 text-center p-3 text-sm">
           Vaktbok
@@ -29,7 +29,7 @@ export default function MembersLayout(props: { children: React.ReactNode }) {
         <div className="flex flex-col fixed w-xs top-[123] pt-8">
           <NavButton href="/members">Medlemsside</NavButton>
           <NavButton href="/members/slipp">Slipp</NavButton>
-          <NavButton href="/members/clubhouse">Klubbhus</NavButton>
+          <NavButton href="/members/clubhouse">Klubblokale</NavButton>
           <NavButton href="/members/vaktbok">Vaktbok</NavButton>
         </div>
       </aside>

@@ -40,7 +40,7 @@ export default async function NewsStoryPage({ params }: NewsStoryPageProps) {
             alt={image.alt ?? article.title}
             fill
             sizes={isPortrait ? '(min-width: 1024px) 320px, 100vw' : '100vw'}
-            className="object-contain"
+            className="object-cover"
           />
         </div>
       )}
