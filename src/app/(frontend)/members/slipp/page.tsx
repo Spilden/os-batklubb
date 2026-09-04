@@ -1,4 +1,4 @@
-import { getPayload } from 'payload'
+﻿import { getPayload } from 'payload'
 import config from '@payload-config'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
@@ -17,7 +17,7 @@ export default async function SlippPage() {
 
   return (
     <>
-      <h1 className="text-text font-display text-center text-3xl pt-8 pb-4">Booking av slipp-plass</h1>
+      <h1 className="text-text font-display text-center text-3xl pt-8 pb-4">Booking av slipp</h1>
       <BookingNotice
         description="Kalenderen og nettbooking for slipp er under utvikling og ikke offisielt i drift ennå. Bindende avtale og reservasjon av slipp må inntil videre gjøres direkte med ansvarlig person."
         testNotice="Du kan fritt klikke eller markere dager i kalenderen for å teste hvordan bookingen fungerer."
