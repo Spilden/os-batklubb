@@ -1,5 +1,2606 @@
 [
   {
+    "id": 10485,
+    "date": "2026-09-07T15:26:08",
+    "date_gmt": "2026-09-07T13:26:08",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10485"
+    },
+    "modified": "2026-09-07T15:26:08",
+    "modified_gmt": "2026-09-07T13:26:08",
+    "slug": "vakt-946",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/07/vakt-946/",
+    "title": {
+      "rendered": "vakt"
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">ok ingen biler</p>\n\n\n\n<p class=\"wp-block-paragraph\"></p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "ok ingen biler",
+      "protected": false
+    },
+    "author": 49,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10485",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10485",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/49"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10485"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10485/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10486,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10485/revisions/10486"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10485"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10485"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10485"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 49,
+          "name": "Asbjørn Larsen",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/asbjoern-larsen/",
+          "slug": "asbjoern-larsen",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/874c17f36b05cdf25896f8fb6af48b367ae94cbc6a699320138adf0e4f403be9?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/874c17f36b05cdf25896f8fb6af48b367ae94cbc6a699320138adf0e4f403be9?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/874c17f36b05cdf25896f8fb6af48b367ae94cbc6a699320138adf0e4f403be9?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/49",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10483,
+    "date": "2026-09-07T08:14:57",
+    "date_gmt": "2026-09-07T06:14:57",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10483"
+    },
+    "modified": "2026-09-07T08:14:57",
+    "modified_gmt": "2026-09-07T06:14:57",
+    "slug": "vakt-945",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/07/vakt-945/",
+    "title": {
+      "rendered": "Vakt"
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">Ingen biler,15c tåke</p>\n\n\n\n<p class=\"wp-block-paragraph\"></p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "Ingen biler,15c tåke",
+      "protected": false
+    },
+    "author": 49,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10483",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10483",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/49"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10483"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10483/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10484,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10483/revisions/10484"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10483"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10483"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10483"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 49,
+          "name": "Asbjørn Larsen",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/asbjoern-larsen/",
+          "slug": "asbjoern-larsen",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/874c17f36b05cdf25896f8fb6af48b367ae94cbc6a699320138adf0e4f403be9?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/874c17f36b05cdf25896f8fb6af48b367ae94cbc6a699320138adf0e4f403be9?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/874c17f36b05cdf25896f8fb6af48b367ae94cbc6a699320138adf0e4f403be9?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/49",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10480,
+    "date": "2026-09-06T22:02:15",
+    "date_gmt": "2026-09-06T20:02:15",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10480"
+    },
+    "modified": "2026-09-06T22:02:15",
+    "modified_gmt": "2026-09-06T20:02:15",
+    "slug": "sondag-kveld-5",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/06/sondag-kveld-5/",
+    "title": {
+      "rendered": "søndag kveld."
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">stille rolig. Ingen biler på parkeringsplassen. Regn. </p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "stille rolig. Ingen biler på parkeringsplassen. Regn.",
+      "protected": false
+    },
+    "author": 73,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10480",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10480",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10480"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10480/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10481,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10480/revisions/10481"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10480"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10480"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10480"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 73,
+          "name": "Bjørg Frotveit",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/bjorgfrothotmail-com/",
+          "slug": "bjorgfrothotmail-com",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10478,
+    "date": "2026-09-06T16:01:44",
+    "date_gmt": "2026-09-06T14:01:44",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10478"
+    },
+    "modified": "2026-09-06T16:01:44",
+    "modified_gmt": "2026-09-06T14:01:44",
+    "slug": "sondag-ettermiddag-4",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/06/sondag-ettermiddag-4/",
+    "title": {
+      "rendered": "søndag ettermiddag"
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">stille rolig. 3 biler på parkeringsplassen nede. </p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "stille rolig. 3 biler på parkeringsplassen nede.",
+      "protected": false
+    },
+    "author": 73,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10478",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10478",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10478"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10478/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10479,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10478/revisions/10479"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10478"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10478"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10478"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 73,
+          "name": "Bjørg Frotveit",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/bjorgfrothotmail-com/",
+          "slug": "bjorgfrothotmail-com",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10476,
+    "date": "2026-09-06T06:03:41",
+    "date_gmt": "2026-09-06T04:03:41",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10476"
+    },
+    "modified": "2026-09-06T06:03:41",
+    "modified_gmt": "2026-09-06T04:03:41",
+    "slug": "sondag-morgen-3",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/06/sondag-morgen-3/",
+    "title": {
+      "rendered": "søndag morgen."
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">stille rolig 1 bil på parkeringsplassen. </p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "stille rolig 1 bil på parkeringsplassen.",
+      "protected": false
+    },
+    "author": 73,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10476",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10476",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10476"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10476/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10477,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10476/revisions/10477"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10476"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10476"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10476"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 73,
+          "name": "Bjørg Frotveit",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/bjorgfrothotmail-com/",
+          "slug": "bjorgfrothotmail-com",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10473,
+    "date": "2026-09-05T22:11:00",
+    "date_gmt": "2026-09-05T20:11:00",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10473"
+    },
+    "modified": "2026-09-05T22:11:00",
+    "modified_gmt": "2026-09-05T20:11:00",
+    "slug": "lordag-kveld-3",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/05/lordag-kveld-3/",
+    "title": {
+      "rendered": "lørdag kveld."
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">stille rolig 1 bil på parkeringsplassen nede. </p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "stille rolig 1 bil på parkeringsplassen nede.",
+      "protected": false
+    },
+    "author": 73,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10473",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10473",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10473"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10473/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10474,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10473/revisions/10474"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10473"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10473"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10473"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 73,
+          "name": "Bjørg Frotveit",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/bjorgfrothotmail-com/",
+          "slug": "bjorgfrothotmail-com",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10471,
+    "date": "2026-09-05T14:57:31",
+    "date_gmt": "2026-09-05T12:57:31",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10471"
+    },
+    "modified": "2026-09-05T14:57:31",
+    "modified_gmt": "2026-09-05T12:57:31",
+    "slug": "lordag-ettermiddag-3",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/05/lordag-ettermiddag-3/",
+    "title": {
+      "rendered": "lørdag ettermiddag"
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">stille rolig. 5 biler på parkeringsplassen nede. Litt skiftende vær. </p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "stille rolig. 5 biler på parkeringsplassen nede. Litt skiftende vær.",
+      "protected": false
+    },
+    "author": 73,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10471",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10471",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10471"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10471/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10472,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10471/revisions/10472"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10471"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10471"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10471"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 73,
+          "name": "Bjørg Frotveit",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/bjorgfrothotmail-com/",
+          "slug": "bjorgfrothotmail-com",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10469,
+    "date": "2026-09-05T06:14:24",
+    "date_gmt": "2026-09-05T04:14:24",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10469"
+    },
+    "modified": "2026-09-05T06:14:24",
+    "modified_gmt": "2026-09-05T04:14:24",
+    "slug": "lordag-morgen-2",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/05/lordag-morgen-2/",
+    "title": {
+      "rendered": "lørdag morgen."
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">stille rolig. 1 bil på parkeringsplassen nede. </p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "stille rolig. 1 bil på parkeringsplassen nede.",
+      "protected": false
+    },
+    "author": 73,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10469",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10469",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10469"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10469/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10470,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10469/revisions/10470"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10469"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10469"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10469"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 73,
+          "name": "Bjørg Frotveit",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/bjorgfrothotmail-com/",
+          "slug": "bjorgfrothotmail-com",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10467,
+    "date": "2026-09-04T22:00:23",
+    "date_gmt": "2026-09-04T20:00:23",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10467"
+    },
+    "modified": "2026-09-04T22:00:23",
+    "modified_gmt": "2026-09-04T20:00:23",
+    "slug": "fredag-kveld-3",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/04/fredag-kveld-3/",
+    "title": {
+      "rendered": "fredag kveld."
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">2 biler på parkeringsplassen nede. Stille og rolig. </p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "2 biler på parkeringsplassen nede. Stille og rolig.",
+      "protected": false
+    },
+    "author": 73,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10467",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10467",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10467"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10467/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10468,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10467/revisions/10468"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10467"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10467"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10467"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 73,
+          "name": "Bjørg Frotveit",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/bjorgfrothotmail-com/",
+          "slug": "bjorgfrothotmail-com",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10465,
+    "date": "2026-09-04T17:28:30",
+    "date_gmt": "2026-09-04T15:28:30",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10465"
+    },
+    "modified": "2026-09-04T17:28:30",
+    "modified_gmt": "2026-09-04T15:28:30",
+    "slug": "fredag-ettermiddag-3",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/04/fredag-ettermiddag-3/",
+    "title": {
+      "rendered": "Fredag ettermiddag"
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">stille rolig, fint vær. 2 biler på parkeringsplassen nede. </p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "stille rolig, fint vær. 2 biler på parkeringsplassen nede.",
+      "protected": false
+    },
+    "author": 73,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10465",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10465",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10465"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10465/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10466,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10465/revisions/10466"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10465"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10465"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10465"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 73,
+          "name": "Bjørg Frotveit",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/bjorgfrothotmail-com/",
+          "slug": "bjorgfrothotmail-com",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10463,
+    "date": "2026-09-04T04:47:17",
+    "date_gmt": "2026-09-04T02:47:17",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10463"
+    },
+    "modified": "2026-09-04T04:47:17",
+    "modified_gmt": "2026-09-04T02:47:17",
+    "slug": "fredag-morgen-3",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/04/fredag-morgen-3/",
+    "title": {
+      "rendered": "fredag morgen."
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">2 biler på parkeringsplassen nede. Stille rolig. </p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "2 biler på parkeringsplassen nede. Stille rolig.",
+      "protected": false
+    },
+    "author": 73,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10463",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10463",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10463"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10463/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10464,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10463/revisions/10464"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10463"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10463"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10463"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 73,
+          "name": "Bjørg Frotveit",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/bjorgfrothotmail-com/",
+          "slug": "bjorgfrothotmail-com",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10461,
+    "date": "2026-09-03T21:15:27",
+    "date_gmt": "2026-09-03T19:15:27",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10461"
+    },
+    "modified": "2026-09-03T21:15:27",
+    "modified_gmt": "2026-09-03T19:15:27",
+    "slug": "torsdag-kveld-4",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/03/torsdag-kveld-4/",
+    "title": {
+      "rendered": "torsdag kveld"
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">stille og rolig. 4 biler på parkeringsplassen nede. <br /></p>\n\n\n\n<p class=\"wp-block-paragraph\"></p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "stille og rolig. 4 biler på parkeringsplassen nede.",
+      "protected": false
+    },
+    "author": 73,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10461",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10461",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10461"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10461/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10462,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10461/revisions/10462"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10461"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10461"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10461"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 73,
+          "name": "Bjørg Frotveit",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/bjorgfrothotmail-com/",
+          "slug": "bjorgfrothotmail-com",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10459,
+    "date": "2026-09-03T16:13:21",
+    "date_gmt": "2026-09-03T14:13:21",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10459"
+    },
+    "modified": "2026-09-03T16:13:21",
+    "modified_gmt": "2026-09-03T14:13:21",
+    "slug": "torsdag-ettermiddag-03-09-26",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/03/torsdag-ettermiddag-03-09-26/",
+    "title": {
+      "rendered": "torsdag ettermiddag 03.09.26"
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">stille rolig. 1 bil på parkeringsplassen nede. Opplett overskyet. </p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "stille rolig. 1 bil på parkeringsplassen nede. Opplett overskyet.",
+      "protected": false
+    },
+    "author": 73,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10459",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10459",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10459"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10459/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10460,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10459/revisions/10460"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10459"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10459"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10459"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 73,
+          "name": "Bjørg Frotveit",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/bjorgfrothotmail-com/",
+          "slug": "bjorgfrothotmail-com",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10457,
+    "date": "2026-09-03T04:03:22",
+    "date_gmt": "2026-09-03T02:03:22",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10457"
+    },
+    "modified": "2026-09-03T04:03:22",
+    "modified_gmt": "2026-09-03T02:03:22",
+    "slug": "torsdag-03-09-26-morgen",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/03/torsdag-03-09-26-morgen/",
+    "title": {
+      "rendered": "Torsdag 03.09.26 morgen."
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">2 biler på parkeringsplassen nede. Stille rolig. </p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "2 biler på parkeringsplassen nede. Stille rolig.",
+      "protected": false
+    },
+    "author": 73,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10457",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10457",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10457"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10457/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10458,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10457/revisions/10458"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10457"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10457"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10457"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 73,
+          "name": "Bjørg Frotveit",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/bjorgfrothotmail-com/",
+          "slug": "bjorgfrothotmail-com",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10455,
+    "date": "2026-09-02T22:40:14",
+    "date_gmt": "2026-09-02T20:40:14",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10455"
+    },
+    "modified": "2026-09-02T22:40:14",
+    "modified_gmt": "2026-09-02T20:40:14",
+    "slug": "onsdag-kvel-02-09-26",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/02/onsdag-kvel-02-09-26/",
+    "title": {
+      "rendered": "onsdag kvel 02.09.26"
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">3 biler på parkeringsplassen nede. Rein </p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "3 biler på parkeringsplassen nede. Rein",
+      "protected": false
+    },
+    "author": 73,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10455",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10455",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10455"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10455/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10456,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10455/revisions/10456"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10455"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10455"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10455"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 73,
+          "name": "Bjørg Frotveit",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/bjorgfrothotmail-com/",
+          "slug": "bjorgfrothotmail-com",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10453,
+    "date": "2026-09-02T19:53:01",
+    "date_gmt": "2026-09-02T17:53:01",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10453"
+    },
+    "modified": "2026-09-02T19:53:01",
+    "modified_gmt": "2026-09-02T17:53:01",
+    "slug": "etterettermiddag-02-08-26",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/02/etterettermiddag-02-08-26/",
+    "title": {
+      "rendered": "etter’ettermiddag 02.08.26"
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">stille rolig. 3 biler på parkeringsplassen nede, ingen på parkeringsplassen oppe. Lett regn. </p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "stille rolig. 3 biler på parkeringsplassen nede, ingen på parkeringsplassen oppe. Lett regn.",
+      "protected": false
+    },
+    "author": 73,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10453",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10453",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10453"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10453/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10454,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10453/revisions/10454"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10453"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10453"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10453"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 73,
+          "name": "Bjørg Frotveit",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/bjorgfrothotmail-com/",
+          "slug": "bjorgfrothotmail-com",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 10451,
+    "date": "2026-09-02T15:29:54",
+    "date_gmt": "2026-09-02T13:29:54",
+    "guid": {
+      "rendered": "https://vaktbok.osbaatklubb.org/?p=10451"
+    },
+    "modified": "2026-09-02T15:29:54",
+    "modified_gmt": "2026-09-02T13:29:54",
+    "slug": "ettermiddag-onsdag",
+    "status": "publish",
+    "type": "post",
+    "link": "https://vaktbok.osbaatklubb.org/2026/09/02/ettermiddag-onsdag/",
+    "title": {
+      "rendered": "ettermiddag onsdag."
+    },
+    "content": {
+      "rendered": "\n<p class=\"wp-block-paragraph\">3 biler parkering nede. Opplett </p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "3 biler parkering nede. Opplett",
+      "protected": false
+    },
+    "author": 73,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": {
+      "_oct_exclude_from_cache": false,
+      "footnotes": ""
+    },
+    "categories": [
+      1
+    ],
+    "tags": [],
+    "class_list": [
+      "post-10451",
+      "post",
+      "type-post",
+      "status-publish",
+      "format-standard",
+      "hentry",
+      "category-uncategorised"
+    ],
+    "_links": {
+      "self": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10451",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/comments?post=10451"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 1,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10451/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 10452,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/posts/10451/revisions/10452"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/media?parent=10451"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "category",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/categories?post=10451"
+        },
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/tags?post=10451"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 73,
+          "name": "Bjørg Frotveit",
+          "url": "",
+          "description": "",
+          "link": "https://vaktbok.osbaatklubb.org/author/bjorgfrothotmail-com/",
+          "slug": "bjorgfrothotmail-com",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/d8ad5de46e538e302397f6929041c547af03ea8a38265aabbb38bf0bc70723ed?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users/73",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://vaktbok.osbaatklubb.org/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
     "id": 10448,
     "date": "2026-09-01T17:43:33",
     "date_gmt": "2026-09-01T15:43:33",

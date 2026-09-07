@@ -63,3 +63,6 @@ src/payload-types.ts
 
 # Superpowers subagent-driven-development scratch workspace
 .superpowers/
+
+# Database backups
+*.bak-*

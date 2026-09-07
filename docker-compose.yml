@@ -10,5 +10,14 @@ services:
       - .env
     restart: unless-stopped
 
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    command: tunnel run
+    volumes:
+      - /home/smvservadmin/cloudflared-config:/home/nonroot/.cloudflared
+    depends_on:
+      - payload
+    restart: unless-stopped
+
 volumes:
   db-data:
