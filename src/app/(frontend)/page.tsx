@@ -56,9 +56,16 @@ export default async function HomePage() {
     `}
         >
           <div
-            className="relative h-[65vh] sm:h-[70vh] bg-fixed bg-top bg-cover flex items-end justify-center pb-6"
-            style={{ backgroundImage: `url(${section.image})` }}
+            className="relative h-[65vh] sm:h-[70vh] flex items-end justify-center pb-6"
+            style={{
+              clipPath: i === 0 ? 'inset(0 round 0.75rem 0.75rem 0 0)' : 'inset(0)',
+            }}
           >
+            <div
+              className="fixed inset-0 -z-10 bg-cover bg-top"
+              style={{ backgroundImage: `url(${section.image})` }}
+              aria-hidden="true"
+            />
             {i === 0 && (
               <a
                 href={'#content-start'}
