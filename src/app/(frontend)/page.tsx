@@ -62,7 +62,7 @@ export default async function HomePage() {
             }}
           >
             <div
-              className="fixed inset-0 -z-10 bg-cover bg-top"
+              className="fixed inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-480 -z-10 bg-cover bg-top"
               style={{ backgroundImage: `url(${section.image})` }}
               aria-hidden="true"
             />
