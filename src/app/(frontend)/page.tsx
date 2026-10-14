@@ -28,12 +28,12 @@ export default async function HomePage() {
 
   const parallaxSection = [
     {
-      image: '/images/harbour1.webp',
+      image: '/images/varga1.webp',
       title: 'Os Båtklubb',
       text: 'Felleskap på sjøen siden 1955',
     },
     {
-      image: '/images/harbour2.webp',
+      image: '/images/varga2.webp',
       title: 'Gjestebrygge',
       text: 'Vi har gjestebrygge og fasiliteter',
     },
