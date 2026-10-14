@@ -8,9 +8,8 @@ const localIps = Object.values(networkInterfaces())
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  allowedDevOrigins: [...localIps, '*.trycloudflare.com'],
   images: {
-    remotePatterns: [{ protocol: 'https', hostname: '**.trycloudflare.com' }],
+    remotePatterns: [{ protocol: 'https', hostname: 'osbaatklubb.org' }],
   },
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
@@ -18,9 +17,7 @@ const nextConfig = {
       '.js': ['.ts', '.tsx', '.js', '.jsx'],
       '.mjs': ['.mts', '.mjs'],
     }
-
     return webpackConfig
   },
 }
-
 export default withPayload(nextConfig, { devBundleServerPackages: false })

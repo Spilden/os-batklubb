@@ -16,7 +16,7 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
 
   async function handleLogin() {
     try {
-      const response = await fetch('api/users/login', {
+      const response = await fetch('/api/users/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -28,6 +28,7 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
         }),
       })
       if (response.ok) {
+        router.push('/members')
         router.refresh()
         onCloseAction()
       } else {
@@ -40,7 +41,7 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
 
   async function handleForgotPassword() {
     try {
-      await fetch('api/users/forgot-password', {
+      await fetch('/api/users/forgot-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
