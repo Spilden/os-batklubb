@@ -3,18 +3,11 @@ import type { CollectionConfig } from 'payload'
 export const Events: CollectionConfig = {
   slug: 'events',
   access: {
-    create: ({ req: { user } }) => Boolean(user),
+    // Only admins manage arrangementer (via /members/admin/arrangementer or the Payload panel).
+    create: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
     read: ({ req: { user } }) => Boolean(user),
-    update: ({ req: { user } }) => {
-      if (!user) return false
-      if (user.roles?.includes('admin')) return true
-      return { user: { equals: user.id } }
-    },
-    delete: ({ req: { user } }) => {
-      if (!user) return false
-      if (user.roles?.includes('admin')) return true
-      return { user: { equals: user.id } }
-    },
+    update: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
+    delete: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
   },
   fields: [
     {
