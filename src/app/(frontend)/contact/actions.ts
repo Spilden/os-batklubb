@@ -8,6 +8,7 @@ function getRecipientEmail(recipient: string): string {
   const emails: Record<string, string> = {
     board: process.env.CONTACT_TO_EMAIL_BOARD!,
     slipway: process.env.CONTACT_TO_EMAIL_SLIPWAY!,
+    clubhouse: process.env.CONTACT_TO_EMAIL_CLUBHOUSE!,
   }
   return emails[recipient] ?? ''
 }
@@ -16,6 +17,7 @@ function getRecipientLabel(recipient: string): string {
   const labels: Record<string, string> = {
     board: 'Styret',
     slipway: 'Slippvakt',
+    clubhouse: 'Klubblokale',
   }
   return labels[recipient] ?? recipient
 }
@@ -39,6 +41,10 @@ export async function submitContactForm(_prevState: unknown, formData: FormData)
     return { success: false, error: 'Alle felt ,må fylles ut.' }
   }
 
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return { success: false, error: 'Ugyldig e-postadresse.' }
+  }
+
   if (!toEmail) {
     return { success: false, error: 'Noe gikk galt. Prøv igjen senere.' }
   }
@@ -54,6 +60,7 @@ export async function submitContactForm(_prevState: unknown, formData: FormData)
     await resend.emails.send({
       from: process.env.CONTACT_FROM_EMAIL!,
       to: toEmail,
+      replyTo: email,
       subject: `Ny henvendelse fra ${name}`,
       text: `Til: ${recipientLabel}\n\nNavn: ${name}\nE-post: ${email}\n\nMelding:\n${message}`,
     })

@@ -1,6 +1,7 @@
 import * as migration_20260902_133201_initial_schema from './20260902_133201_initial_schema';
 import * as migration_20260902_134900_add_camera_log_entries from './20260902_134900_add_camera_log_entries';
 import * as migration_20260903_181630_add_medlem_siden from './20260903_181630_add_medlem_siden';
+import * as migration_20261109_161301_add_user_active from './20261109_161301_add_user_active';
 
 export const migrations = [
   {
@@ -16,6 +17,11 @@ export const migrations = [
   {
     up: migration_20260903_181630_add_medlem_siden.up,
     down: migration_20260903_181630_add_medlem_siden.down,
-    name: '20260903_181630_add_medlem_siden'
+    name: '20260903_181630_add_medlem_siden',
+  },
+  {
+    up: migration_20261109_161301_add_user_active.up,
+    down: migration_20261109_161301_add_user_active.down,
+    name: '20261109_161301_add_user_active'
   },
 ];

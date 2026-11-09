@@ -28,12 +28,12 @@ export default async function HomePage() {
 
   const parallaxSection = [
     {
-      image: '/images/harbour1.webp',
+      image: '/images/varga1.webp',
       title: 'Os Båtklubb',
       text: 'Felleskap på sjøen siden 1955',
     },
     {
-      image: '/images/harbour2.webp',
+      image: '/images/varga2.webp',
       title: 'Gjestebrygge',
       text: 'Vi har gjestebrygge og fasiliteter',
     },
@@ -56,9 +56,16 @@ export default async function HomePage() {
     `}
         >
           <div
-            className="relative h-[65vh] sm:h-[70vh] bg-fixed bg-top bg-cover flex items-end justify-center pb-6"
-            style={{ backgroundImage: `url(${section.image})` }}
+            className="relative h-[65vh] sm:h-[70vh] flex items-end justify-center pb-6"
+            style={{
+              clipPath: i === 0 ? 'inset(0 round 0.75rem 0.75rem 0 0)' : 'inset(0)',
+            }}
           >
+            <div
+              className="fixed inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-480 -z-10 bg-cover bg-top"
+              style={{ backgroundImage: `url(${section.image})` }}
+              aria-hidden="true"
+            />
             {i === 0 && (
               <a
                 href={'#content-start'}

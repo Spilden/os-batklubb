@@ -9,7 +9,14 @@ const initilalState = {
   error: '',
 }
 
-export default function ContactForm() {
+type ContactFormProps = {
+  /** Fixed recipient: hides the «Send til» choice. */
+  recipient?: 'board' | 'slipway' | 'clubhouse'
+  defaultName?: string
+  defaultEmail?: string
+}
+
+export default function ContactForm({ recipient, defaultName, defaultEmail }: ContactFormProps = {}) {
   const [state, action, isPending] = useActionState(submitContactForm, initilalState)
   const formRef = useRef<HTMLFormElement>(null)
   const [showToast, setShowToast] = useState<{ type: 'success' | 'error'; message: string } | null>(
@@ -63,19 +70,23 @@ export default function ContactForm() {
         <input id="url" type="text" name="url" tabIndex={-1} autoComplete="nope" />
       </div>
 
-      <div className="flex flex-col gap-2 text-text font-medium text-sm uppercase">
-        <label>Send til</label>
-        <div className="flex gap-3">
-          <label className="flex items-center gap-2 cursor-pointer border border-ocean rounded-lg px-4 py-2 has-checked:bg-ocean has-checked:text-surface transition-colors">
-            <input type="radio" name="recipient" value="board" required className="sr-only" />
-            Styret
-          </label>
-          <label className="flex items-center gap-2 cursor-pointer border border-ocean rounded-lg px-4 py-2 has-checked:bg-ocean has-checked:text-surface transition-colors">
-            <input type="radio" name="recipient" value="slipway" className="sr-only" />
-            Slippvakt
-          </label>
+      {recipient ? (
+        <input type="hidden" name="recipient" value={recipient} />
+      ) : (
+        <div className="flex flex-col gap-2 text-text font-medium text-sm uppercase">
+          <label>Send til</label>
+          <div className="flex gap-3">
+            <label className="flex items-center gap-2 cursor-pointer border border-ocean rounded-lg px-4 py-2 has-checked:bg-ocean has-checked:text-surface transition-colors">
+              <input type="radio" name="recipient" value="board" required className="sr-only" />
+              Styret
+            </label>
+            <label className="flex items-center gap-2 cursor-pointer border border-ocean rounded-lg px-4 py-2 has-checked:bg-ocean has-checked:text-surface transition-colors">
+              <input type="radio" name="recipient" value="slipway" className="sr-only" />
+              Slippvakt
+            </label>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="flex flex-col gap-1">
         <label htmlFor="name" className="text-text font-medium text-sm uppercase">
@@ -86,6 +97,7 @@ export default function ContactForm() {
           name="name"
           type="text"
           required
+          defaultValue={defaultName}
           className="border border-ocean rounded-lg p-2 bg-background text-text focus:outline-none focus:ring-2 focus:ring-ocean"
         />
       </div>
@@ -99,6 +111,7 @@ export default function ContactForm() {
           name="email"
           type="email"
           required
+          defaultValue={defaultEmail}
           className="border border-ocean rounded-lg p-2 bg-background text-text focus:outline-none focus:ring-2 focus:ring-ocean"
         />
       </div>
