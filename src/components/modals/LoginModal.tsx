@@ -32,7 +32,13 @@ export default function LoginModal({ onCloseAction }: { onCloseAction: () => voi
         router.refresh()
         onCloseAction()
       } else {
-        setError('Feil e-post eller passord')
+        const body = await response.json().catch(() => null)
+        const deactivated = body?.errors?.[0]?.message === 'Brukeren er deaktivert.'
+        setError(
+          deactivated
+            ? 'Brukeren din er deaktivert. Ta kontakt med styret hvis du mener dette er feil.'
+            : 'Feil e-post eller passord',
+        )
       }
     } catch (error) {
       console.log(error)

@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { APIError } from 'payload'
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -8,6 +9,17 @@ export const Users: CollectionConfig = {
   auth: {
     forgotPassword: {
       generateEmailHTML: (args) => {
+        if (args?.user?.active === false) {
+          return `
+        <!doctype html>
+        <html lang="no">
+          <body>
+            <h2>Kontoen er deaktivert</h2>
+            <p>Kontoen din hos Os Båtklubb er deaktivert. Ta kontakt med styret hvis du mener dette er feil.</p>
+          </body>
+        </html>
+        `
+        }
         const resetURL = `${process.env.NEXT_PUBLIC_SERVER_URL}/reset-password?token=${args?.token}`
         return `
         <!doctype html>
@@ -21,6 +33,46 @@ export const Users: CollectionConfig = {
         `
       }
     }
+  },
+  hooks: {
+    beforeLogin: [
+      ({ user }) => {
+        if (user?.active === false) {
+          throw new APIError('Brukeren er deaktivert.', 403)
+        }
+        return user
+      },
+    ],
+    beforeChange: [
+      ({ data, originalDoc, operation, req }) => {
+        if (operation !== 'update' || !originalDoc) return data
+
+        const isAdmin = Boolean(req.user?.roles?.includes('admin'))
+        const isSelf = req.user?.id === originalDoc.id
+
+        if (isAdmin && isSelf) {
+          if (data.active === false) {
+            throw new APIError('Du kan ikke deaktivere deg selv.', 400)
+          }
+          if (
+            originalDoc.roles?.includes('admin') &&
+            Array.isArray(data.roles) &&
+            !data.roles.includes('admin')
+          ) {
+            throw new APIError('Du kan ikke fjerne din egen admin-rolle.', 400)
+          }
+        }
+
+        const willBeActive = data.active ?? originalDoc.active
+        if (willBeActive === false) {
+          // Deactivated users lose existing logins and can't use reset tokens.
+          data.sessions = []
+          data.resetPasswordToken = null
+          data.resetPasswordExpiration = null
+        }
+        return data
+      },
+    ],
   },
   access: {
     admin: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
@@ -49,6 +101,15 @@ export const Users: CollectionConfig = {
       type: 'date',
       label: 'Medlem siden',
       admin: { date: { pickerAppearance: 'dayOnly' } },
+    },
+    {
+      name: 'active',
+      type: 'checkbox',
+      label: 'Aktiv',
+      defaultValue: true,
+      access: {
+        update: ({ req: { user } }) => Boolean(user?.roles?.includes('admin')),
+      },
     },
     {
       name: 'roles',
