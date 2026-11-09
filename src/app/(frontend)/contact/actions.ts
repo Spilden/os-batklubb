@@ -39,6 +39,10 @@ export async function submitContactForm(_prevState: unknown, formData: FormData)
     return { success: false, error: 'Alle felt ,må fylles ut.' }
   }
 
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return { success: false, error: 'Ugyldig e-postadresse.' }
+  }
+
   if (!toEmail) {
     return { success: false, error: 'Noe gikk galt. Prøv igjen senere.' }
   }
@@ -54,6 +58,7 @@ export async function submitContactForm(_prevState: unknown, formData: FormData)
     await resend.emails.send({
       from: process.env.CONTACT_FROM_EMAIL!,
       to: toEmail,
+      replyTo: email,
       subject: `Ny henvendelse fra ${name}`,
       text: `Til: ${recipientLabel}\n\nNavn: ${name}\nE-post: ${email}\n\nMelding:\n${message}`,
     })
