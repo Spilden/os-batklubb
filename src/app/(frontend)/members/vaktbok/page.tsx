@@ -51,7 +51,7 @@ export default async function VaktbokPage({
       <div className="w-full flex flex-col gap-8">
         {user.roles?.includes('admin') && (
           <div className="flex justify-end">
-            <BaseButton href="/members/vaktbok/oversikt" variant="text">
+            <BaseButton href="/members/admin/vaktbok" variant="text">
               Admin-oversikt
             </BaseButton>
           </div>

@@ -78,3 +78,23 @@ html {
         @apply text-base;
     }
 }
+/* Date fields: text cursor over the date (you can type), pointer over the calendar icon (you can click). */
+input[type='date'],
+input[type='datetime-local'] {
+    cursor: text;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator,
+input[type='datetime-local']::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    opacity: 0.7;
+    transition: opacity 150ms, background-color 150ms;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator:hover,
+input[type='datetime-local']::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+    background-color: color-mix(in srgb, var(--color-ocean, #1e40af) 15%, transparent);
+}

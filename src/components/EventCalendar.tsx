@@ -30,9 +30,9 @@ export function EventCalendar() {
             end: doc.endTime,
             backgroundColor: 'transparent',
             borderColor: 'transparent',
-            classNames: doc.status === 'cancelled' ? ['line-through', 'opacity-60'] : [],
             extendedProps: {
               color: doc.color ?? '#378ADD',
+              cancelled: doc.status === 'cancelled',
             },
           }
         })
@@ -67,6 +67,7 @@ export function EventCalendar() {
       <BaseCalendar
         events={events}
         eventClick={handleEventClick}
+        eventDisplay="block"
         headerToolbar={{
           left: 'today',
           center: 'title',

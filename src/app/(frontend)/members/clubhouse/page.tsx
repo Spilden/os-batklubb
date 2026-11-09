@@ -4,6 +4,8 @@ import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { ClubhouseCalendar } from '@/components/ClubhouseCalendar'
 import BookingNotice from '@/components/BookingNotice'
+import ContactForm from '@/components/ContactForm'
+import { BaseMemberCard } from '@/components/BaseMemberCard'
 
 export default async function ClubhousePage() {
   const payload = await getPayload({ config })
@@ -17,6 +19,14 @@ export default async function ClubhousePage() {
   return (
     <>
       <h1 className="text-text font-display text-center text-3xl pt-8 pb-4">Booking av klubblokalet</h1>
+      <div className="max-w-2xl mx-auto w-full pb-8">
+        <BaseMemberCard title="Kontakt utleieansvarlig">
+          <p className="text-text-muted text-sm pb-4">
+            For spørsmål om leie eller bruk av klubblokalet.
+          </p>
+          <ContactForm recipient="clubhouse" defaultName={user.name} defaultEmail={user.email} />
+        </BaseMemberCard>
+      </div>
       <BookingNotice
         description="Kalenderen og nettbooking for klubblokalet er under utvikling og ikke offisielt i drift ennå. Bindende avtale og leie av klubblokalet må inntil videre gjøres direkte med ansvarlig person."
         testNotice="Du kan fritt klikke eller markere dager i kalenderen for å teste hvordan leieforespørsel for klubblokalet fungerer."
