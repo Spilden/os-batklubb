@@ -18,9 +18,27 @@ function renderEventContent(info: EventContentArg) {
     isMine: boolean
   }
   if (!req) {
+    const cancelled = Boolean(info.event.extendedProps.cancelled)
+    if (cancelled) {
+      return (
+        <div
+          className="w-full rounded-md px-2 py-1 text-xs h-full overflow-hidden cursor-pointer bg-border text-text-muted border-l-4 ring-0 hover:ring-1 hover:ring-ocean transition-all"
+          style={{ borderLeftColor: info.event.extendedProps.color ?? '#378ADD' }}
+          title={`Avlyst: ${info.event.title}`}
+        >
+          <div className="flex items-center gap-1 min-w-0">
+            <span aria-hidden className="text-red-600 font-bold shrink-0">
+              ✕
+            </span>
+            <span className="sr-only">Avlyst:</span>
+            <span className="font-semibold line-through truncate">{info.event.title}</span>
+          </div>
+        </div>
+      )
+    }
     return (
       <div
-        className="rounded-md px-2 py-1 text-xs h-full overflow-hidden cursor-pointer ring-0 hover:ring-1 hover:ring-ocean transition-all"
+        className="w-full rounded-md px-2 py-1 text-xs h-full overflow-hidden cursor-pointer ring-0 hover:ring-1 hover:ring-ocean transition-all"
         style={{
           backgroundColor: info.event.extendedProps.color ?? '#378ADD',
           color: '#fff',
