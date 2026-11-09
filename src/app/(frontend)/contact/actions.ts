@@ -8,6 +8,7 @@ function getRecipientEmail(recipient: string): string {
   const emails: Record<string, string> = {
     board: process.env.CONTACT_TO_EMAIL_BOARD!,
     slipway: process.env.CONTACT_TO_EMAIL_SLIPWAY!,
+    clubhouse: process.env.CONTACT_TO_EMAIL_CLUBHOUSE!,
   }
   return emails[recipient] ?? ''
 }
@@ -16,6 +17,7 @@ function getRecipientLabel(recipient: string): string {
   const labels: Record<string, string> = {
     board: 'Styret',
     slipway: 'Slippvakt',
+    clubhouse: 'Klubblokale',
   }
   return labels[recipient] ?? recipient
 }
